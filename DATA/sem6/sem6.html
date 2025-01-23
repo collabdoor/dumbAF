@@ -33,6 +33,7 @@
             align-items: center;
             justify-content: center;
             display: flex;
+            flex-direction: column;
         }
 
         .subject {
@@ -81,6 +82,19 @@
         table tbody tr:hover {
             background-color: #f1f1f1;
         }
+
+        .breadcrumb {
+            margin-bottom: 20px;
+        }
+
+        .breadcrumb a {
+            color: rgb(0, 71, 90);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 
@@ -91,6 +105,11 @@
     </header>
 
     <main>
+        <nav class="breadcrumb">
+            <a href="../../../index.html">Home</a> &gt;
+            <a href="sem6.html">Semester 6</a> &gt;
+            <span>SEM 6</span>
+        </nav>
         <table>
             <thead>
                 <tr>

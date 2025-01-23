@@ -28,3 +28,23 @@ ul li::before {
 section {
     margin-bottom: 20px;
 }
+
+.breadcrumb {
+    padding: 10px 20px;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+.breadcrumb a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+.breadcrumb span {
+    color: #6c757d;
+}

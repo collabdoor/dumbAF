@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,13 +8,21 @@
     <link rel="stylesheet" href="../sub-page.css">
 
 </head>
+
 <body>
+
+    <nav class="breadcrumb">
+        <a href="../../../index.html">Home</a> &gt;
+        <a href="sem4.html">Semester 4</a> &gt;
+        <span>Computer Organization & Architecture</span>
+    </nav>
 
     <h1>Computer Organization & Architecture (BTES 401-18) - Theory</h1>
 
     <section>
         <h2>Course Objectives</h2>
-        <p>The main objective of this course is to provide students with a comprehensive understanding of the internal structure and functionality of a computer system. The course will cover the following concepts:</p>
+        <p>The main objective of this course is to provide students with a comprehensive understanding of the internal
+            structure and functionality of a computer system. The course will cover the following concepts:</p>
         <ul>
             <li>Basic functional units of a computer and their interactions</li>
             <li>Instruction set architecture and execution</li>
@@ -34,46 +43,50 @@
             <li>Write and analyze assembly language programs.</li>
             <li>Design and analyze memory systems and their interaction with the CPU.</li>
             <li>Understand the principles of CPU control unit design and implementation.</li>
-            <li>Analyze the performance of pipelined processors and understand the challenges of parallel processing.</li>
+            <li>Analyze the performance of pipelined processors and understand the challenges of parallel processing.
+            </li>
         </ol>
     </section>
 
     <section>
         <h2>Detailed Syllabus</h2>
+
         <h3>Module 1: Functional blocks of a computer</h3>
-        <ul>
-            <li>CPU, memory, input-output subsystems, control unit.</li>
-            <li>Instruction set architecture of a CPU – registers, instruction execution cycle, RTL interpretation of instructions, addressing modes, instruction set.</li>
-            <li>Case study – instruction set of 8085 processor.</li>
-            <li>Data representation: signed number representation, fixed and floating point representations, character representation.</li>
-            <li>Computer arithmetic – integer addition and subtraction, ripple carry adder, carry look-ahead adder, etc. multiplication – shift-and-add, Booth multiplier, carry save multiplier, etc. Division restoring and non-restoring techniques, floating point arithmetic.</li>
-        </ul>
+        <p>CPU, memory, input-output subsystems, control unit. Instruction set architecture of a CPU – registers,
+            instruction execution cycle, RTL interpretation of instructions, addressing modes, instruction set. Case
+            study – instruction set of 8085 processor.</p>
+        <p>Data representation: signed number representation, fixed and floating point representations, character
+            representation. Computer arithmetic – integer addition and subtraction, ripple carry adder, carry look-ahead
+            adder, etc. multiplication – shift-and-add, Booth multiplier, carry save multiplier, etc. Division restoring
+            and non-restoring techniques, floating point arithmetic.</p>
+        <p>[10 hrs] (CO1, CO2)</p>
 
         <h3>Module 2: Introduction to x86 architecture</h3>
-        <ul>
-            <li>CPU control unit design: Hardwired and micro-programmed design approaches.</li>
-            <li>Case study – design of a simple hypothetical CPU.</li>
-            <li>Memory system design: semiconductor memory technologies, memory organization.</li>
-            <li>Peripheral devices and their characteristics: Input-output subsystems, I/O device interface, I/O transfers – program controlled, interrupt driven and DMA, privileged and non-privileged instructions, software interrupts and exceptions. Programs and processes –role of interrupts in process state transitions, I/O device interfaces – SCII, USB.</li>
-        </ul>
+        <p>CPU control unit design: Hardwired and micro-programmed design approaches. Case study – design of a simple
+            hypothetical CPU. Memory system design: semiconductor memory technologies, memory organization. Peripheral
+            devices and their characteristics: Input-output subsystems, I/O device interface, I/O transfers – program
+            controlled, interrupt driven and DMA, privileged and non-privileged instructions, software interrupts and
+            exceptions. Programs and processes –role of interrupts in process state transitions, I/O device interfaces –
+            SCII, USB.</p>
+        <p>[12 hrs] (CO2, CO4)</p>
 
         <h3>Module 3: Pipelining</h3>
-        <ul>
-            <li>Basic concepts of pipelining, throughput and speedup, pipeline hazards.</li>
-            <li>Parallel Processors: Introduction to parallel processors, Concurrent access to memory and cache coherency.</li>
-        </ul>
+        <p>Basic concepts of pipelining, throughput and speedup, pipeline hazards. Parallel Processors: Introduction to
+            parallel processors, Concurrent access to memory and cache coherency.</p>
+        <p>[10 hrs] (CO5)</p>
 
         <h3>Module 4: Memory Organization</h3>
-        <ul>
-            <li>Memory interleaving, concept of hierarchical memory organization, cache memory, cache size vs. block size, mapping functions, replacement algorithms, write policies.</li>
-        </ul>
+        <p>Memory interleaving, concept of hierarchical memory organization, cache memory, cache size vs. block size,
+            mapping functions, replacement algorithms, write policies.</p>
+        <p>[10 hrs] (CO3)</p>
     </section>
 
     <section>
         <h2>Suggested Books</h2>
         <ul>
             <li>Computer Organization and Architecture by Moris Mano</li>
-            <li>Computer Organization and Design: The Hardware/Software Interface by David A. Patterson and John L. Hennessy</li>
+            <li>Computer Organization and Design: The Hardware/Software Interface by David A. Patterson and John L.
+                Hennessy</li>
             <li>Computer Organization and Embedded Systems by Carl Hamacher</li>
         </ul>
     </section>
@@ -87,6 +100,18 @@
         </ul>
     </section>
 
+    <section>
+        <h2>Course Outcomes</h2>
+        <p>The student will be able to:</p>
+        <ol>
+            <li>Understand functional block diagram of microprocessor</li>
+            <li>Apply instruction set for Writing assembly language programs</li>
+            <li>Design a memory module and analyze its operation by interfacing with the CPU</li>
+            <li>Classify hardwired and microprogrammed control units</li>
+            <li>Understand the concept of pipelining and its performance metrics</li>
+        </ol>
+    </section>
+
     <hr>
 
     <h1>Computer Organization & Architecture Lab (BTES 402-18)</h1>
@@ -94,41 +119,42 @@
     <section>
         <h2>List of Experiments</h2>
         <ol>
-            <li>Computer Anatomy- Memory, Ports, Motherboard and add-on cards.</li>
-            <li>Dismantling and assembling PC.</li>
-            <li>Introduction to 8085 kit.</li>
-            <li>Addition of two 8 bit numbers, sum 8 bit.</li>
-            <li>Subtraction of two 8 bit numbers.</li>
-            <li>Find 1’s complement of 8-bit number.</li>
-            <li>Find 2’s complement of 8-bit number.</li>
-            <li>Shift an 8-bit no. by one bit.</li>
-            <li>Find Largest of two 8 bit numbers.</li>
-            <li>Find Largest among an array of ten numbers (8 bit).</li>
-            <li>Sum of series of 8 bit numbers.</li>
-            <li>Introduction to 8086 kit.</li>
-            <li>Addition and subtraction of two 16 bit numbers, sum 16 bit.</li>
-            <li>Implement of Booth’s algorithm for arithmetic operations.</li>
-            <li>Find 1’s and 2’s complement of 16-bit number.</li>
-            <li>Implement simple programs using I/O based interface.</li>
+            <li>Computer Anatomy- Memory, Ports, Motherboard and add-on cards</li>
+            <li>Dismantling and assembling PC</li>
+            <li>Introduction to 8085 kit</li>
+            <li>Addition of two 8 bit numbers, sum 8 bit</li>
+            <li>Subtraction of two 8 bit numbers</li>
+            <li>Find 1's complement of 8-bit number</li>
+            <li>Find 2's complement of 8-bit number</li>
+            <li>Shift an 8-bit no. by one bit</li>
+            <li>Find Largest of two 8 bit numbers</li>
+            <li>Find Largest among an array of ten numbers (8 bit)</li>
+            <li>Sum of series of 8 bit numbers</li>
+            <li>Introduction to 8086 kit</li>
+            <li>Addition and subtraction of two 16 bit numbers, sum 16 bit</li>
+            <li>Implement of Booth's algorithm for arithmetic operations</li>
+            <li>Find 1's and 2's complement of 16-bit number</li>
+            <li>Implement simple programs using I/O based interface</li>
         </ol>
     </section>
 
     <section>
-        <h2>Course Outcomes</h2>
-        <p>Upon completion of this lab, students will be able to:</p>
+        <h2>Lab Outcomes</h2>
+        <p>The student will be able to:</p>
         <ol>
-            <li>Assemble a personal computer.</li>
-            <li>Implement various assembly language programs for basic arithmetic and logical operations.</li>
-            <li>Demonstrate the functioning of microprocessor/microcontroller-based systems with I/O interface.</li>
+            <li>Assemble personal computer</li>
+            <li>Implement the various assembly language programs for basic arithmetic and logical operations</li>
+            <li>Demonstrate the functioning of microprocessor/microcontroller based systems with I/O interface</li>
         </ol>
     </section>
 
     <section>
         <h2>Reference Books</h2>
         <ul>
-            <li>Fundamentals of Microprocessors and Microcontrollers by B. Ram</li>
+            <li>Fundamentals of Microprocessors and Microcontrollers by B. Ram, Dhanpat Rai Publications</li>
         </ul>
     </section>
 
 </body>
+
 </html>

@@ -5,9 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Computer Networks (Theory & Lab)</title>
     <link rel="stylesheet" href="../sub-page.css">
-
 </head>
 <body>
+
+<nav class="breadcrumb">
+    <a href="../../../index.html">Home</a> &gt;
+    <a href="sem5.html">Semester 5</a> &gt;
+    <span>Computer Networks</span>
+</nav>
 
     <h1>Computer Networks (BTCS 504-18) - Theory</h1>
 
@@ -37,38 +42,48 @@
     <section>
         <h2>Detailed Syllabus</h2>
 
-        <h3>Module 1: Introduction to Computer Networks</h3>
+        <h3>Module 1: Data Communication Components</h3>
         <ul>
-            <li>Uses of Computer Networks, Network Hardware, Network Software, Reference models - OSI and TCP/IP, Example Networks - Internet, Wireless LANs.</li>
+            <li>Representation of data and its flow Networks</li>
+            <li>Various Connection Topology</li>
+            <li>Protocols and Standards, OSI model</li>
+            <li>Transmission Media, LAN: Wired LAN, Wireless LANs</li>
+            <li>Connecting LAN and Virtual LAN</li>
+            <li>Techniques for Bandwidth utilization: Multiplexing - Frequency division, Time division and Wave division</li>
+            <li>Concepts on spread spectrum</li>
         </ul>
 
-        <h3>Module 2: The Physical Layer</h3>
+        <h3>Module 2: Data Link Layer and Medium Access Sub Layer</h3>
         <ul>
-            <li>Guided Transmission Media, Wireless Transmission</li>
-            <li>The public switched telephone network, Mobile telephone system, Communication satellites</li>
+            <li>Error Detection and Error Correction - Fundamentals, Block coding, Hamming Distance, CRC</li>
+            <li>Flow Control and Error control protocols - Stop and Wait, Go back – N ARQ, Selective Repeat ARQ</li>
+            <li>Sliding Window, Piggybacking</li>
+            <li>Random Access, Multiple access protocols -Pure ALOHA, Slotted ALOHA, CSMA/CD, CDMA/CA</li>
         </ul>
 
-        <h3>Module 3: The Data Link Layer</h3>
+        <h3>Module 3: Network Layer</h3>
         <ul>
-            <li>Data link layer design issues, Error detection and correction, Elementary data link protocols, Sliding Window protocols.</li>
-            <li>The medium access control sublayer: Channel allocation problem, Multiple access protocols: ALOHA, CSMA protocols, Collision-free protocols, Ethernet, Wireless LANs, Broadband wireless, Bluetooth, Data link layer switching.</li>
+            <li>Switching, Logical addressing – IPV4, IPV6</li>
+            <li>Address mapping – ARP, RARP, BOOTP and DHCP</li>
+            <li>Delivery, Forwarding and Unicast Routing protocols</li>
         </ul>
 
-        <h3>Module 4: The Network Layer</h3>
+        <h3>Module 4: Transport Layer</h3>
         <ul>
-            <li>Network layer design issues, Routing algorithms: Optimality principle, Shortest path routing, Flooding, Distance vector routing, Link state routing, Hierarchical routing, Broadcast routing, Multicast routing, Routing for mobile hosts, Congestion control algorithms, Quality of service, Internetworking, The Network layer in the internet.</li>
+            <li>Process to Process Communication</li>
+            <li>User Datagram Protocol (UDP)</li>
+            <li>Transmission Control Protocol (TCP)</li>
+            <li>SCTP Congestion Control</li>
+            <li>Quality of Service, QoS improving techniques: Leaky Bucket and Token Bucket algorithm</li>
         </ul>
 
-        <h3>Module 5: The Transport Layer</h3>
+        <h3>Module 5: Application Layer</h3>
         <ul>
-            <li>The transport service, Elements of transport protocols, Addressing, Connection establishment, Connection release, Flow control and buffering, Multiplexing, Crash recovery.</li>
-            <li>The internet transport protocols: UDP, TCP – segment header, connection establishment, connection release, sliding window, timer management, congestion control.</li>
-        </ul>
-
-        <h3>Module 6: The Application Layer</h3>
-        <ul>
-            <li>Domain Name System (DNS), Electronic Mail, The World Wide Web.</li>
-            <li>Network Security: Cryptography, Symmetric-key algorithms, Public-key algorithms, Digital signatures, Firewalls.</li>
+            <li>Domain Name Space (DNS), DDNS</li>
+            <li>TELNET, EMAIL, File Transfer Protocol (FTP)</li>
+            <li>WWW, HTTP, SNMP</li>
+            <li>Bluetooth, Firewalls</li>
+            <li>Basic concepts of Cryptography</li>
         </ul>
     </section>
 
@@ -94,15 +109,18 @@
     <section>
         <h2>List of Experiments</h2>
         <ol>
-            <li>Simulate various OSI layer protocols using C/C++/Java.</li>
-            <li>Implement data link layer framing methods such as bit stuffing and character stuffing.</li>
-            <li>Implement error detection and correction techniques such as parity check, checksum, and CRC.</li>
-            <li>Implement sliding window protocol.</li>
-            <li>Simulate various routing algorithms like distance vector routing and link state routing.</li>
-            <li>Implement socket programming for client-server communication using TCP and UDP.</li>
-            <li>Implement a simple file transfer application using TCP/UDP.</li>
-            <li>Simulate a subnet with address allocation, routing tables, etc.</li>
-            <li>Implement a simple chat application using TCP/UDP.</li>
+            <li>To study the different types of Network cables and network topologies.</li>
+            <li>Practically implement and test the cross-wired cable and straight through cable using clamping tool and network lab cable tester.</li>
+            <li>Study and familiarization with various network devices.</li>
+            <li>Familiarization with Packet Tracer Simulation tool/any other related tool.</li>
+            <li>Study and Implementation of IP Addressing Schemes</li>
+            <li>Creation of Simple Networking topologies using hubs and switches</li>
+            <li>Simulation of web traffic in Packet Tracer</li>
+            <li>Study and implementation of various router configuration commands</li>
+            <li>Creation of Networks using routers</li>
+            <li>Configuring networks using the concept of subnetting</li>
+            <li>Practical implementation of basic network command and Network configuration commands like ping, ipconfig, netstat, tracert etc. for troubleshooting network related problems</li>
+            <li>Configuration of networks using static and default routes</li>
         </ol>
     </section>
 

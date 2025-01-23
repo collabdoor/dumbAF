@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,30 +8,35 @@
     <link rel="stylesheet" href="../sub-page.css">
 
 </head>
+
 <body>
 
-    <h1>Design & Analysis of Algorithms (BTCS 403-18) - Theory</h1>
+    <nav class="breadcrumb">
+        <a href="../../../index.html">Home</a> &gt;
+        <a href="sem4.html">Semester 4</a> &gt;
+        <span>Design & Analysis of Algorithms</span>
+    </nav>
+
+    <h1>Design & Analysis of Algorithms (BTCS 403-18)</h1>
 
     <section>
-        <h2>Course Objectives</h2>
-        <p>The main objective of this course is to introduce students to the fundamental principles and techniques of algorithm design and analysis. The course will cover the following concepts:</p>
-        <ul>
-            <li>Basic concepts of algorithm analysis, including time and space complexity.</li>
-            <li>Various algorithm design paradigms, such as divide-and-conquer, greedy algorithms, and dynamic programming.</li>
-            <li>Analysis of common algorithms for sorting, searching, and graph problems.</li>
-            <li>Introduction to NP-completeness and approximation algorithms.</li>
-        </ul>
+        <h2>Pre-requisites</h2>
+        <p>Data Structures</p>
     </section>
 
     <section>
         <h2>Course Outcomes</h2>
-        <p>Upon completion of this course, students will be able to:</p>
+        <p>The student will be able to:</p>
         <ol>
-            <li>Analyze the time and space complexity of algorithms.</li>
-            <li>Apply different algorithm design paradigms to solve problems efficiently.</li>
-            <li>Understand and implement common algorithms for sorting, searching, and graph problems.</li>
-            <li>Identify NP-complete problems and apply approximation algorithms when necessary.</li>
-            <li>Design and analyze their own algorithms for specific problems.</li>
+            <li>For a given algorithms analyze worst-case running times of algorithms based on asymptotic analysis and
+                justify the correctness of algorithms</li>
+            <li>Explain when an algorithmic design situation calls for which design paradigm (greedy/ divide and
+                conquer/backtrack etc.)</li>
+            <li>Explain model for a given engineering problem, using tree or graph, and write the corresponding
+                algorithm to solve the problems</li>
+            <li>Demonstrate the ways to analyze approximation/randomized algorithms (expected running time, probability
+                of error)</li>
+            <li>Examine the necessity for NP class based problems and explain the use of heuristic techniques</li>
         </ol>
     </section>
 
@@ -38,60 +44,45 @@
         <h2>Detailed Syllabus</h2>
 
         <h3>Module 1: Introduction</h3>
-        <ul>
-            <li>Algorithms, Pseudo code for expressing algorithms, Performance Analysis-Space complexity, Time complexity, Asymptotic Notations: Big-Oh notation (O), Omega notation (Ω), Theta notation (Θ) and Little-oh notation (o).</li>
-        </ul>
+        <p>Characteristics of algorithm. Analysis of algorithm: Asymptotic analysis of complexity bounds – best, average
+            and worst-case behavior; Performance measurements of Algorithm, Time and space trade-offs, Analysis of
+            recursive algorithms through recurrence relations: Substitution method, Recursion tree method and Masters'
+            theorem.</p>
 
-        <h3>Module 2: Divide and Conquer</h3>
-        <ul>
-            <li>General method, applications-Binary Search, Merge sort, Quick sort, Strassen’s matrix multiplication.</li>
-        </ul>
+        <h3>Module 2: Fundamental Algorithmic Strategies</h3>
+        <p>Brute-Force, Greedy, Dynamic Programming, Branch-and-Bound and Backtracking methodologies for the design of
+            algorithms; Illustrations of these techniques for Problem-Solving: Bin Packing, Knap Sack, TSP.</p>
 
-        <h3>Module 3: Greedy Method</h3>
-        <ul>
-            <li>General method, applications-Job sequencing with deadlines, 0/1 knapsack problem, Minimum cost spanning trees, Single source shortest path problem.</li>
-        </ul>
+        <h3>Module 3: Graph and Tree Algorithms</h3>
+        <p>Traversal algorithms: Depth First Search (DFS) and Breadth First Search (BFS); Shortest path algorithms,
+            Transitive closure, Minimum Spanning Tree, Topological sorting, Network Flow Algorithm.</p>
 
-        <h3>Module 4: Dynamic Programming</h3>
-        <ul>
-            <li>General method, applications-Matrix chain multiplication, Optimal binary search trees, 0/1 knapsack problem, All pairs shortest path problem, Travelling sales person problem, Reliability design.</li>
-        </ul>
+        <h3>Module 4: Tractable and Intractable Problems</h3>
+        <p>Computability of Algorithms, Computability classes – P, NP, NP-complete and NP-hard. Cook's theorem, Standard
+            NP-complete problems and Reduction techniques.</p>
 
-        <h3>Module 5: Backtracking</h3>
-        <ul>
-            <li>General method, applications- N Queen problem, Sum of subsets problem, Graph coloring, Hamiltonian cycles.</li>
-        </ul>
-
-        <h3>Module 6: Branch and Bound</h3>
-        <ul>
-            <li>General method, applications-Travelling sales person problem, 0/1 knapsack problem- LC Branch and Bound solution, FIFO Branch and Bound solution.</li>
-        </ul>
-
-        <h3>Module 7: NP-Hard and NP-Complete problems</h3>
-        <ul>
-            <li>Basic concepts, non deterministic algorithms, the classes NP – Hard and NP, NP – Completeness, Cook’s theorem.</li>
-        </ul>
-
-        <h3>Module 8: Approximation Algorithms</h3>
-        <ul>
-            <li>Introduction, Vertex Cover, Travelling Salesman Problem.</li>
-        </ul>
+        <h3>Module 5: Advanced Topics</h3>
+        <p>Approximation algorithms, Randomized algorithms, Heuristics and their characteristics.</p>
     </section>
 
     <section>
         <h2>Text Books</h2>
-        <ul>
-            <li>Introduction to Algorithms by Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, and Clifford Stein.</li>
-            <li>Fundamentals of Computer Algorithms by Ellis Horowitz & Sartaj Sahni.</li>
-        </ul>
+        <ol>
+            <li>Introduction to Algorithms, 4TH Edition, Thomas H Cormen, Charles E Lieserson, Ronald L Rivest and
+                Clifford Stein, MIT Press/McGraw-Hill.</li>
+            <li>Data Structures and Algorithms in C++, Weiss, 4th edition, Pearson.</li>
+            <li>Fundamentals of Computer Algorithms – E. Horowitz, Sartaj Saini, Galgota Publications.</li>
+        </ol>
     </section>
 
     <section>
         <h2>Reference Books</h2>
-        <ul>
-            <li>Algorithm Design by Jon Kleinberg and Éva Tardos.</li>
-            <li>The Design and Analysis of Computer Algorithms by Aho, Hopcroft, and Ullman.</li>
-        </ul>
+        <ol>
+            <li>Algorithm Design, 1st Edition, Jon Kleinberg and Eva Tardos, Pearson.</li>
+            <li>Algorithm Design: Foundations, Analysis, and Internet Examples, Second Edition, Michael T Goodrich and
+                Roberto Tamassia, Wiley.</li>
+            <li>Algorithms -- A Creative Approach, 3RD Edition, Udi Manber, Addison-Wesley, Reading, MA.</li>
+        </ol>
     </section>
 
     <hr>
@@ -101,71 +92,53 @@
     <section>
         <h2>List of Experiments</h2>
         <ol>
-            <li>Implement and analyze the time complexities of the following sorting algorithms:
+            <li>Code and analyze solutions to following problem with given strategies:
                 <ul>
-                    <li>Bubble Sort</li>
-                    <li>Selection Sort</li>
-                    <li>Insertion Sort</li>
-                    <li>Merge Sort</li>
-                    <li>Quick Sort</li>
-                    <li>Heap Sort</li>
+                    <li>Knap Sack using greedy approach</li>
+                    <li>Knap Sack using dynamic approach</li>
                 </ul>
             </li>
-            <li>Implement and analyze the time complexities of the following searching algorithms:
+            <li>Code and analyze to find an optimal solution to matrix chain multiplication using dynamic programming.
+            </li>
+            <li>Code and analyze to find an optimal solution to TSP using dynamic programming.</li>
+            <li>Implementing an application of DFS such as:
                 <ul>
-                    <li>Linear Search</li>
-                    <li>Binary Search</li>
+                    <li>to find the topological sort of a directed acyclic graph</li>
+                    <li>to find a path from source to goal in a maze</li>
                 </ul>
             </li>
-            <li>Implement Divide and Conquer technique for:
+            <li>Implement an application of BFS such as:
                 <ul>
-                    <li>Finding the maximum and minimum element from an unsorted array.</li>
-                    <li>Matrix Multiplication</li>
+                    <li>to find connected components of an undirected graph</li>
+                    <li>to check whether a given graph is bipartite</li>
                 </ul>
             </li>
-            <li>Implement Greedy technique for:
-                <ul>
-                    <li>Job Sequencing with Deadlines</li>
-                    <li>Fractional Knapsack problem</li>
-                </ul>
+            <li>Code and analyze to find shortest paths in a graph with positive edge weights using Dijkstra's
+                algorithm.</li>
+            <li>Code and analyze to find shortest paths in a graph with arbitrary edge weights using Bellman-Ford
+                algorithm.</li>
+            <li>Code and analyze to find shortest paths in a graph with arbitrary edge weights using Flyods' algorithm.
             </li>
-            <li>Implement Dynamic programming for:
-                <ul>
-                    <li>0/1 Knapsack problem</li>
-                    <li>Finding Longest Common Subsequence</li>
-                </ul>
-            </li>
-            <li>Implement Backtracking for:
-                <ul>
-                    <li>N-Queens problem</li>
-                </ul>
-            </li>
-            <li>Implement Graph Traversals:
-                <ul>
-                    <li>Breadth First Search (BFS)</li>
-                    <li>Depth First Search (DFS)</li>
-                </ul>
-            </li>
-            <li>Implement:
-                <ul>
-                    <li>Prim's Algorithm</li>
-                    <li>Kruskal’s Algorithm</li>
-                </ul>
-            </li>
-            <li>Implement Dijkstra’s Algorithm for finding shortest path.</li>
+            <li>Code and analyze to find the minimum spanning tree in a weighted, undirected graph using Prims'
+                algorithm</li>
+            <li>Code and analyze to find the minimum spanning tree in a weighted, undirected graph using Kruskals'
+                algorithm.</li>
+            <li>Coding any real world problem or TSP algorithm using any heuristic technique.</li>
         </ol>
     </section>
 
     <section>
-        <h2>Course Outcomes</h2>
-        <p>Upon completion of this lab, students will be able to:</p>
+        <h2>Lab Outcomes</h2>
+        <p>The student will be able to:</p>
         <ol>
-            <li>Implement various algorithms in a programming language like C/C++/Java.</li>
-            <li>Analyze the time and space complexity of implemented algorithms.</li>
-            <li>Compare the performance of different algorithms for the same problem.</li>
-            <li>Choose appropriate algorithms for specific problem scenarios.</li>
+            <li>Improve practical skills in designing and implementing complex problems with different techniques</li>
+            <li>Understand comparative performance of strategies and hence choose appropriate, to apply to specific
+                problem definition</li>
+            <li>Implement Various tree and graph based algorithms and become familiar with their design methods</li>
+            <li>Design and Implement heuristics for real world problems</li>
         </ol>
     </section>
 
 </body>
+
 </html>

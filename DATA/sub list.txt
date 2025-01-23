@@ -53,7 +53,7 @@ Design & Analysis of Algorithms Lab (BTCS 405-18)
 
 ---------------------------------------------------------
 
-Sem 5 (2021)
+Sem 5 (2023)
 
 Enterprise Resource Planning (BTES 501-18) 78319 
 Database Management Systems (BTCS 501-18) 78320 
