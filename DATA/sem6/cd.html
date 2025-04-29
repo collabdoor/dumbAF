@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Compiler Design (Theory & Lab)</title>
+    <title>Compiler Design (BTCS 601-18)</title>
     <link rel="stylesheet" href="../sub-page.css">
-
 </head>
 <body>
     <nav class="breadcrumb">
@@ -14,63 +13,54 @@
         <span>Compiler Design</span>
     </nav>
 
-    <h1>Compiler Design (BTCS 601-18) - Theory</h1>
+    <h1>Compiler Design (BTCS 601-18)</h1>
+    
+    <section>
+        <h2>Course Details</h2>
+        <p>Credits: 3</p>
+        <p>Hours per Week: L:3 T:0 P:0</p>
+    </section>
 
     <section>
         <h2>Detailed Contents</h2>
 
-        <h3>UNIT 1: Introduction to Compilers</h3>
-        <ul>
-            <li>Structure of a compiler</li>
-            <li>Lexical Analysis: Role of Lexical Analyzer, Input Buffering, Specification of Tokens, Recognition of Tokens, Lex, Finite Automata, Regular Expressions to Automata, Minimizing DFA.</li>
-        </ul>
+        <h3>Unit I: Introduction to Compilers</h3>
+        <p>Structure of a compiler – Lexical Analysis – Role of Lexical Analyzer – Input Buffering – 
+        Specification of Tokens – Recognition of Tokens – Lex – Finite Automata – Regular Expressions to Automata – Minimizing DFA.</p>
+        <p>[8 hrs., CO 1]</p>
 
-        <h3>UNIT II: Syntax Analysis</h3>
-        <ul>
-            <li>Role of Parser, Grammars, Error Handling, Context-free grammars, Writing a grammar</li>
-            <li>Top-Down Parsing: General Strategies, Recursive Descent Parser, Predictive Parser-LL(1) Parser</li>
-            <li>Shift Reduce Parser: LR Parser, LR (0) Item, Construction of SLR Parsing Table, Introduction to LALR Parser</li>
-            <li>Error Handling and Recovery in Syntax Analyzer-YACC</li>
-        </ul>
+        <h3>Unit II: Syntax Analysis</h3>
+        <p>Role of Parser – Grammars – Error Handling – Context-free grammars – Writing a grammar, Top-Down Parsing – General Strategies 
+        Recursive Descent Parser – Predictive Parser-LL(1) Parser-Shift Reduce Parser-LR Parser-LR (0) Item Construction of SLR Parsing Table - 
+        Introduction to LALR Parser – Error Handling and Recovery in Syntax Analyzer-YACC.</p>
+        <p>[8 hrs., CO 2]</p>
 
-        <h3>UNIT III: Intermediate Code Generation</h3>
-        <ul>
-            <li>Syntax Directed Definitions, Evaluation Orders for Syntax Directed Definitions</li>
-            <li>Intermediate Languages: Syntax Tree, Three Address Code, Types and Declarations, Translation of Expressions, Type Checking</li>
-        </ul>
+        <h3>Unit III: Intermediate Code Generation</h3>
+        <p>Syntax Directed Definitions, Evaluation Orders for Syntax Directed Definitions, Intermediate Languages: Syntax Tree, Three Address Code, 
+        Types and Declarations, Translation of Expressions, Type Checking.</p>
+        <p>[8 hrs., CO 3]</p>
 
-        <h3>UNIT IV: Run-Time Environment and Code Generation</h3>
-        <ul>
-            <li>Storage Organization, Stack Allocation Space, Access to Non-local Data on the Stack, Heap Management</li>
-            <li>Issues in Code Generation, Design of a simple Code Generator</li>
-        </ul>
+        <h3>Unit IV: Run-Time Environment and Code Generation</h3>
+        <p>Storage Organization, Stack Allocation Space, Access to Non-local Data on the Stack, Heap Management – Issues in Code Generation – 
+        Design of a simple Code Generator.</p>
+        <p>[6 hrs., CO 4]</p>
 
-        <h3>UNIT V: Code Optimization</h3>
-        <ul>
-            <li>Principal Sources of Optimization, Peep-hole optimization, DAG- Optimization of Basic Blocks</li>
-            <li>Global Data Flow Analysis, Efficient Data Flow Algorithm</li>
-        </ul>
+        <h3>Unit V: Code Optimization</h3>
+        <p>Principal Sources of Optimization – Peep-hole optimization – DAG- Optimization of Basic Blocks-Global Data Flow Analysis – 
+        Efficient Data Flow Algorithm.</p>
+        <p>[6 hrs., CO 5]</p>
     </section>
 
     <section>
         <h2>Course Outcomes</h2>
         <p>After undergoing this course, the students will be able to:</p>
-        <ul>
-            <li>CO1: Build concepts on lexical analysis.</li>
-            <li>CO2: Understand strategies of syntax analysis.</li>
-            <li>CO3: Learn techniques of Intermediate code generation.</li>
-            <li>CO4: Understand code design issues and design code generator.</li>
-            <li>CO5: Design and develop optimized codes.</li>
-        </ul>
-    </section>
-
-    <section>
-        <h2>Suggested Readings/Books</h2>
-        <ul>
-            <li>A.V. Aho, Monica, R.Sethi, J.D.Ullman, “Compilers, Principles, Techniques and Tools”, Second Edition, Pearson Education/Addison Wesley, 2009.</li>
-            <li>Andrew W. Appel, “Modern Compiler Implementation in Java”, Second Edition, 2009.</li>
-            <li>J.P. Tremblay and P.G. Sorrenson, “The Theory and Practice of Compiler Writing”, McGraw Hill, 1985.</li>
-        </ul>
+        <ol>
+            <li>Build concepts on lexical analysis.</li>
+            <li>Understand strategies of syntax analysis.</li>
+            <li>Learn techniques of Intermediate code generation.</li>
+            <li>Understand code design issues and design code generator.</li>
+            <li>Design and develop optimized codes.</li>
+        </ol>
     </section>
 
     <hr>
@@ -78,30 +68,37 @@
     <h1>Compiler Design Lab (BTCS 604-18)</h1>
 
     <section>
+        <h2>Course Details</h2>
+        <p>Credits: 1</p>
+        <p>Hours per Week: L:0 T:0 P:2</p>
+    </section>
+
+    <section>
         <h2>List of Experiments</h2>
         <ol>
-            <li>Design a lexical analyzer for a given language. The lexical analyzer should ignore redundant spaces, tabs, and new lines. It should also ignore comments. Simulate the same in C language.</li>
+            <li>Design a lexical analyser for given language and the lexical analyser should ignore redundant spaces, tabs and new lines. It should also ignore comments. Although the syntax specification states that identifiers can be arbitrarily long, you may restrict the length to some reasonable value. Simulate the same in C language.</li>
             <li>Write a C program to identify whether a given line is a comment or not.</li>
             <li>Write a C program to recognize strings under 'a', 'a*b+', 'abb'.</li>
             <li>Write a C program to test whether a given identifier is valid or not.</li>
-            <li>Write a C program to simulate a lexical analyzer for validating operators.</li>
-            <li>Implement the lexical analyzer using JLex, flex, or other lexical analyzer generating tools.</li>
-            <li>Write a C program for implementing the functionalities of a predictive parser for the mini language specified in Note 1.</li>
-            <li>
-                <ol type="a">
-                    <li>Write a C program for constructing LL(1) parsing.</li>
-                    <li>Write a C program for constructing recursive descent parsing.</li>
-                </ol>
-            </li>
+            <li>Write a C program to simulate lexical analyzer for validating operators.</li>
+            <li>Implement the lexical analyzer using JLex, flex or other lexical analyzer generating tools.</li>
+            <li>Write a C program for implementing the functionalities of predictive parser for the mini language.</li>
+            <li>a) Write a C program for constructing of LL (1) parsing.<br>
+                b) Write a C program for constructing recursive descent parsing.</li>
             <li>Write a C program to implement LALR parsing.</li>
-            <li>
-                <ol type="a">
-                    <li>Write a C program to implement operator precedence parsing.</li>
-                    <li>Write a C program to implement program semantic rules to calculate the expression that takes an expression with digits, +, and * and computes the value.</li>
-                </ol>
-            </li>
-            <li>Convert the BNF rules into YACC form and write code to generate an abstract syntax tree for the mini language specified in Note 1.</li>
-            <li>Write a C program to generate machine code from the abstract syntax tree generated by the parser. The instruction set specified in Note 2 may be considered as the target code.</li>
+            <li>a) Write a C program to implement operator precedence parsing.<br>
+                b) Write a C program to implement Program semantic rules to calculate the expression that takes an expression with digits, + and * and computes the value.</li>
+            <li>Convert the BNF rules into YACC form and write code to generate abstract syntax tree.</li>
+            <li>Write a C program to generate machine code from abstract syntax tree generated by the parser.</li>
+        </ol>
+    </section>
+
+    <section>
+        <h2>Suggested Books</h2>
+        <ol>
+            <li>A.V. Aho, Monica, R.Sethi, J.D.Ullman, "Compilers, Principles, Techniques and Tools", Second Edition, Pearson Education/Addison Wesley, 2009.</li>
+            <li>Andrew W. Appel, "Modern Compiler Implementation in Java", Second Edition, 2009.</li>
+            <li>J.P. Tremblay and P.G. Sorrenson, "The Theory and Practice of Compiler Writing", McGraw Hill, 1985.</li>
         </ol>
     </section>
 

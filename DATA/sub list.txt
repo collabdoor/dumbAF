@@ -74,13 +74,13 @@ Sem 6 (2021)
 Compiler Design (BTCS 601-18) 79249 
 Artificial Intelligence (BTCS 602-18) 79250 
 Elective-II Cloud Computing (BTCS 612-18) 79254 
-Elective-III Mobile Application Development (BTCS 620-18) 79258 
-Open Elective-I (BTOE ***)
+Elective-III Machine Learning  (BTCS 618-18)  
+Open Elective-I Wireless Communication (BTEC-601-18 )
 Project-1 (BTCS 603-18)
 Compiler Design Lab (BTCS 604-18)
 Artificial Intelligence Lab (BTCS 605-18)
 Elective-II Cloud Computing Lab (BTCS 613-18)
-Elective-III Mobile Application Development Lab (BTCS 621-18)
+Elective-III Machine Learning Lab ( BTCS619-18)
 
 Sem 7 (2021)
 
