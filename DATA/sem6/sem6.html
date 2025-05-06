@@ -5,97 +5,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>dumbAF - SEM 6</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
+    <link rel="stylesheet" href="../sem.css"> 
 
-        header {
-            background-color: #f0f0f0;
-            padding: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        h1 {
-            font-size: 3em;
-            margin: 0;
-        }
-
-        main {
-            flex: 1;
-            padding: 20px;
-            align-items: center;
-            justify-content: center;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .subject {
-            color: rgb(0, 71, 90);
-            text-decoration: none;
-        }
-
-        footer {
-            padding: 10px;
-            text-align: center;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-            font-size: 1em;
-            font-family: Arial, sans-serif;
-            min-width: 400px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-        }
-
-        table thead tr {
-            background-color: rgb(0, 71, 90);
-            color: #ffffff;
-            text-align: left;
-        }
-
-        table th,
-        table td {
-            padding: 12px 15px;
-        }
-
-        table tbody tr {
-            border-bottom: 1px solid #dddddd;
-        }
-
-        table tbody tr:nth-of-type(even) {
-            background-color: #f3f3f3;
-        }
-
-        table tbody tr:last-of-type {
-            border-bottom: 2px solid rgb(0, 71, 90);
-        }
-
-        table tbody tr:hover {
-            background-color: #f1f1f1;
-        }
-
-        .breadcrumb {
-            margin-bottom: 20px;
-        }
-
-        .breadcrumb a {
-            color: rgb(0, 71, 90);
-            text-decoration: none;
-        }
-
-        .breadcrumb a:hover {
-            text-decoration: underline;
-        }
-    </style>
 </head>
 
 <body>
@@ -116,56 +27,32 @@
                     <th>Courses</th>
                     <th>PYQs</th>
                     <th>Syllabus</th>
-                    <th>Books</th>
+                    <th>Notes, Books, Assignments</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td class="subject">Compiler Design (BTCS 601-18)</td>
-                    <td>
-                        <a href="cd.html">PYQ 1</a>, <a href="cd.html">PYQ 2</a>,
-                        <a href="cd.html">PYQ 3</a>, <a href="cd.html">PYQ 4</a>,
-                        <a href="cd.html">PYQ 5</a>
+                    <td class="styled-data-cell" rowspan="4">
+                        <a href="https://drive.google.com/drive/folders/1ZCqFxWX4hV2YHWtDPptXysJilIi5bC93?usp=drive_link" target="_blank" rel="noopener">PYQs</a>
                     </td>
                     <td>
                         <a href="cd.html">View</a>
                     </td>
-                    <td>
-                        <a href="cd.html">Book 1</a>,
-                        <a href="cd.html">Book 2</a>,
-                        <a href="cd.html">Book 3</a>
+                    <td class="styled-data-cell" rowspan="4">
+                        <a href="https://drive.google.com/drive/folders/1NFfy-bGwwsbTq1kpMImYYJtvNs3om1Rt?usp=drive_link" target="_blank" rel="noopener">Notes, Books, Assignments</a>
                     </td>
                 </tr>
                 <tr>
                     <td class="subject">Artificial Intelligence (BTCS 602-18)</td>
                     <td>
-                        <a href="ai.html">PYQ 1</a>, <a href="ai.html">PYQ 2</a>,
-                        <a href="ai.html">PYQ 3</a>, <a href="ai.html">PYQ 4</a>,
-                        <a href="ai.html">PYQ 5</a>
-                    </td>
-                    <td>
                         <a href="ai.html">View</a>
-                    </td>
-                    <td>
-                        <a href="ai.html">Book 1</a>,
-                        <a href="ai.html">Book 2</a>,
-                        <a href="ai.html">Book 3</a>
                     </td>
                 </tr>
                 <tr>
                     <td class="subject">Elective-II Cloud Computing (BTCS 612-18)</td>
                     <td>
-                        <a href="e2cc.html">PYQ 1</a>, <a href="e2cc.html">PYQ 2</a>,
-                        <a href="e2cc.html">PYQ 3</a>, <a href="e2cc.html">PYQ 4</a>,
-                        <a href="e2cc.html">PYQ 5</a>
-                    </td>
-                    <td>
                         <a href="e2cc.html">View</a>
-                    </td>
-                    <td>
-                        <a href="e2cc.html">Book 1</a>,
-                        <a href="e2cc.html">Book 2</a>,
-                        <a href="e2cc.html">Book 3</a>
                     </td>
                 </tr>
                 <tr>
@@ -173,30 +60,20 @@
                         Elective-III Mobile Application Development (BTCS 620-18)
                     </td>
                     <td>
-                        <a href="e3mad.html">PYQ 1</a>, <a href="e3mad.html">PYQ 2</a>,
-                        <a href="e3mad.html">PYQ 3</a>, <a href="e3mad.html">PYQ 4</a>,
-                        <a href="e3mad.html">PYQ 5</a>
-                    </td>
-                    <td>
                         <a href="e3mad.html">View</a>
-                    </td>
-                    <td>
-                        <a href="e3mad.html">Book 1</a>,
-                        <a href="e3mad.html">Book 2</a>,
-                        <a href="e3mad.html">Book 3</a>
                     </td>
                 </tr>
                 <tr>
                     <td class="subject">Open Elective-I (BTOE ***)</td>
                     <td>No PYQs ;(</td>
                     <td>No Syllabus ;(</td>
-                    <td>No Books ;(</td>
+                    <td>No Notes, Books, Assignments ;(</td>
                 </tr>
                 <tr>
                     <td class="subject">Project-1 (BTCS 603-18)</td>
                     <td>No PYQs ;(</td>
                     <td>No Syllabus ;(</td>
-                    <td>No Books ;(</td>
+                    <td>No Notes, Books, Assignments ;(</td>
                 </tr>
             </tbody>
         </table>

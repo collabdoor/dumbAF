@@ -5,83 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>dumbAF - SEM 4</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
+    <link rel="stylesheet" href="../sem.css"> 
 
-        header {
-            background-color: #f0f0f0;
-            padding: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        h1 {
-            font-size: 3em;
-            margin: 0;
-        }
-
-        main {
-            flex: 1;
-            padding: 20px;
-            align-items: center;
-            justify-content: center;
-            display: flex;
-        }
-
-        .subject {
-            color: rgb(0, 71, 90);
-            text-decoration: none;
-        }
-
-        footer {
-            padding: 10px;
-            text-align: center;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-            font-size: 1em;
-            font-family: Arial, sans-serif;
-            min-width: 400px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-        }
-
-        table thead tr {
-            background-color: rgb(0, 71, 90);
-            color: #ffffff;
-            text-align: left;
-        }
-
-        table th,
-        table td {
-            padding: 12px 15px;
-        }
-
-        table tbody tr {
-            border-bottom: 1px solid #dddddd;
-        }
-
-        table tbody tr:nth-of-type(even) {
-            background-color: #f3f3f3;
-        }
-
-        table tbody tr:last-of-type {
-            border-bottom: 2px solid rgb(0, 71, 90);
-        }
-
-        table tbody tr:hover {
-            background-color: #f1f1f1;
-        }
-    </style>
 </head>
 
 <body>
@@ -97,7 +22,7 @@
                     <th>Courses</th>
                     <th>PYQs</th>
                     <th>Syllabus</th>
-                    <th>Books</th>
+                    <th>Notes, Books, Assignments</th>
                 </tr>
             </thead>
             <tbody>
@@ -105,34 +30,20 @@
                     <td class="subject">
                         Discrete Mathematics (BTCS 401-18)
                     </td>
-                    <td>
-                        <a href="m4.html">PYQ 1</a>, <a href="m4.html">PYQ 2</a>,
-                        <a href="m4.html">PYQ 3</a>, <a href="m4.html">PYQ 4</a>,
-                        <a href="m4.html">PYQ 5</a>, <a href="m4.html">PYQ 6</a>
+                    <td class="styled-data-cell" rowspan="4">
+                        <a href="https://drive.google.com/drive/folders/1BUFfxDN-peGqTuuLi7y9juBOchQtWP1j?usp=drive_link" target="_blank" rel="noopener">PYQs</a>
                     </td>
                     <td>
                         <a href="m4.html">View</a>
                     </td>
-                    <td>
-                        <a href="m4.html">Book 1</a>,
-                        <a href="m4.html">Book 2</a>,
-                        <a href="m4.html">Book 3</a>
+                    <td class="styled-data-cell" rowspan="4">
+                        <a href="https://drive.google.com/drive/folders/15KCKXkY_tHouF6thJA5G6q7J47nY_-rP?usp=drive_link" target="_blank" rel="noopener">Notes, Books, Assignments</a>
                     </td>
                 </tr>
                 <tr>
                     <td class="subject">Computer Organization & Architecture (BTES 401-18)</td>
                     <td>
-                        <a href="coa.html">PYQ 1</a>, <a href="coa.html">PYQ 2</a>,
-                        <a href="coa.html">PYQ 3</a>, <a href="coa.html">PYQ 4</a>,
-                        <a href="coa.html">PYQ 5</a>, <a href="coa.html">PYQ 6</a>
-                    </td>
-                    <td>
                         <a href="coa.html">View</a>
-                    </td>
-                    <td>
-                        <a href="coa.html">Book 1</a>,
-                        <a href="coa.html">Book 2</a>,
-                        <a href="coa.html">Book 3</a>
                     </td>
                 </tr>
                 <tr>
@@ -140,17 +51,7 @@
                         Operating Systems (BTCS 402-18)
                     </td>
                     <td>
-                        <a href="os.html">PYQ 1</a>, <a href="os.html">PYQ 2</a>,
-                        <a href="os.html">PYQ 3</a>, <a href="os.html">PYQ 4</a>,
-                        <a href="os.html">PYQ 5</a>, <a href="os.html">PYQ 6</a>
-                    </td>
-                    <td>
                         <a href="os.html">View</a>
-                    </td>
-                    <td>
-                        <a href="os.html">Book 1</a>,
-                        <a href="os.html">Book 2</a>,
-                        <a href="os.html">Book 3</a>
                     </td>
                 </tr>
                 <tr>
@@ -158,17 +59,7 @@
                         Design & Analysis of Algorithms (BTCS 403-18)
                     </td>
                     <td>
-                        <a href="daa.html">PYQ 1</a>, <a href="daa.html">PYQ 2</a>,
-                        <a href="daa.html">PYQ 3</a>, <a href="daa.html">PYQ 4</a>,
-                        <a href="daa.html">PYQ 5</a>, <a href="daa.html">PYQ 6</a>
-                    </td>
-                    <td>
                         <a href="daa.html">View</a>
-                    </td>
-                    <td>
-                        <a href="daa.html">Book 1</a>,
-                        <a href="daa.html">Book 2</a>,
-                        <a href="daa.html">Book 3</a>
                     </td>
                 </tr>
                 <tr>
@@ -180,7 +71,7 @@
                         No Syllabus ;(
                     </td>
                     <td>
-                        No Books ;(
+                        No Notes, Books, Assignments ;(
                     </td>
                 </tr>
                 <tr>
@@ -192,7 +83,7 @@
                         No Syllabus ;(
                     </td>
                     <td>
-                        No Books ;(
+                        No Notes, Books, Assignments ;(
                     </td>
                 </tr>
             </tbody>
