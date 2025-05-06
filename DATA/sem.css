@@ -101,3 +101,55 @@ table tbody tr:hover {
 .breadcrumb span {
     color: #666;
 }
+
+/* Responsive Table Styling */
+@media screen and (max-width: 768px) {
+    table {
+        width: 100%;
+        min-width: unset;
+        font-size: 0.9em;
+    }
+    
+    table th,
+    table td {
+        padding: 8px 10px;
+    }
+    
+    main {
+        padding: 10px;
+        width: 100%;
+    }
+    
+    /* Make table content responsive */
+    thead th {
+        white-space: nowrap;
+    }
+    
+    td {
+        word-break: break-word;
+    }
+    
+    /* Handle overflow for small screens */
+    main {
+        overflow-x: auto;
+    }
+}
+
+/* Extra small screens */
+@media screen and (max-width: 480px) {
+    table {
+        font-size: 0.8em;
+    }
+    
+    th, td {
+        padding: 6px 8px;
+    }
+    
+    h1 {
+        font-size: 2em;
+    }
+    
+    h2 {
+        font-size: 1.5em;
+    }
+}
