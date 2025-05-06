@@ -1,6 +1,7 @@
 
 # Project dumbAF
 
+![Head](https://github.com/user-attachments/assets/3c9fe99a-47cd-4a14-8894-7fcd4c411da6)
 
 
 **Project dumbAF** is an initiative by **Team PTU ORCA** to provide students with a comprehensive resource hub. It includes:
@@ -13,7 +14,10 @@
 Explore everything you need for academic success, all in one place!
 
 Visit: [dumbAF](https://ptu-orca.github.io/dumbaf)
-## Contribution
+## Now Contribution
+
+![okay?](https://github.com/user-attachments/assets/99b5ecdd-45dd-47fe-abdf-f67646094d96)
+
 
 We would be thankful if you contribute! We are open to contributions from everyone. If you have resources or improvements to share, follow these steps to contribute:
 
