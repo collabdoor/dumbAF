@@ -77,5 +77,27 @@ table tbody tr:hover {
 .styled-data-cell {
     text-align: center;
     vertical-align: middle;
-    background-color: #ddeeff; 
+    background-color: #ddeeff;
+}
+
+/* Breadcrumb Navigation Styling */
+.breadcrumb {
+    padding: 10px 20px;
+    background-color: #f8f8f8;
+    border-bottom: 1px solid #e0e0e0;
+    font-size: 0.9em;
+    margin-bottom: 10px;
+}
+
+.breadcrumb a {
+    color: rgb(0, 71, 90);
+    text-decoration: none;
+}
+
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+.breadcrumb span {
+    color: #666;
 }

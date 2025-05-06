@@ -233,12 +233,15 @@ footer {
 
 @media (max-width: 480px) {
   .dumbaf {
-    font-size: 5.5rem; /* Increased from 4rem for better visibility */
+    font-size: 5.5rem;
+    /* Increased from 4rem for better visibility */
   }
 
   .cse-btn {
-    padding: 0.8rem 1.5rem; /* Increased padding for larger touch target */
-    font-size: 1rem; /* Increased from 0.8rem for better readability */
+    padding: 0.8rem 1.5rem;
+    /* Increased padding for larger touch target */
+    font-size: 1rem;
+    /* Increased from 0.8rem for better readability */
     width: 85%;
     max-width: 220px;
     display: flex;
@@ -261,7 +264,8 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 84px; /* Keep the pill shape instead of circle */
+    border-radius: 84px;
+    /* Keep the pill shape instead of circle */
   }
 }
 
