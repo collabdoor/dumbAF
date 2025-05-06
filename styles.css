@@ -1,9 +1,9 @@
 html {
   margin: 0;
   padding: 0;
-  overflow-x: hidden; 
-  -webkit-font-smoothing: antialiased; 
-  -moz-osx-font-smoothing: grayscale; 
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
@@ -13,8 +13,8 @@ body {
   display: flex;
   flex-direction: column;
   background-color: white;
-  overflow-x: hidden; 
-  box-sizing: border-box; 
+  overflow-x: hidden;
+  box-sizing: border-box;
 }
 
 .main-content {
@@ -23,8 +23,8 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%; 
-  box-sizing: border-box; 
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .text-container {
@@ -35,9 +35,9 @@ body {
   justify-content: center;
   align-items: center;
   font-style: italic;
-  width: 100%; 
-  box-sizing: border-box; 
-  overflow-x: hidden; 
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 .dumbaf {
@@ -92,23 +92,23 @@ try to maintain same styles as CSE button */
 .semester-container {
   display: none;
   text-align: center;
-  margin-top: 1rem; 
+  margin-top: 1rem;
 }
 
 .semester-row {
   margin-bottom: 1rem;
-  display: flex; 
-  flex-wrap: wrap; 
-  justify-content: center; 
-  gap: 0.5rem 1rem; 
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem 1rem;
 }
 
 .semester-link {
   color: rgb(29, 29, 138);
   text-decoration: none;
-  margin: 0 0.5rem; 
-  padding: 0.5rem 1rem; 
-  border: 1px solid transparent; 
+  margin: 0 0.5rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid transparent;
   border-radius: 4px;
   transition: background-color 0.2s, color 0.2s;
 }
@@ -119,11 +119,11 @@ try to maintain same styles as CSE button */
 }
 
 footer {
-  padding: 1rem 2rem; 
-  background-color: #f8f9fa; 
-  border-top: 1px solid #e7e7e7; 
-  width: 100%; 
-  margin-top: auto; 
+  padding: 1rem 2rem;
+  background-color: #f8f9fa;
+  border-top: 1px solid #e7e7e7;
+  width: 100%;
+  margin-top: auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -150,7 +150,7 @@ footer {
 }
 
 .contribution-btn {
-  padding: 0.8rem 1.5rem; 
+  padding: 0.8rem 1.5rem;
   font-size: 0.9rem;
   font-weight: 500;
   cursor: pointer;
@@ -158,8 +158,8 @@ footer {
   color: white;
   border: 2px solid rgb(0, 71, 90);
   border-radius: 84px;
-  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s; 
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   text-decoration: none;
   white-space: nowrap;
 }
@@ -167,16 +167,16 @@ footer {
 .contribution-btn:hover {
   background-color: white;
   color: rgb(0, 71, 90);
-  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); 
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
 }
 
 .contribution-btn:active {
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 @media (max-width: 1200px) {
   .dumbaf {
-    font-size: 12rem; 
+    font-size: 12rem;
   }
 }
 
@@ -196,14 +196,17 @@ footer {
   .dumbaf {
     font-size: 6rem;
   }
+
   .cse-btn {
     padding: 0.8rem 1.5rem;
     font-size: 0.9rem;
   }
+
   .contribution-btn {
-    padding: 0.7rem 1.2rem; 
+    padding: 0.7rem 1.2rem;
     font-size: 0.85rem;
   }
+
   footer {
     padding: 1rem;
   }
@@ -215,12 +218,14 @@ footer {
     gap: 1rem;
     padding: 1rem;
   }
-  
-  .footer-left, .footer-center, .footer-right {
+
+  .footer-left,
+  .footer-center,
+  .footer-right {
     flex: none;
     width: 100%;
   }
-  
+
   .footer-right {
     justify-content: center;
   }
@@ -230,19 +235,22 @@ footer {
   .dumbaf {
     font-size: 4rem;
   }
+
   .cse-btn {
     padding: 0.6rem 1rem;
     font-size: 0.8rem;
-    width: 80%; 
+    width: 80%;
     max-width: 200px;
   }
+
   .semester-link {
     padding: 0.4rem 0.8rem;
     font-size: 0.9rem;
   }
+
   .contribution-btn {
-    padding: 0.6rem 1rem; 
+    padding: 0.6rem 1rem;
     font-size: 0.8rem;
-    width: auto; 
+    width: auto;
   }
 }
