@@ -3,7 +3,7 @@
 
 
 
-**Project dumbAF** is an initiative by **Team PTU ORCA** to provide students with a comprehensive resource hub. It includes:
+**Project dumbAF** is an initiative by **Team CollabDoor** to provide students with a comprehensive resource hub. It includes:
 
 - **Previous Year Questions (PYQ)**
 - **Syllabus**
@@ -12,15 +12,14 @@
 
 Explore everything you need for academic success, all in one place!
 
-Visit: [dumbAF](https://ptu-orca.github.io/dumbaf)
+Visit: [dumbAF](https://collabdoor.github.io/dumbAF)
 ## Contribution
-
 We would be thankful if you contribute! We are open to contributions from everyone. If you have resources or improvements to share, follow these steps to contribute:
 
-1. **Fork** the repository: [Fork](https://github.com/PTU-ORCA/dumbaf/fork)
+1. **Fork** the repository: [Fork](https://github.com/collabdoor/dumbAF/fork)
 2. **Clone** the forked repository to your local machine:
    ```bash
-   git clone https://github.com/YOUR-USERNAME/dumbAF.git
+   https://github.com/collabdoor/dumbAF   
    ```
 3. **Create a new branch** for your changes:
    ```bash
@@ -35,7 +34,7 @@ We would be thankful if you contribute! We are open to contributions from everyo
    ```bash
    git push origin your-branch-name
    ```
-6. Submit a **pull request** to the main repository: [Submit PR](https://github.com/PTU-ORCA/dumbaf/pulls)
+6. Submit a **pull request** to the main repository: [Submit PR](https://github.com/collabdoor/dumbAF/pulls)
 
 ## We appreciate all contributions, whether big or small! 🙌
 

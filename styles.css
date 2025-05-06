@@ -7,15 +7,19 @@ html {
   flex-direction: column;
   background-color: white;
   overflow-x: hidden;
+  /* Added padding-bottom to prevent fixed button from overlapping footer */
+  padding-bottom: 80px; /* Adjust if needed based on button height + desired space */
 }
+
 .main-content {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh; /* Use min-height to ensure it takes at least full viewport height */
 }
+
 .text-container {
   text-align: center;
   position: relative;
@@ -25,12 +29,14 @@ html {
   align-items: center;
   font-style: italic;
 }
+
 .dumbaf {
   font-size: 24rem;
   font-weight: bold;
   color: rgb(0, 71, 90);
   margin: 0;
 }
+
 .buttons {
   display: flex;
   flex-wrap: wrap;
@@ -38,8 +44,9 @@ html {
   margin-bottom: 2rem;
   justify-content: center;
 }
+
 /* styles in case of need to add more departments (button)
-try to maintain same styles as CSE button
+try to maintain same styles as CSE button */
 /* .btn {
   padding: 0.5rem 1rem;
   font-size: 1rem;
@@ -53,6 +60,7 @@ try to maintain same styles as CSE button
   background-color: white;
   color: black;
 } */
+
 .cse-btn {
   padding: 1rem 2rem;
   font-size: 1rem;
@@ -64,25 +72,49 @@ try to maintain same styles as CSE button
   transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+
 .cse-btn:hover {
   background-color: white;
   color: rgb(0, 71, 90);
   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
 }
+
 .semester-container {
   display: none;
   text-align: center;
+  margin-top: 1rem; /* Added some space above semester links when they appear */
 }
+
 .semester-row {
   margin-bottom: 1rem;
+  display: flex; /* For better alignment and spacing of semester links */
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  justify-content: center; /* Center the links */
+  gap: 0.5rem 1rem; /* Row and column gap */
 }
+
 .semester-link {
   color: rgb(29, 29, 138);
   text-decoration: none;
-  margin: 0 0.5rem;
+  margin: 0 0.5rem; /* Retained for consistency, but gap property above is more modern */
+  padding: 0.5rem 1rem; /* Make links more clickable */
+  border: 1px solid transparent; /* For hover effect */
+  border-radius: 4px;
+  transition: background-color 0.2s, color 0.2s;
 }
+
+.semester-link:hover {
+  background-color: rgba(29, 29, 138, 0.1);
+  color: rgb(0, 0, 100);
+}
+
 footer {
   text-align: center;
+  padding: 1rem 0; /* Added some padding to the footer */
+  background-color: #f8f9fa; /* Optional: light background for footer */
+  border-top: 1px solid #e7e7e7; /* Optional: separator line */
+  width: 100%; /* Ensure footer spans full width */
+  margin-top: auto; /* Pushes footer to the bottom when content is short */
 }
 
 /* footer a {
@@ -90,40 +122,104 @@ footer {
   text-decoration: none;
 } */
 
+
+/* Contribution Button Styles */
+.contribution-btn {
+  position: fixed; /* Fixed position */
+  bottom: 20px; /* Distance from bottom */
+  right: 20px; /* Distance from right */
+  padding: 1rem 1.5rem; /* Adjusted padding slightly for better look */
+  font-size: 0.9rem; /* Slightly smaller font size for a floating button */
+  font-weight: 500;
+  cursor: pointer;
+  background-color: rgb(0, 71, 90);
+  color: white;
+  border: 2px solid rgb(0, 71, 90);
+  border-radius: 84px; /* Same as cse-btn */
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s, transform 0.2s;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  text-decoration: none; /* Remove underline from link */
+  z-index: 1000; /* Ensure it's above other content */
+  display: inline-flex; /* For better alignment of text/icon if any */
+  align-items: center;
+  justify-content: center;
+}
+
+.contribution-btn:hover {
+  background-color: white;
+  color: rgb(0, 71, 90);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px); /* Slight lift on hover */
+}
+
+.contribution-btn:active {
+  transform: translateY(0px); /* Push back down on click */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+
 /* Responsive Styles */
 @media (max-width: 1200px) {
   .dumbaf {
-    font-size: 8rem;
+    font-size: 12rem; /* Adjusted for better scaling */
   }
 }
 
 @media (max-width: 1024px) {
   .dumbaf {
-    font-size: 8rem;
+    font-size: 10rem;
   }
 }
+
 @media (max-width: 992px) {
   .dumbaf {
     font-size: 8rem;
   }
 }
+
 @media (max-width: 768px) {
   .dumbaf {
     font-size: 6rem;
   }
-  .btn {
+  .cse-btn {
+    padding: 0.8rem 1.5rem;
     font-size: 0.9rem;
   }
-}
-@media (max-width: 480px) {
-  .ptu-orca {
-    font-size: 1.5rem;
+  .contribution-btn {
+    padding: 0.8rem 1.2rem;
+    font-size: 0.85rem;
+    bottom: 15px;
+    right: 15px;
   }
+  body {
+    padding-bottom: 70px; /* Adjust if button size changes */
+  }
+}
+
+@media (max-width: 480px) {
+  /* .ptu-orca { -- This class was commented out in original, keeping it so
+    font-size: 1.5rem;
+  } */
   .dumbaf {
     font-size: 4rem;
   }
-  .btn {
-    padding: 0.5rem;
+  .cse-btn {
+    padding: 0.6rem 1rem;
     font-size: 0.8rem;
+    width: 80%; /* Make main button take more width */
+    max-width: 200px;
+  }
+  .semester-link {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+  }
+  .contribution-btn {
+    padding: 0.7rem 1rem;
+    font-size: 0.8rem;
+    bottom: 10px;
+    right: 10px;
+  }
+  body {
+    padding-bottom: 60px; /* Adjust if button size changes */
   }
 }
