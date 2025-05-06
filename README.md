@@ -13,17 +13,13 @@
 
 Explore everything you need for academic success, all in one place!
 
-<<<<<<< HEAD
-Visit: [dumbAF](https://collabdoor.github.io/dumbAF)
-## Contribution
-=======
-Visit: [dumbAF](https://ptu-orca.github.io/dumbaf)
+
 ## Now Contribution
 
 ![okay?](https://github.com/user-attachments/assets/99b5ecdd-45dd-47fe-abdf-f67646094d96)
 
 
->>>>>>> 29c1d05adef017dc14f7ce1e3422a788e2c9e0e3
+Visit: [dumbAF](https://collabdoor.github.io/dumbAF)
 We would be thankful if you contribute! We are open to contributions from everyone. If you have resources or improvements to share, follow these steps to contribute:
 
 1. **Fork** the repository: [Fork](https://github.com/collabdoor/dumbAF/fork)
