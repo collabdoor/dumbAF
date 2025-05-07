@@ -25,7 +25,7 @@ We would be thankful if you contribute! We are open to contributions from everyo
 1. **Fork** the repository: [Fork](https://github.com/collabdoor/dumbAF/fork)
 2. **Clone** the forked repository to your local machine:
    ```bash
-   https://github.com/collabdoor/dumbAF   
+   https://github.com/`YOUR_USERNAME`/dumbAF   
    ```
 3. **Create a new branch** for your changes:
    ```bash
