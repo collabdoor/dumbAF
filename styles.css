@@ -174,6 +174,27 @@ footer {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+/* Visitor Counter Styling */
+.visitor-counter {
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+#visit-count {
+  font-weight: bold;
+  margin-left: 4px;
+}
+
+/* For responsive design - ensure counter is properly positioned on small screens */
+@media (max-width: 600px) {
+  .visitor-counter {
+    justify-content: center;
+    margin-bottom: 0.5rem;
+  }
+}
+
 @media (max-width: 1200px) {
   .dumbaf {
     font-size: 12rem;
