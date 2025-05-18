@@ -42,6 +42,8 @@ We would be thankful if you contribute! We are open to contributions from everyo
    ```
 6. Submit a **pull request** to the main repository: [Submit PR](https://github.com/collabdoor/dumbAF/pulls)
 
+![Views](https://visitor-badge.laobi.icu/badge?page_id=collabdoor.dumbAF)
+
 ## We appreciate all contributions, whether big or small! 🙌
 
 ![thumb](https://github.com/user-attachments/assets/c4bb2db7-4ddf-4413-88b8-5cc4d13d26b1)
