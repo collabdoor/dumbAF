@@ -71,9 +71,9 @@
     <footer>
         <div class="footer-left">
             <div class="visitor-counter">
-                <span>Visitors: </span>
-                <span id="visit-count">Loading...</span>
-            </div>
+                <!-- Visitor Counter From Hitwebcounter.com -->
+                <a href="https://www.hitwebcounter.com" target="_blank">
+                    <img src="https://hitscounter.dev/api/hit?url=https%3A%2F%2Fcollabdoor.github.io%2FdumbAF%2F&label=padhaku&icon=journals&color=%2306281e">            </div>
         </div>
         <div class="footer-center">
             <p>Made by Sir Ranchoddas Shamaldas Chanchad</p>
@@ -99,52 +99,7 @@
             }
         }
 
-        // Improved visitor counter without static numbers
-        document.addEventListener('DOMContentLoaded', function() {
-            const visitCountElement = document.getElementById('visit-count');
-            
-            // Try counter APIs in sequence
-            tryMainCounter()
-                .catch(() => tryBackupCounter())
-                .catch(() => {
-                    visitCountElement.textContent = '?';
-                });
-            
-            // First attempt: Main CountAPI endpoint
-            function tryMainCounter() {
-                // Using exact website URL for the namespace
-                return fetch('https://api.countapi.xyz/hit/collabdoor.github.io-dumbaf/visits')
-                    .then(response => {
-                        if (!response.ok) throw new Error('Main counter failed');
-                        return response.json();
-                    })
-                    .then(data => {
-                        if (data && typeof data.value === 'number') {
-                            visitCountElement.textContent = data.value.toLocaleString();
-                            return data;
-                        }
-                        throw new Error('Invalid data from main counter');
-                    });
-            }
-            
-            // Second attempt: Alternative endpoint with namespace
-            function tryBackupCounter() {
-                // Using alternative namespace format but still based on the actual site URL
-                const ns = 'dumbaf.collabdoor.github.io';
-                return fetch(`https://api.countapi.xyz/hit/${ns}/visits`)
-                    .then(response => {
-                        if (!response.ok) throw new Error('Backup counter failed');
-                        return response.json();
-                    })
-                    .then(data => {
-                        if (data && typeof data.value === 'number') {
-                            visitCountElement.textContent = data.value.toLocaleString();
-                            return data;
-                        }
-                        throw new Error('Invalid data from backup counter');
-                    });
-            }
-        });
+        // Removed previous CountAPI JavaScript
     </script>
 </body>
 
