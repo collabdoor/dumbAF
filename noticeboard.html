@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO Meta Tags -->
+    <title>PTU Unified Noticeboard | dumbAF</title>
+    <meta name="description"
+        content="Unified view of PTU notices from multiple sources. Stay updated with the latest announcements from Punjab Technical University." />
+    <meta name="keywords"
+        content="PTU, Punjab Technical University, Notices, Announcements, Noticeboard, dumbAF" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://collabdoor.github.io/dumbAF/noticeboard.html" />
+    <meta property="og:title" content="PTU Unified Noticeboard | dumbAF" />
+    <meta property="og:description"
+        content="Unified view of PTU notices from multiple sources. Stay updated with the latest announcements." />
+    <meta property="og:image" content="https://collabdoor.github.io/dumbAF/assets/og-image.jpg" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/logo.ico">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet" />
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="noticeboard.css" />
+</head>
+
+<body class="noticeboard-page">
+    <div class="container">
+        <header class="header">
+            <a href="index.html" class="back-btn">← Back to dumbAF</a>
+            <h1>PTU Unified Noticeboard</h1>
+            <p>Latest notices from Punjab Technical University </p>
+        </header>
+
+        <section class="controls">
+            <div class="search-container">
+                <input type="text" id="searchInput" class="search-input" placeholder="Search notices by title...">
+                <button id="refreshBtn" class="refresh-btn" title="Refresh notices">🔄 Refresh</button>
+            </div>
+            <div class="toggle-container">
+                <label for="loadAllToggle">Load all notices:</label>
+                <input type="checkbox" id="loadAllToggle">
+            </div>
+            <div class="page-size-container">
+                <label for="pageSizeSelect">Notices per page:</label>
+                <select id="pageSizeSelect">
+                    <option value="25" selected>25</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                    <option value="200">200</option>
+                </select>
+            </div>
+            <div class="stats" id="statsDisplay">
+                Loading notices...
+            </div>
+        </section>
+
+        <main>
+            <div id="loadingIndicator" class="loading">
+                <div class="loading-spinner"></div>
+                <p>Fetching latest notices from PTU...</p>
+            </div>
+
+            <div id="errorContainer"></div>
+
+            <div class="table-container hidden" id="tableContainer">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>S.No.</th>
+                            <th>Title</th>
+                            <th>Posted On</th>
+                            <th>Download</th>
+                        </tr>
+                    </thead>
+                    <tbody id="noticesTableBody">
+                    </tbody>
+                </table>
+            </div>
+        </main>
+
+        <footer class="pagination hidden" id="paginationContainer">
+            <button id="prevBtn">Previous</button>
+            <span id="pageInfo">Page 1 of 1</span>
+            <button id="nextBtn">Next</button>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

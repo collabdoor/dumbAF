@@ -47,6 +47,7 @@
         </div>
         <div class="buttons">
             <button class="cse-btn" onclick="toggleSemesters('cse')">CSE</button>
+            <a href="noticeboard.html" class="noticeboard-btn">PTU Notice📝</a>
             <!-- <button class="btn" >BCA</button>
             <button class="btn" >
             Button 3
@@ -90,21 +91,7 @@
         </div>
     </footer>
 
-    <script>
-        function toggleSemesters(course) {
-            var semesterContainer = document.getElementById("semesters");
-            if (
-                semesterContainer.style.display === "none" ||
-                semesterContainer.style.display === ""
-            ) {
-                semesterContainer.style.display = "block";
-            } else {
-                semesterContainer.style.display = "none";
-            }
-        }
-
-        // Removed previous CountAPI JavaScript
-    </script>
+    <script src="script.js"></script>
 </body>
 
 </html>
