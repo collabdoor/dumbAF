@@ -56,21 +56,17 @@ section {
     color: #6c757d;
 }
 
-/* Simple mobile-friendly table fixes */
 @media screen and (max-width: 600px) {
-    /* Make sure main content allows horizontal scrolling for tables */
     main {
         overflow-x: auto;
         padding: 0;
     }
     
-    /* Keep table structure intact but allow horizontal scrolling */
     table {
         width: 100%;
-        min-width: 500px; /* Ensures table doesn't get too squished */
+        min-width: 500px;
     }
     
-    /* Make links more finger-friendly */
     table a {
         display: inline-block;
         padding: 8px;

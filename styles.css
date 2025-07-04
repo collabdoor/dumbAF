@@ -81,22 +81,6 @@ body {
   display: inline-block;
 }
 
-/* styles in case of need to add more departments (button)
-try to maintain same styles as CSE button */
-/* .btn {
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  cursor: pointer;
-  background-color: black;
-  color: white;
-  border: 2px solid black;
-  transition: background-color 0.3s, color 0.3s;
-}
-.btn:hover {
-  background-color: white;
-  color: black;
-} */
-
 .cse-btn:hover {
   background-color: white;
   color: rgb(0, 71, 90);
@@ -194,7 +178,6 @@ footer {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Visitor Counter Styling */
 .visitor-counter {
   display: flex;
   align-items: center;
@@ -207,7 +190,6 @@ footer {
   margin-left: 4px;
 }
 
-/* For responsive design - ensure counter is properly positioned on small screens */
 @media (max-width: 600px) {
   .visitor-counter {
     justify-content: center;
@@ -280,14 +262,11 @@ footer {
 @media (max-width: 480px) {
   .dumbaf {
     font-size: 5.5rem;
-    /* Increased from 4rem for better visibility */
   }
 
   .cse-btn {
     padding: 0.8rem 1.5rem;
-    /* Increased padding for larger touch target */
     font-size: 1rem;
-    /* Increased from 0.8rem for better readability */
     width: 85%;
     max-width: 220px;
     display: flex;
@@ -323,7 +302,6 @@ footer {
     justify-content: center;
     align-items: center;
     border-radius: 84px;
-    /* Keep the pill shape instead of circle */
   }
 }
 
@@ -332,8 +310,6 @@ footer {
     font-size: 5rem;
   }
 }
-
-
 
 :root {
     --primary-color: rgb(0, 71, 90);
@@ -365,7 +341,6 @@ body.noticeboard-page {
     padding: 1rem;
 }
 
-/* Header & Back Button */
 .header {
     text-align: center;
     margin-bottom: 2rem;
@@ -438,7 +413,6 @@ body.noticeboard-page {
     }
 }
 
-/* Controls Section */
 .controls {
     background: var(--white-color);
     padding: 1.5rem;
@@ -529,7 +503,6 @@ body.noticeboard-page {
     color: var(--white-color);
 }
 
-/* Stats Display */
 .stats {
     font-weight: 500;
     padding: 0.5rem 1rem;
@@ -547,18 +520,15 @@ body.noticeboard-page {
     background-color: var(--error-bg);
 }
 
-/* Error Message Styling */
 #errorContainer {
     padding: 0 1.5rem 1.5rem;
-    display: none; /* Hidden by default */
+    display: none;
 }
 
-/* Essential fixes for noticeboard page */
 .hidden {
     display: none !important;
 }
 
-/* Table styles - improved and fixed */
 .table-container {
     background: var(--white-color);
     border-radius: 12px;
@@ -582,7 +552,6 @@ th, td {
     overflow-wrap: break-word;
 }
 
-/* Column width optimizations */
 table th:nth-child(1), 
 table td:nth-child(1) {
     width: 60px;
@@ -614,12 +583,10 @@ thead th {
     z-index: 1;
 }
 
-/* Notice title styling */
 .notice-title {
     font-weight: 500;
 }
 
-/* Download link styling */
 .download-link {
     padding: 0.5rem 1rem;
     font-size: 0.9rem;
@@ -638,7 +605,6 @@ thead th {
     color: var(--white-color);
 }
 
-/* Loading and Error states */
 .loading {
     text-align: center;
     padding: 3rem;
@@ -695,10 +661,9 @@ thead th {
     color: var(--primary-color);
 }
 
-/* Fixed pagination styles */
 .pagination {
     display: flex;
-    flex-direction: row; /* Ensure horizontal layout */
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
     padding: 12px;
@@ -722,7 +687,6 @@ thead th {
     transition: all 0.3s;
     white-space: nowrap;
     text-align: center;
-    /* Remove any stacking or block display */
     display: inline-block;
 }
 
@@ -745,12 +709,10 @@ thead th {
     padding: 0 10px;
 }
 
-/* General utility classes */
 .hidden {
     display: none !important;
 }
 
-/* Mobile refinements for noticeboard page */
 @media (max-width: 900px) {
     body.noticeboard-page .container {
         padding: 0.5rem;
@@ -794,7 +756,7 @@ thead th {
     }
 
     body.noticeboard-page .pagination {
-        flex-direction: row !important; /* Force horizontal on mobile */
+        flex-direction: row !important;
         padding: 0.8rem 0.5rem;
         gap: 0.5rem;
         margin-top: 1rem;
@@ -810,14 +772,13 @@ thead th {
 }
 
 @media (max-width: 600px) {
-    /* Make touch targets larger and more accessible */
     body.noticeboard-page .download-link {
         min-height: 36px;
         min-width: 36px;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 0;  /* Hide text on mobile */
+        font-size: 0;
         padding: 0;
         border-radius: 6px;
     }
@@ -836,7 +797,7 @@ thead th {
     }
     
     body.noticeboard-page .pagination {
-        flex-direction: row !important; /* Always horizontal */
+        flex-direction: row !important;
         gap: 0.3rem;
     }
     
@@ -853,14 +814,12 @@ thead th {
         padding: 0 0.3rem;
     }
 
-    /* Better table layout for mobile */
     body.noticeboard-page table {
         font-size: 0.75rem;
-        min-width: 400px; /* Reduced minimum width for better mobile experience */
-        table-layout: fixed; /* Ensures columns respect widths */
+        min-width: 400px;
+        table-layout: fixed;
     }
     
-    /* S.No. column - keep it narrow */
     body.noticeboard-page th:nth-child(1),
     body.noticeboard-page td:nth-child(1) {
         width: 30px;
@@ -869,7 +828,6 @@ thead th {
         font-size: 0.7rem;
     }
     
-    /* Title column - give it most space */
     body.noticeboard-page th:nth-child(2),
     body.noticeboard-page td:nth-child(2) {
         width: 50%;
@@ -880,7 +838,6 @@ thead th {
         hyphens: auto;
     }
     
-    /* Posted On column - compact but readable */
     body.noticeboard-page th:nth-child(3),
     body.noticeboard-page td:nth-child(3) {
         width: 70px;
@@ -889,7 +846,6 @@ thead th {
         font-size: 0.7rem;
     }
     
-    /* Download column - icon only approach */
     body.noticeboard-page th:nth-child(4),
     body.noticeboard-page td:nth-child(4) {
         width: 38px;
@@ -897,18 +853,16 @@ thead th {
         text-align: center;
     }
     
-    /* Make the table container better for small screens */
     body.noticeboard-page .table-container {
         margin: 0;
         padding: 0;
         border-radius: 8px;
         overflow-x: auto;
-        -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
-        scrollbar-width: thin; /* For Firefox */
-        position: relative; /* For the scrolling hint */
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+        position: relative;
     }
     
-    /* Custom scrollbar for better UX */
     body.noticeboard-page .table-container::-webkit-scrollbar {
         height: 4px;
     }
@@ -918,7 +872,6 @@ thead th {
         border-radius: 4px;
     }
     
-    /* Download button optimization */
     body.noticeboard-page .download-link {
         min-height: 28px;
         min-width: 28px;
@@ -932,7 +885,6 @@ thead th {
     }
 }
 
-/* Extra small screens need further optimization */
 @media (max-width: 400px) {
     body.noticeboard-page .container {
         padding: 0.3rem;
@@ -960,7 +912,7 @@ thead th {
     }
 
     body.noticeboard-page .pagination {
-        flex-direction: row !important; /* Always horizontal */
+        flex-direction: row !important;
     }
 
     body.noticeboard-page .pagination button {
@@ -974,7 +926,6 @@ thead th {
         font-size: 0.75rem;
     }
 
-    /* Add subtle scroll indicator */
     body.noticeboard-page .table-container::after {
         content: "";
         position: absolute;
@@ -987,7 +938,6 @@ thead th {
     }
 }
 
-/* Make pagination fixed at bottom when screen height is small */
 @media (max-height: 700px) and (max-width: 600px) {
     body.noticeboard-page .pagination {
         position: sticky;
