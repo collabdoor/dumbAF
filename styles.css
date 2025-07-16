@@ -153,6 +153,12 @@ footer {
   justify-content: flex-end;
 }
 
+.footer-logo {
+  height: 40px;
+  width: auto;
+  margin-bottom: 0.5rem;
+}
+
 .contribution-btn {
   padding: 0.6rem 1.2rem;
   font-size: 0.85rem;
