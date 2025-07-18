@@ -1,4 +1,3 @@
-
 # Project dumbAF
 
 ![Head](https://github.com/user-attachments/assets/3c9fe99a-47cd-4a14-8894-7fcd4c411da6)
@@ -10,6 +9,7 @@
 - **Syllabus**
 - **Books**
 - **Study Resources**
+- **Resources, IKGPTU ID card Template**
 
 Explore everything you need for academic success, all in one place!
 
