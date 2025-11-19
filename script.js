@@ -47,9 +47,9 @@ function setupIntroAnimation() {
     const imageData = textCtx.getImageData(0, 0, textCanvas.width, textCanvas.height);
     const textPixels = [];
     
-    // Sample pixels from text (every 2nd pixel for higher density)
-    for (let y = 0; y < imageData.height; y += 2) {
-        for (let x = 0; x < imageData.width; x += 2) {
+    // Sample pixels from text (every pixel for maximum density)
+    for (let y = 0; y < imageData.height; y += 1) {
+        for (let x = 0; x < imageData.width; x += 1) {
             const index = (y * imageData.width + x) * 4;
             if (imageData.data[index + 3] > 128) { // If pixel is part of text
                 textPixels.push({ x, y });
@@ -59,7 +59,7 @@ function setupIntroAnimation() {
 
     // Create particles with truly random distribution
     const particles = [];
-    const particleCount = Math.min(textPixels.length, 2500);
+    const particleCount = Math.min(textPixels.length, 5600); // Increased 40% more: 4000 * 1.4 = 5600
     
     for (let i = 0; i < particleCount; i++) {
         const targetPixel = textPixels[Math.floor(Math.random() * textPixels.length)];
@@ -152,14 +152,53 @@ function setupIntroAnimation() {
         if (elapsed < duration) {
             requestAnimationFrame(animate);
         } else {
-            // Animation complete, transition to main content
-            setTimeout(() => {
-                overlay.classList.add('hidden');
-                mainContent.classList.add('visible');
-                setTimeout(() => {
-                    canvas.remove();
-                }, 500);
-            }, 100);
+            // Animation complete - multiple color flashes then transition to main content
+            canvas.style.opacity = '0';
+            
+            // Create flash text element
+            const flashText = document.createElement('div');
+            flashText.style.position = 'absolute';
+            flashText.style.top = '40%';
+            flashText.style.left = '50%';
+            flashText.style.transform = 'translate(-50%, -50%)';
+            flashText.style.fontSize = Math.min(canvas.width * 0.25, 300) + 'px';
+            flashText.style.fontWeight = 'bold';
+            flashText.style.fontStyle = 'italic';
+            flashText.style.fontFamily = 'Roboto, sans-serif';
+            flashText.textContent = 'dumbAF';
+            flashText.style.zIndex = '10000';
+            overlay.appendChild(flashText);
+            
+            // Color sequence: brand green, white, black, brand green
+            const colorFlashes = [
+                { bg: 'rgb(0, 71, 90)', text: '#ffffff' },     // Brand green - white
+                { bg: '#ffffff', text: '#000000' },             // White - black
+                { bg: '#000000', text: '#ffffff' },             // Black - white
+                { bg: 'rgb(0, 71, 90)', text: '#ffffff' }      // Brand green - white
+            ];
+            
+            let flashIndex = 0;
+            
+            function showFlash() {
+                if (flashIndex < colorFlashes.length) {
+                    const flash = colorFlashes[flashIndex];
+                    overlay.style.backgroundColor = flash.bg;
+                    flashText.style.color = flash.text;
+                    flashIndex++;
+                    setTimeout(showFlash, 100); // 100ms per flash
+                } else {
+                    // All flashes done, transition to main content
+                    overlay.classList.add('hidden');
+                    mainContent.classList.add('visible');
+                    setTimeout(() => {
+                        canvas.remove();
+                        flashText.remove();
+                        overlay.style.backgroundColor = '#ffffff'; // Reset
+                    }, 500);
+                }
+            }
+            
+            showFlash();
         }
     }
 
