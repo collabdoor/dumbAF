@@ -12,11 +12,35 @@ body {
   font-family: "Roboto", sans-serif;
   display: flex;
   flex-direction: column;
-  background-color: white;
+  background-color: #ffffff;
   overflow-x: hidden;
   box-sizing: border-box;
 }
 
+/* Intro overlay with canvas animation */
+.intro-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  z-index: 9999;
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 0.5s ease-out;
+}
+
+.intro-overlay.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Main content fade-in after intro */
 .main-content {
   flex-grow: 1;
   display: flex;
@@ -25,6 +49,12 @@ body {
   align-items: center;
   width: 100%;
   box-sizing: border-box;
+  opacity: 0;
+  transition: opacity 0.8s ease-in;
+}
+
+.main-content.visible {
+  opacity: 1;
 }
 
 .text-container {

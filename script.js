@@ -10,6 +10,162 @@ function toggleSemesters(course) {
     }
 }
 
+// Intro animation - dots blend rapidly then form solid text
+function setupIntroAnimation() {
+    const overlay = document.getElementById('intro-overlay');
+    const mainContent = document.getElementById('main-content');
+
+    if (!overlay || !mainContent) return;
+
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    canvas.style.position = 'absolute';
+    canvas.style.top = '0';
+    canvas.style.left = '0';
+    canvas.style.width = '100%';
+    canvas.style.height = '100%';
+    overlay.appendChild(canvas);
+
+    // Create text shape for particles to form
+    const textCanvas = document.createElement('canvas');
+    const textCtx = textCanvas.getContext('2d');
+    textCanvas.width = canvas.width;
+    textCanvas.height = canvas.height;
+    
+    // Draw text to get pixel data - increased size and moved up 10%
+    const fontSize = Math.min(canvas.width * 0.25, 300);
+    const verticalOffset = canvas.height * 0.4; // 10% higher than center (50% - 10% = 40%)
+    textCtx.font = `bold italic ${fontSize}px Roboto, sans-serif`;
+    textCtx.fillStyle = 'white';
+    textCtx.textAlign = 'center';
+    textCtx.textBaseline = 'middle';
+    textCtx.fillText('dumbAF', canvas.width / 2, verticalOffset);
+    
+    // Get pixels where text exists
+    const imageData = textCtx.getImageData(0, 0, textCanvas.width, textCanvas.height);
+    const textPixels = [];
+    
+    // Sample pixels from text (every 2nd pixel for higher density)
+    for (let y = 0; y < imageData.height; y += 2) {
+        for (let x = 0; x < imageData.width; x += 2) {
+            const index = (y * imageData.width + x) * 4;
+            if (imageData.data[index + 3] > 128) { // If pixel is part of text
+                textPixels.push({ x, y });
+            }
+        }
+    }
+
+    // Create particles with truly random distribution
+    const particles = [];
+    const particleCount = Math.min(textPixels.length, 2500);
+    
+    for (let i = 0; i < particleCount; i++) {
+        const targetPixel = textPixels[Math.floor(Math.random() * textPixels.length)];
+        
+        // Completely random starting positions across entire screen
+        particles.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            targetX: targetPixel.x,
+            targetY: targetPixel.y,
+            size: Math.random() * 1 + 1, // Decreased from 1.5+1.5 to 1+1 (1-2px)
+            speedX: (Math.random() - 0.5) * 25,
+            speedY: (Math.random() - 0.5) * 25,
+            angle: Math.random() * Math.PI * 2, // Random rotation angle
+            rotationSpeed: (Math.random() - 0.5) * 0.1,
+            opacity: 0,
+            startDelay: Math.random() * 0.15 // Stagger particle appearance
+        });
+    }
+
+    const startTime = performance.now();
+    const duration = 3000; // 3 seconds
+
+    function animate(now) {
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+
+        // Clear canvas
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // Phase timings:
+        // 0-0.3s: Fade in particles
+        // 0.3-1.5s: Fast chaotic blending
+        // 1.5-3s: Form the text shape
+        const fadeInPhase = Math.min(progress / 0.1, 1); // 0 to 1 in first 0.3s
+        const blendPhase = Math.min(Math.max((progress - 0.1) / 0.4, 0), 1); // 0.3s to 1.5s
+        const formPhase = Math.max(0, (progress - 0.5) / 0.5); // 1.5s to 3s
+        
+        particles.forEach((p, index) => {
+            // Check if particle should be visible yet (staggered start)
+            const particleStartProgress = Math.max(0, progress - (p.startDelay || 0));
+            
+            if (particleStartProgress < 0.5) {
+                // Completely random chaotic motion - no wave patterns
+                const motionIntensity = fadeInPhase * (1 - blendPhase * 0.3);
+                
+                // Add randomness to movement direction each frame
+                const randomOffsetX = (Math.random() - 0.5) * 2;
+                const randomOffsetY = (Math.random() - 0.5) * 2;
+                
+                // Update angle for spiral/random motion
+                p.angle += p.rotationSpeed;
+                
+                // Combine original speed with random walk and rotation
+                p.x += (p.speedX + randomOffsetX + Math.cos(p.angle) * 3) * motionIntensity;
+                p.y += (p.speedY + randomOffsetY + Math.sin(p.angle) * 3) * motionIntensity;
+                
+                // Wrap around screen
+                if (p.x < 0) p.x = canvas.width;
+                if (p.x > canvas.width) p.x = 0;
+                if (p.y < 0) p.y = canvas.height;
+                if (p.y > canvas.height) p.y = 0;
+                
+                // Smooth fade-in with random pulsing (not wave-based)
+                const baseFadeIn = Math.min(particleStartProgress / 0.1, 1) * 0.3;
+                const randomPulse = Math.sin(elapsed * 0.015 + index * 0.1) * 0.25;
+                p.opacity = baseFadeIn + randomPulse * fadeInPhase;
+            } else {
+                // Smoothly move to form text shape
+                const easeOut = 1 - Math.pow(1 - formPhase, 3);
+                const dx = p.targetX - p.x;
+                const dy = p.targetY - p.y;
+                
+                p.x += dx * 0.12 * easeOut;
+                p.y += dy * 0.12 * easeOut;
+                
+                // Increase opacity as they form text
+                p.opacity = 0.4 + formPhase * 0.6;
+            }
+
+            // Draw particle only if it has started
+            if (p.opacity > 0) {
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(0, 71, 90, ${p.opacity})`;
+                ctx.fill();
+            }
+        });
+
+        if (elapsed < duration) {
+            requestAnimationFrame(animate);
+        } else {
+            // Animation complete, transition to main content
+            setTimeout(() => {
+                overlay.classList.add('hidden');
+                mainContent.classList.add('visible');
+                setTimeout(() => {
+                    canvas.remove();
+                }, 500);
+            }, 100);
+        }
+    }
+
+    requestAnimationFrame(animate);
+}
+
 let allNotices = [];
 let filteredNotices = [];
 let currentPage = 1;
@@ -402,11 +558,20 @@ function setupNoticeboard() {
     setupAutoRefresh();
 }
 
+
+// Page initialization
 (function() {
     if (document.body.classList.contains('noticeboard-page')) {
         document.addEventListener('DOMContentLoaded', setupNoticeboard);
     } else {
-        console.log("On main page, noticeboard script not initialized.");
+        document.addEventListener('DOMContentLoaded', () => {
+            setupIntroAnimation();
+            const main = document.getElementById('main-content');
+            if (main) {
+                // Keep main content hidden until intro completes; visibility handled in setupIntroAnimation
+                main.classList.remove('visible');
+            }
+        });
     }
 })();
 
