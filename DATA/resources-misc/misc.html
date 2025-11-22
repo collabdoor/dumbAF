@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO Meta Tags -->
+    <title>dumbAF - Resources & Misc</title>
+    <meta name="description"
+        content="Access PTU ID Card templates, study guides, and miscellaneous resources for PTU students." />
+    <meta name="keywords"
+        content="PTU, ID Card, Study Guide, Resources, PTU ID Card Template, Study Material, dumbAF" />
+    <link rel="canonical" href="https://collabdoor.github.io/dumbAF/DATA/resources-misc/misc.html" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://collabdoor.github.io/dumbAF/DATA/resources-misc/misc.html" />
+    <meta property="og:title" content="dumbAF - Resources & Misc" />
+    <meta property="og:description"
+        content="Access PTU ID Card templates, study guides, and other helpful resources for PTU students." />
+    <meta property="og:image" content="https://collabdoor.github.io/dumbAF/assets/og-image.jpg" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://collabdoor.github.io/dumbAF/DATA/resources-misc/misc.html" />
+    <meta property="twitter:title" content="dumbAF - Resources & Misc" />
+    <meta property="twitter:description"
+        content="Access PTU ID Card templates, study guides, and other helpful resources for PTU students." />
+    <meta property="twitter:image" content="https://collabdoor.github.io/dumbAF/assets/og-image.jpg" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../../assets/logo.ico">
+
+    <!-- Fonts and Styles -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background-color: #f4f4f4;
+            color: #000;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background-color: #fff;
+            padding: 20px;
+            border-bottom: 3px solid #000;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2em;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+        }
+
+        h1 a {
+            color: #fff;
+            text-decoration: none;
+            background-color: #00475a;
+            padding: 0 5px;
+        }
+
+        .breadcrumb {
+            padding: 10px 20px;
+            background-color: #e0e0e0;
+            border-bottom: 2px solid #000;
+            font-size: 0.9em;
+        }
+
+        .breadcrumb a {
+            color: #0000ee;
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            flex: 1;
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .page-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 1.5em;
+            border-bottom: 2px dashed #000;
+            padding-bottom: 10px;
+        }
+
+        .warning-box {
+            background-color: #fff3cd;
+            border: 2px solid #000;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 5px 5px 0px #000;
+        }
+
+        .warning-box h2 {
+            color: #856404;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+
+        .warning-box p {
+            color: #856404;
+            line-height: 1.6;
+        }
+
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .resource-card {
+            background: #fff;
+            border: 2px solid #000;
+            padding: 25px;
+            box-shadow: 5px 5px 0px #000;
+            transition: transform 0.1s, box-shadow 0.1s;
+        }
+
+        .resource-card:hover {
+            transform: translate(2px, 2px);
+            box-shadow: 3px 3px 0px #000;
+        }
+
+        .resource-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+            display: block;
+            text-align: center;
+        }
+
+        .resource-card h3 {
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            text-align: center;
+            border-bottom: 2px solid #000;
+            padding-bottom: 10px;
+        }
+
+        .file-list {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        .file-item {
+            border-bottom: 1px solid #ccc;
+            padding: 10px 0;
+        }
+
+        .file-item:last-child {
+            border-bottom: none;
+        }
+
+        .file-item a {
+            display: flex;
+            align-items: center;
+            color: #000;
+            text-decoration: none;
+            transition: background 0.2s;
+            padding: 8px;
+            border-radius: 4px;
+        }
+
+        .file-item a:hover {
+            background-color: #e3f2fd;
+        }
+
+        .file-icon {
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+
+        footer {
+            background-color: #000;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            margin-top: auto;
+            border-top: 5px solid #00475a;
+        }
+
+        footer p {
+            font-style: italic;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            main {
+                padding: 20px 15px;
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+
+            .page-title {
+                font-size: 1.2em;
+            }
+
+            .resources-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .warning-box {
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 1.3em;
+            }
+
+            .breadcrumb {
+                font-size: 0.8em;
+                padding: 8px 15px;
+            }
+
+            .resource-card {
+                padding: 20px;
+            }
+
+            .resource-icon {
+                font-size: 2.5em;
+            }
+
+            .file-item a {
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1><a href="../../index.html">dumbAF</a> / Resources & Misc</h1>
+    </header>
+
+    <nav class="breadcrumb">
+        <a href="../../index.html">Home</a> &gt;
+        <span>Resources & Misc</span>
+    </nav>
+
+    <main>
+        <div class="page-title">📚 Additional Resources & Templates</div>
+
+        <div class="warning-box">
+            <h2>⚠️ Important Disclaimer</h2>
+            <p>
+                <strong>PTU ID Card Templates:</strong> These are mock templates provided for reference purposes only. 
+                Use at your own risk. If you have lost your official ID card, please contact your institution's 
+                administration office to get a proper replacement.
+            </p>
+        </div>
+
+        <div class="resources-grid">
+            <!-- Study Guide Card -->
+            <div class="resource-card">
+                <span class="resource-icon">📖</span>
+                <h3>Study Guides</h3>
+                <ul class="file-list">
+                    <li class="file-item">
+                        <a href="../Study Resource/Resources, Misc/PYQ and Study Resource Guide.docx" target="_blank">
+                            <span class="file-icon">📄</span>
+                            PYQ and Study Resource Guide.docx
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- PTU ID Card Template Card -->
+            <div class="resource-card">
+                <span class="resource-icon">🪪</span>
+                <h3>PTU ID Card Templates</h3>
+                <ul class="file-list">
+                    <li class="file-item">
+                        <a href="../Study Resource/Resources, Misc/PTU ID Card Template/1.png" target="_blank">
+                            <span class="file-icon">🖼️</span>
+                            1.png
+                        </a>
+                    </li>
+                    <li class="file-item">
+                        <a href="../Study Resource/Resources, Misc/PTU ID Card Template/2.png" target="_blank">
+                            <span class="file-icon">🖼️</span>
+                            2.png
+                        </a>
+                    </li>
+                    <li class="file-item">
+                        <a href="../Study Resource/Resources, Misc/PTU ID Card Template/print quality csyk.pdf" target="_blank">
+                            <span class="file-icon">📄</span>
+                            print quality csyk.pdf
+                        </a>
+                    </li>
+                    <li class="file-item">
+                        <a href="../Study Resource/Resources, Misc/PTU ID Card Template/PTU ID Card.pdf" target="_blank">
+                            <span class="file-icon">📄</span>
+                            PTU ID Card.pdf
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>"Knowledge is power, but WiFi password is the real MVP." 📶</p>
+    </footer>
+
+    <!-- File Viewer Utility - Renders Office files in browser -->
+    <script src="../../file-viewer.js"></script>
+</body>
+
+</html>
