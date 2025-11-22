@@ -1,0 +1,77 @@
+List of Practicals
+
+Practical 1. Write a program to create an array with 10 elements. Initially add 5 elements in the array.
+
+Use switch statement inside while loop to do following:
+
+ 	a. To insert element in array.
+	b. To delete element in array.
+	c. View elements of array.
+	d. exit from program.
+
+Practical 2. Write a program to create an array with 30 elements.
+
+Input 30 elements. 
+
+Display the number of occurrences of each element inside the array
+
+For example
+
+If following 10 elements are inserted in an array
+
+9
+12
+8
+9
+13
+12
+9
+4
+9
+13
+
+Output will be
+
+9 4
+12 2
+13 2
+8 1
+4 1
+
+Practical 3. Find all pairs of an integer array whose sum is equal to a given number?
+
+for example, if we have following 8 numbers in an array
+input:
+enter 8 array elements:
+5
+3
+6
+7
+3
+6
+2
+5
+
+Enter any number: 9
+
+output:
+pairs with sum = 9 are
+6	3
+3	6
+7	2
+
+Practical 4. Write a program to create linked list and add five nodes to it.
+
+Pratical 5: Write a program to insert a node in already created linked list.
+
+Practical 6: Write a program to delete a node in already created linked list.
+
+Practical 7: Write a program to find the location of an item in linked list.
+
+Practical 8: Write program to insert and delete elements from a queue using switch() and while loop.
+
+Practical 9: Write program to push and pop elements in a stack using switch() and while loop.
+
+Practical 10: Write program to accept infix notation as string and convert the same in postfix notation and save it in a string.
+
+Practical 11: Write program to evaluate postfix notation

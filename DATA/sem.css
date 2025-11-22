@@ -1,5 +1,7 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Courier New', monospace;
+    background-color: #f4f4f4;
+    color: #000;
     margin: 0;
     display: flex;
     flex-direction: column;
@@ -7,16 +9,19 @@ body {
 }
 
 header {
-    background-color: #f0f0f0;
+    background-color: #fff;
     padding: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-bottom: 3px solid #000;
 }
 
 h1 {
+    font-family: 'Roboto', sans-serif;
     font-size: 3em;
     margin: 0;
+    font-weight: bold;
 }
 
 main {
@@ -27,14 +32,41 @@ main {
     display: flex;
 }
 
-.subject {
+/* Header links and titles */
+header .subject {
+    text-decoration: none;
+}
+
+header h1 .subject {
     color: rgb(0, 71, 90);
+    background-color: transparent;
+    padding: 0;
+}
+
+header h2.subject {
+    background-color: #00475a;
+    color: #fff;
+    padding: 0 5px;
+    font-family: 'Courier New', monospace;
+}
+
+/* Table subject links/text */
+table .subject {
+    color: #000;
+    font-weight: bold;
     text-decoration: none;
 }
 
 footer {
-    padding: 10px;
+    background-color: #000;
+    color: #fff;
+    padding: 20px;
     text-align: center;
+    border-top: 5px solid #00475a;
+}
+
+footer p {
+    font-style: italic;
 }
 
 table {
@@ -42,55 +74,62 @@ table {
     border-collapse: collapse;
     margin: 20px 0;
     font-size: 1em;
-    font-family: Arial, sans-serif;
+    font-family: 'Courier New', monospace;
     min-width: 400px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    border: 2px solid #000;
+    box-shadow: 5px 5px 0px #000;
+    background-color: #fff;
 }
 
 table thead tr {
-    background-color: rgb(0, 71, 90);
+    background-color: #00475a;
     color: #ffffff;
     text-align: left;
+    border-bottom: 2px solid #000;
 }
 
 table th,
 table td {
     padding: 12px 15px;
+    border-right: 1px solid #000;
+}
+table th:last-child,
+table td:last-child {
+    border-right: none;
 }
 
 table tbody tr {
-    border-bottom: 1px solid #dddddd;
+    border-bottom: 1px solid #000;
 }
 
 table tbody tr:nth-of-type(even) {
-    background-color: #f3f3f3;
+    background-color: #f9f9f9;
 }
 
 table tbody tr:last-of-type {
-    border-bottom: 2px solid rgb(0, 71, 90);
+    border-bottom: none;
 }
 
 table tbody tr:hover {
-    background-color: #f1f1f1;
+    background-color: #e0f7fa;
 }
 
 .styled-data-cell {
     text-align: center;
     vertical-align: middle;
-    background-color: #ddeeff;
 }
 
 /* Breadcrumb Navigation Styling */
 .breadcrumb {
     padding: 10px 20px;
-    background-color: #f8f8f8;
-    border-bottom: 1px solid #e0e0e0;
+    background-color: #e0e0e0;
+    border-bottom: 2px solid #000;
     font-size: 0.9em;
     margin-bottom: 10px;
 }
 
 .breadcrumb a {
-    color: rgb(0, 71, 90);
+    color: #0000ee;
     text-decoration: none;
 }
 
@@ -99,25 +138,32 @@ table tbody tr:hover {
 }
 
 .breadcrumb span {
-    color: #666;
+    color: #000;
 }
 
 /* Responsive Table Styling */
 @media screen and (max-width: 768px) {
+    header {
+        padding: 15px;
+    }
+
     table {
         width: 100%;
-        min-width: unset;
+        min-width: 600px; /* Force scroll on smaller screens */
         font-size: 0.9em;
     }
     
     table th,
     table td {
-        padding: 8px 10px;
+        padding: 10px;
     }
     
     main {
         padding: 10px;
         width: 100%;
+        display: block; /* Allow scrolling */
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
     }
     
     /* Make table content responsive */
@@ -128,28 +174,43 @@ table tbody tr:hover {
     td {
         word-break: break-word;
     }
-    
-    /* Handle overflow for small screens */
-    main {
-        overflow-x: auto;
-    }
 }
 
-/* Extra small screens */
+/* Mobile screens */
 @media screen and (max-width: 480px) {
-    table {
-        font-size: 0.8em;
+    header {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+        padding: 15px 10px;
     }
-    
-    th, td {
-        padding: 6px 8px;
-    }
-    
+
     h1 {
-        font-size: 2em;
+        font-size: 2.2em;
     }
     
     h2 {
-        font-size: 1.5em;
+        font-size: 1.4em;
+    }
+
+    table {
+        font-size: 0.85em;
+        min-width: 500px; /* Ensure table doesn't get too squished */
+    }
+    
+    th, td {
+        padding: 8px 6px;
+    }
+
+    .breadcrumb {
+        font-size: 0.8em;
+        padding: 8px 15px;
+        white-space: nowrap;
+        overflow-x: auto;
+    }
+    
+    footer {
+        padding: 15px;
+        font-size: 0.9em;
     }
 }

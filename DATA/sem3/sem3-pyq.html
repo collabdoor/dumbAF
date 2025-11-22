@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>dumbAF - SEM 3 PYQs</title>
+    <link rel="icon" type="image/x-icon" href="../../assets/logo.ico">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background-color: #f4f4f4;
+            color: #000;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background-color: #fff;
+            padding: 20px;
+            border-bottom: 3px solid #000;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2em;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+        }
+
+        h1 a {
+            color: #fff;
+            text-decoration: none;
+            background-color: #00475a;
+            padding: 0 5px;
+        }
+
+        .breadcrumb {
+            padding: 10px 20px;
+            background-color: #e0e0e0;
+            border-bottom: 2px solid #000;
+            font-size: 0.9em;
+        }
+
+        .breadcrumb a {
+            color: #0000ee;
+        }
+
+        main {
+            flex: 1;
+            padding: 40px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .page-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 1.5em;
+            border-bottom: 2px dashed #000;
+            padding-bottom: 10px;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .subjects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .subject-card {
+            background: #fff;
+            border: 2px solid #000;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            box-shadow: 5px 5px 0px #000;
+            transition: transform 0.1s, box-shadow 0.1s;
+        }
+
+        .subject-card:hover {
+            transform: translate(2px, 2px);
+            box-shadow: 3px 3px 0px #000;
+            background-color: #e0f7fa;
+        }
+
+        .subject-card:active {
+            transform: translate(5px, 5px);
+            box-shadow: 0px 0px 0px #000;
+        }
+
+        .subject-icon {
+            font-size: 3em;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .subject-name {
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .files-section {
+            display: none;
+            background: #fff;
+            border: 2px solid #000;
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 8px 8px 0px #000;
+        }
+
+        .files-section.active {
+            display: block;
+        }
+
+        .files-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #000;
+            padding-bottom: 10px;
+            background-color: #eee;
+            padding: 10px;
+        }
+
+        .files-title {
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        .close-btn {
+            background: #00475a;
+            color: #fff;
+            border: 2px solid #000;
+            padding: 5px 15px;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: bold;
+            box-shadow: 3px 3px 0px #000;
+        }
+
+        .close-btn:active {
+            transform: translate(2px, 2px);
+            box-shadow: 1px 1px 0px #000;
+        }
+
+        .file-list {
+            list-style: none;
+        }
+
+        .file-item {
+            border-bottom: 1px solid #ccc;
+        }
+
+        .file-item:last-child {
+            border-bottom: none;
+        }
+
+        .file-item a {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            color: #000;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+
+        .file-item a:hover {
+            background-color: #e3f2fd;
+        }
+
+        .file-icon {
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+
+        footer {
+            background-color: #000;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            margin-top: auto;
+            border-top: 5px solid #00475a;
+        }
+
+        footer p {
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1><a href="../../index.html">dumbAF</a> / SEM 3 PYQs</h1>
+    </header>
+
+    <nav class="breadcrumb">
+        <a href="../../index.html">Home</a> &gt;
+        <a href="sem3.html">SEM 3</a> &gt;
+        <span>PYQs</span>
+    </nav>
+
+    <main>
+        <div class="page-title">Select Subject Folder</div>
+
+        <div class="subjects-grid">
+            <div class="subject-card" onclick="showFiles('de')">
+                <span class="subject-icon">&#128193;</span>
+                <div class="subject-name">Digital Electronics</div>
+            </div>
+
+            <div class="subject-card" onclick="showFiles('dsa')">
+                <span class="subject-icon">&#128193;</span>
+                <div class="subject-name">DSA</div>
+            </div>
+
+            <div class="subject-card" onclick="showFiles('fch')">
+                <span class="subject-icon">&#128193;</span>
+                <div class="subject-name">Humanities (FCH)</div>
+            </div>
+
+            <div class="subject-card" onclick="showFiles('m3')">
+                <span class="subject-icon">&#128193;</span>
+                <div class="subject-name">Mathematics - 3</div>
+            </div>
+
+            <div class="subject-card" onclick="showFiles('oops')">
+                <span class="subject-icon">&#128193;</span>
+                <div class="subject-name">OOPS</div>
+            </div>
+        </div>
+
+        <!-- Files Section for DE -->
+        <div id="files-de" class="files-section">
+            <div class="files-header">
+                <div class="files-title">&#128193; / Digital Electronics</div>
+                <button class="close-btn" onclick="closeFiles()">X</button>
+            </div>
+            <ul class="file-list">
+                <li class="file-item"><a href="../Study Resource/3rd sem/pyq 3rd SEM/DE/DE dec 20.pdf" target="_blank"><span class="file-icon">&#128196;</span> DE dec 20.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/3rd sem/pyq 3rd SEM/DE/DE jan 21.pdf" target="_blank"><span class="file-icon">&#128196;</span> DE jan 21.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/3rd sem/pyq 3rd SEM/DE/DE jan 23.pdf" target="_blank"><span class="file-icon">&#128196;</span> DE jan 23.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/3rd sem/pyq 3rd SEM/DE/DE june 23.pdf" target="_blank"><span class="file-icon">&#128196;</span> DE june 23.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/3rd sem/pyq 3rd SEM/DE/DE nov 19.pdf" target="_blank"><span class="file-icon">&#128196;</span> DE nov 19.pdf</a></li>
+            </ul>
+        </div>
+
+        <!-- Files Section for DSA -->
+        <div id="files-dsa" class="files-section">
+            <div class="files-header">
+                <div class="files-title">&#128193; / DSA</div>
+                <button class="close-btn" onclick="closeFiles()">X</button>
+            </div>
+            <ul class="file-list">
+                <li class="file-item"><a href="../Study Resource/3rd sem/pyq 3rd SEM/DSA/DSA dec 20.pdf" target="_blank"><span class="file-icon">&#128196;</span> DSA dec 20.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/3rd sem/pyq 3rd SEM/DSA/DSA jan 21.pdf" target="_blank"><span class="file-icon">&#128196;</span> DSA jan 21.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/3rd sem/pyq 3rd SEM/DSA/DSA jan 23.pdf" target="_blank"><span class="file-icon">&#128196;</span> DSA jan 23.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/3rd sem/pyq 3rd SEM/DSA/DSA july 22.pdf" target="_blank"><span class="file-icon">&#128196;</span> DSA july 22.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/3rd sem/pyq 3rd SEM/DSA/DSA july- 23.pdf" target="_blank"><span class="file-icon">&#128196;</span> DSA july- 23.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/3rd sem/pyq 3rd SEM/DSA/DSA june 23.pdf" target="_blank"><span class="file-icon">&#128196;</span> DSA june 23.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/3rd sem/pyq 3rd SEM/DSA/DSA nov 19.pdf" target="_blank"><span class="file-icon">&#128196;</span> DSA nov 19.pdf</a></li>
+            </ul>
+        </div>
+
+        <!-- Files Section for FCH -->
+        <div id="files-fch" class="files-section">
+            <div class="files-header">
+                <div class="files-title">&#128193; / Humanities (FCH)</div>
+                <button class="close-btn" onclick="closeFiles()">X</button>
+            </div>
+            <ul class="file-list">
+                <li class="file-item"><a href="../Study Resource/3rd sem/pyq 3rd SEM/Humanities DOS/DOS dec 20.pdf" target="_blank"><span class="file-icon">&#128196;</span> DOS dec 20.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/3rd sem/pyq 3rd SEM/Humanities DOS/DOS may 20.pdf" target="_blank"><span class="file-icon">&#128196;</span> DOS may 20.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/3rd sem/pyq 3rd SEM/Humanities DOS/DOS nov 19.pdf" target="_blank"><span class="file-icon">&#128196;</span> DOS nov 19.pdf</a></li>
+            </ul>
+        </div>
+
+        <!-- Files Section for M3 -->
+        <div id="files-m3" class="files-section">
+            <div class="files-header">
+                <div class="files-title">&#128193; / Mathematics - 3</div>
+                <button class="close-btn" onclick="closeFiles()">X</button>
+            </div>
+            <ul class="file-list">
+                <li class="file-item"><a href="../Study Resource/3rd sem/pyq 3rd SEM/M3 PYQ/M3 dec 20.pdf" target="_blank"><span class="file-icon">&#128196;</span> M3 dec 20.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/3rd sem/pyq 3rd SEM/M3 PYQ/M3 dec 23.pdf" target="_blank"><span class="file-icon">&#128196;</span> M3 dec 23.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/3rd sem/pyq 3rd SEM/M3 PYQ/M3 jan 21.pdf" target="_blank"><span class="file-icon">&#128196;</span> M3 jan 21.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/3rd sem/pyq 3rd SEM/M3 PYQ/M3 jan 23.pdf" target="_blank"><span class="file-icon">&#128196;</span> M3 jan 23.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/3rd sem/pyq 3rd SEM/M3 PYQ/M3 Jan 25.pdf" target="_blank"><span class="file-icon">&#128196;</span> M3 Jan 25.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/3rd sem/pyq 3rd SEM/M3 PYQ/M3 jun 24.pdf" target="_blank"><span class="file-icon">&#128196;</span> M3 jun 24.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/3rd sem/pyq 3rd SEM/M3 PYQ/M3 june 23.pdf" target="_blank"><span class="file-icon">&#128196;</span> M3 june 23.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/3rd sem/pyq 3rd SEM/M3 PYQ/M3 June 24.pdf" target="_blank"><span class="file-icon">&#128196;</span> M3 June 24.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/3rd sem/pyq 3rd SEM/M3 PYQ/M3 nov 19.pdf" target="_blank"><span class="file-icon">&#128196;</span> M3 nov 19.pdf</a></li>
+            </ul>
+        </div>
+
+        <!-- Files Section for OOPS -->
+        <div id="files-oops" class="files-section">
+            <div class="files-header">
+                <div class="files-title">&#128193; / OOPS</div>
+                <button class="close-btn" onclick="closeFiles()">X</button>
+            </div>
+            <ul class="file-list">
+                <li class="file-item"><a href="../../Study Resource/3rd sem/pyq 3rd SEM/OOPS/OOPS dec 20.pdf" target="_blank"><span class="file-icon">&#128196;</span> OOPS dec 20.pdf</a></li>
+                <li class="file-item"><a href="../../Study Resource/3rd sem/pyq 3rd SEM/OOPS/OOPS jan 21.pdf" target="_blank"><span class="file-icon">&#128196;</span> OOPS jan 21.pdf</a></li>
+                <li class="file-item"><a href="../../Study Resource/3rd sem/pyq 3rd SEM/OOPS/OOPS jan 23.pdf" target="_blank"><span class="file-icon">&#128196;</span> OOPS jan 23.pdf</a></li>
+                <li class="file-item"><a href="../../Study Resource/3rd sem/pyq 3rd SEM/OOPS/OOPS june 23.pdf" target="_blank"><span class="file-icon">&#128196;</span> OOPS june 23.pdf</a></li>
+                <li class="file-item"><a href="../../Study Resource/3rd sem/pyq 3rd SEM/OOPS/OOPS nov 19.pdf" target="_blank"><span class="file-icon">&#128196;</span> OOPS nov 19.pdf</a></li>
+            </ul>
+        </div>
+    </main>
+
+    <footer>
+        <p>"Sleep is for the weak... and those who have already failed." &#128128;</p>
+    </footer>
+
+    <script>
+        function showFiles(subject) {
+            closeFiles();
+            const fileSection = document.getElementById('files-' + subject);
+            if (fileSection) {
+                fileSection.classList.add('active');
+                fileSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        function closeFiles() {
+            const allFileSections = document.querySelectorAll('.files-section');
+            allFileSections.forEach(section => {
+                section.classList.remove('active');
+            });
+        }
+    </script>
+
+    <!-- File Viewer Utility - Renders Office files in browser -->
+    <script src="../../file-viewer.js"></script>
+</body>
+
+</html>

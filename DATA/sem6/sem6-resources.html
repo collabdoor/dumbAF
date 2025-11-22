@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>dumbAF - SEM 6 Resources</title>
+    <link rel="icon" type="image/x-icon" href="../../assets/logo.ico">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background-color: #f4f4f4;
+            color: #000;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background-color: #fff;
+            padding: 20px;
+            border-bottom: 3px solid #000;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2em;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+        }
+
+        h1 a {
+            color: #fff;
+            text-decoration: none;
+            background-color: #00475a;
+            padding: 0 5px;
+        }
+
+        .breadcrumb {
+            padding: 10px 20px;
+            background-color: #e0e0e0;
+            border-bottom: 2px solid #000;
+            font-size: 0.9em;
+        }
+
+        .breadcrumb a {
+            color: #0000ee;
+        }
+
+        main {
+            flex: 1;
+            padding: 40px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .page-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 1.5em;
+            border-bottom: 2px dashed #000;
+            padding-bottom: 10px;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .subjects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .subject-card {
+            background: #fff;
+            border: 2px solid #000;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            box-shadow: 5px 5px 0px #000;
+            transition: transform 0.1s, box-shadow 0.1s;
+        }
+
+        .subject-card:hover {
+            transform: translate(2px, 2px);
+            box-shadow: 3px 3px 0px #000;
+            background-color: #e0f7fa;
+        }
+
+        .subject-card:active {
+            transform: translate(5px, 5px);
+            box-shadow: 0px 0px 0px #000;
+        }
+
+        .subject-icon {
+            font-size: 3em;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .subject-name {
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .files-section {
+            display: none;
+            background: #fff;
+            border: 2px solid #000;
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 8px 8px 0px #000;
+        }
+
+        .files-section.active {
+            display: block;
+        }
+
+        .files-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #000;
+            padding-bottom: 10px;
+            background-color: #eee;
+            padding: 10px;
+        }
+
+        .files-title {
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        .close-btn {
+            background: #00475a;
+            color: #fff;
+            border: 2px solid #000;
+            padding: 5px 15px;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: bold;
+            box-shadow: 3px 3px 0px #000;
+        }
+
+        .close-btn:active {
+            transform: translate(2px, 2px);
+            box-shadow: 1px 1px 0px #000;
+        }
+
+        .file-list {
+            list-style: none;
+        }
+
+        .file-item {
+            border-bottom: 1px solid #ccc;
+        }
+
+        .file-item:last-child {
+            border-bottom: none;
+        }
+
+        .file-item a {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            color: #000;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+
+        .file-item a:hover {
+            background-color: #e3f2fd;
+        }
+
+        .file-icon {
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+
+        .folder-section {
+            margin-left: 20px;
+            margin-top: 10px;
+            padding-left: 15px;
+            border-left: 2px solid #00475a;
+        }
+
+        .folder-title {
+            font-weight: bold;
+            color: #00475a;
+            margin-top: 15px;
+            margin-bottom: 10px;
+            padding: 8px;
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+        }
+
+        footer {
+            background-color: #000;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            margin-top: auto;
+            border-top: 5px solid #00475a;
+        }
+
+        footer p {
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1><a href="../../index.html">dumbAF</a> / SEM 6 Resources</h1>
+    </header>
+
+    <nav class="breadcrumb">
+        <a href="../../index.html">Home</a> &gt;
+        <a href="sem6.html">SEM 6</a> &gt;
+        <span>Resources</span>
+    </nav>
+
+    <main>
+        <div class="page-title">Select Subject Folder</div>
+
+        <div class="subjects-grid">
+            <div class="subject-card" onclick="showFiles('ai')">
+                <span class="subject-icon">&#128193;</span>
+                <div class="subject-name">AI</div>
+            </div>
+
+            <div class="subject-card" onclick="showFiles('cc')">
+                <span class="subject-icon">&#128193;</span>
+                <div class="subject-name">CC</div>
+            </div>
+
+            <div class="subject-card" onclick="showFiles('cd')">
+                <span class="subject-icon">&#128193;</span>
+                <div class="subject-name">CD</div>
+            </div>
+
+            <div class="subject-card" onclick="showFiles('ml')">
+                <span class="subject-icon">&#128193;</span>
+                <div class="subject-name">ML</div>
+            </div>
+
+            <div class="subject-card" onclick="showFiles('wc')">
+                <span class="subject-icon">&#128193;</span>
+                <div class="subject-name">WC</div>
+            </div>
+        </div>
+
+        <!-- Files Section for AI -->
+        <div id="files-ai" class="files-section">
+            <div class="files-header">
+                <div class="files-title">&#128193; / AI (Artificial Intelligence)</div>
+                <button class="close-btn" onclick="closeFiles()">X</button>
+            </div>
+            <ul class="file-list">
+                <li class="file-item"><a href="../Study Resource/6th sem/ai artificial intelligence/5.3 Reinforcement Learning - Chapter 21.pdf" target="_blank"><span class="file-icon">&#128196;</span> 5.3 Reinforcement Learning - Chapter 21.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/6th sem/ai artificial intelligence/A star algo.pdf" target="_blank"><span class="file-icon">&#128196;</span> A star algo.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/6th sem/ai artificial intelligence/AI a mordern approach book.pdf" target="_blank"><span class="file-icon">&#128196;</span> AI a mordern approach book.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/6th sem/ai artificial intelligence/AI Examples.pdf" target="_blank"><span class="file-icon">&#128196;</span> AI Examples.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/6th sem/ai artificial intelligence/artificialintelligenceautosaved-140508035350.pdf" target="_blank"><span class="file-icon">&#128196;</span> artificialintelligenceautosaved-140508035350.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/6th sem/ai artificial intelligence/Baye_s theorem.pdf" target="_blank"><span class="file-icon">&#128196;</span> Baye_s theorem.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/6th sem/ai artificial intelligence/Facts Rules.pdf" target="_blank"><span class="file-icon">&#128196;</span> Facts Rules.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/6th sem/ai artificial intelligence/Fuzzy Set and Fuzzy Logic.pdf" target="_blank"><span class="file-icon">&#128196;</span> Fuzzy Set and Fuzzy Logic.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/6th sem/ai artificial intelligence/Game Theory in AI.pdf" target="_blank"><span class="file-icon">&#128196;</span> Game Theory in AI.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/6th sem/ai artificial intelligence/Game Theory in Artificial Intelligence.pdf" target="_blank"><span class="file-icon">&#128196;</span> Game Theory in Artificial Intelligence.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/6th sem/ai artificial intelligence/hidden markov model.pdf" target="_blank"><span class="file-icon">&#128196;</span> hidden markov model.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/6th sem/ai artificial intelligence/KA.pdf" target="_blank"><span class="file-icon">&#128196;</span> KA.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/6th sem/ai artificial intelligence/Knowledge Reasoning.pdf" target="_blank"><span class="file-icon">&#128196;</span> Knowledge Reasoning.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/6th sem/ai artificial intelligence/Logic.pdf" target="_blank"><span class="file-icon">&#128196;</span> Logic.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/6th sem/ai artificial intelligence/MDP.pdf" target="_blank"><span class="file-icon">&#128196;</span> MDP.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/6th sem/ai artificial intelligence/Partially Observable Markov Decision Processes.pdf" target="_blank"><span class="file-icon">&#128196;</span> Partially Observable Markov Decision Processes.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/6th sem/ai artificial intelligence/PROBLEM SOLVING STRATEGIES.pdf" target="_blank"><span class="file-icon">&#128196;</span> PROBLEM SOLVING STRATEGIES.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/6th sem/ai artificial intelligence/Q LEARNING.pdf" target="_blank"><span class="file-icon">&#128196;</span> Q LEARNING.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/6th sem/ai artificial intelligence/rbs.pdf" target="_blank"><span class="file-icon">&#128196;</span> rbs.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/6th sem/ai artificial intelligence/reduction and state space representation problem.pdf" target="_blank"><span class="file-icon">&#128196;</span> reduction and state space representation problem.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/6th sem/ai artificial intelligence/reduction and state space representation problem.pptx" target="_blank"><span class="file-icon">&#128196;</span> reduction and state space representation problem.pptx</a></li>
+                <li class="file-item"><a href="../Study Resource/6th sem/ai artificial intelligence/reduction_and_state_space_representation_problem[1].pdf" target="_blank"><span class="file-icon">&#128196;</span> reduction_and_state_space_representation_problem[1].pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/6th sem/ai artificial intelligence/reinforcement all topics.pdf" target="_blank"><span class="file-icon">&#128196;</span> reinforcement all topics.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/6th sem/ai artificial intelligence/Temporal Models.pdf" target="_blank"><span class="file-icon">&#128196;</span> Temporal Models.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/6th sem/ai artificial intelligence/Unit - 1.pdf" target="_blank"><span class="file-icon">&#128196;</span> Unit - 1.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/6th sem/ai artificial intelligence/Unit - 2.pdf" target="_blank"><span class="file-icon">&#128196;</span> Unit - 2.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/6th sem/ai artificial intelligence/Unit - 3.pdf" target="_blank"><span class="file-icon">&#128196;</span> Unit - 3.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/6th sem/ai artificial intelligence/Unit - 4.pdf" target="_blank"><span class="file-icon">&#128196;</span> Unit - 4.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/6th sem/ai artificial intelligence/Unit - 5.pdf" target="_blank"><span class="file-icon">&#128196;</span> Unit - 5.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/6th sem/ai artificial intelligence/What is Artificial Intelligence-1.docx" target="_blank"><span class="file-icon">&#128196;</span> What is Artificial Intelligence-1.docx</a></li>
+                <li class="file-item"><a href="../Study Resource/6th sem/ai artificial intelligence/What is Artificial Intelligence-1.pdf" target="_blank"><span class="file-icon">&#128196;</span> What is Artificial Intelligence-1.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/6th sem/ai artificial intelligence/What_is_Artificial_Intelligence-1[1].pdf" target="_blank"><span class="file-icon">&#128196;</span> What_is_Artificial_Intelligence-1[1].pdf</a></li>
+            </ul>
+            
+            <div class="folder-section">
+                <div class="folder-title">&#128193; PPT Unit wise</div>
+                <ul class="file-list">
+                    <li class="file-item"><a href="../Study Resource/6th sem/ai artificial intelligence/PPT Unit wise/Unit 1 - 1.1 Intro to AI.ppt" target="_blank"><span class="file-icon">&#128196;</span> Unit 1 - 1.1 Intro to AI.ppt</a></li>
+                    <li class="file-item"><a href="../Study Resource/6th sem/ai artificial intelligence/PPT Unit wise/Unit 1 - 1.2 Foundation of AI.pptx" target="_blank"><span class="file-icon">&#128196;</span> Unit 1 - 1.2 Foundation of AI.pptx</a></li>
+                    <li class="file-item"><a href="../Study Resource/6th sem/ai artificial intelligence/PPT Unit wise/Unit 1 - 1.3 Agents.ppt" target="_blank"><span class="file-icon">&#128196;</span> Unit 1 - 1.3 Agents.ppt</a></li>
+                    <li class="file-item"><a href="../Study Resource/6th sem/ai artificial intelligence/PPT Unit wise/Unit 1 - 1.4 Problem solving.pptx" target="_blank"><span class="file-icon">&#128196;</span> Unit 1 - 1.4 Problem solving.pptx</a></li>
+                    <li class="file-item"><a href="../Study Resource/6th sem/ai artificial intelligence/PPT Unit wise/Unit 1 - 1.5 Trees and Graphs.pptx" target="_blank"><span class="file-icon">&#128196;</span> Unit 1 - 1.5 Trees and Graphs.pptx</a></li>
+                    <li class="file-item"><a href="../Study Resource/6th sem/ai artificial intelligence/PPT Unit wise/Unit 1 - 1.6 State Space Search.pptx" target="_blank"><span class="file-icon">&#128196;</span> Unit 1 - 1.6 State Space Search.pptx</a></li>
+                    <li class="file-item"><a href="../Study Resource/6th sem/ai artificial intelligence/PPT Unit wise/Unit 2 - 2.1 Uninformed Search.pptx" target="_blank"><span class="file-icon">&#128196;</span> Unit 2 - 2.1 Uninformed Search.pptx</a></li>
+                    <li class="file-item"><a href="../Study Resource/6th sem/ai artificial intelligence/PPT Unit wise/Unit 2 - 2.2 Informed search.pptx" target="_blank"><span class="file-icon">&#128196;</span> Unit 2 - 2.2 Informed search.pptx</a></li>
+                    <li class="file-item"><a href="../Study Resource/6th sem/ai artificial intelligence/PPT Unit wise/Unit 2 - 2.3 Adversarial search.pptx" target="_blank"><span class="file-icon">&#128196;</span> Unit 2 - 2.3 Adversarial search.pptx</a></li>
+                    <li class="file-item"><a href="../Study Resource/6th sem/ai artificial intelligence/PPT Unit wise/Unit 2 - 2.4 Alpha Beta Pruning.pptx" target="_blank"><span class="file-icon">&#128196;</span> Unit 2 - 2.4 Alpha Beta Pruning.pptx</a></li>
+                    <li class="file-item"><a href="../Study Resource/6th sem/ai artificial intelligence/PPT Unit wise/Unit 2 - 2.5 RBFS.pptx" target="_blank"><span class="file-icon">&#128196;</span> Unit 2 - 2.5 RBFS.pptx</a></li>
+                    <li class="file-item"><a href="../Study Resource/6th sem/ai artificial intelligence/PPT Unit wise/Unit 2 - 2.6 AO star search method informed.pptx" target="_blank"><span class="file-icon">&#128196;</span> Unit 2 - 2.6 AO star search method informed.pptx</a></li>
+                    <li class="file-item"><a href="../Study Resource/6th sem/ai artificial intelligence/PPT Unit wise/Unit 3 - 3.1 Probabilistic Reasoning.pptx" target="_blank"><span class="file-icon">&#128196;</span> Unit 3 - 3.1 Probabilistic Reasoning.pptx</a></li>
+                    <li class="file-item"><a href="../Study Resource/6th sem/ai artificial intelligence/PPT Unit wise/Unit 3 - 3.2 Inference in Bayesian networks.pptx" target="_blank"><span class="file-icon">&#128196;</span> Unit 3 - 3.2 Inference in Bayesian networks.pptx</a></li>
+                    <li class="file-item"><a href="../Study Resource/6th sem/ai artificial intelligence/PPT Unit wise/Unit 3 - 3.3 Temporal Model.pptx" target="_blank"><span class="file-icon">&#128196;</span> Unit 3 - 3.3 Temporal Model.pptx</a></li>
+                    <li class="file-item"><a href="../Study Resource/6th sem/ai artificial intelligence/PPT Unit wise/Unit 3 - 3.4 Hidden Markov model.pptx" target="_blank"><span class="file-icon">&#128196;</span> Unit 3 - 3.4 Hidden Markov model.pptx</a></li>
+                    <li class="file-item"><a href="../Study Resource/6th sem/ai artificial intelligence/PPT Unit wise/Unit 4 - 4.1 Markov Decision Process.pptx" target="_blank"><span class="file-icon">&#128196;</span> Unit 4 - 4.1 Markov Decision Process.pptx</a></li>
+                    <li class="file-item"><a href="../Study Resource/6th sem/ai artificial intelligence/PPT Unit wise/Unit 4 - 4.2 Utility Theory and function.pptx" target="_blank"><span class="file-icon">&#128196;</span> Unit 4 - 4.2 Utility Theory and function.pptx</a></li>
+                    <li class="file-item"><a href="../Study Resource/6th sem/ai artificial intelligence/PPT Unit wise/Unit 5 - 5.1 Reinforcement learning.pptx" target="_blank"><span class="file-icon">&#128196;</span> Unit 5 - 5.1 Reinforcement learning.pptx</a></li>
+                    <li class="file-item"><a href="../Study Resource/6th sem/ai artificial intelligence/PPT Unit wise/Unit 5 - 5.2 Active-Passive Reinforcement Learning.pptx" target="_blank"><span class="file-icon">&#128196;</span> Unit 5 - 5.2 Active-Passive Reinforcement Learning.pptx</a></li>
+                    <li class="file-item"><a href="../Study Resource/6th sem/ai artificial intelligence/PPT Unit wise/Unit 5 - 5.3 Adaptive dynamic programming, temporal difference learning.ppt" target="_blank"><span class="file-icon">&#128196;</span> Unit 5 - 5.3 Adaptive dynamic programming, temporal difference learning.ppt</a></li>
+                    <li class="file-item"><a href="../Study Resource/6th sem/ai artificial intelligence/PPT Unit wise/Unit 5 - 5.4 Active reinforcement learning- Q learning.ppt" target="_blank"><span class="file-icon">&#128196;</span> Unit 5 - 5.4 Active reinforcement learning- Q learning.ppt</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Files Section for CC -->
+        <div id="files-cc" class="files-section">
+            <div class="files-header">
+                <div class="files-title">&#128193; / CC (Cloud Computing)</div>
+                <button class="close-btn" onclick="closeFiles()">X</button>
+            </div>
+            <ul class="file-list">
+                <li class="file-item"><a href="../Study Resource/6th sem/cc cloud computing/Case Study.pdf" target="_blank"><span class="file-icon">&#128196;</span> Case Study.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/6th sem/cc cloud computing/Cloud Architecture.pdf" target="_blank"><span class="file-icon">&#128196;</span> Cloud Architecture.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/6th sem/cc cloud computing/CLOUD COMPUTING  NOTES.pdf" target="_blank"><span class="file-icon">&#128196;</span> CLOUD COMPUTING  NOTES.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/6th sem/cc cloud computing/Cloud Deployment Models.pdf" target="_blank"><span class="file-icon">&#128196;</span> Cloud Deployment Models.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/6th sem/cc cloud computing/Cloud service models.pdf" target="_blank"><span class="file-icon">&#128196;</span> Cloud service models.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/6th sem/cc cloud computing/Cloud Storage and Data Management.pdf" target="_blank"><span class="file-icon">&#128196;</span> Cloud Storage and Data Management.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/6th sem/cc cloud computing/Introduction to Cloud Computing.pdf" target="_blank"><span class="file-icon">&#128196;</span> Introduction to Cloud Computing.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/6th sem/cc cloud computing/notes.pdf" target="_blank"><span class="file-icon">&#128196;</span> notes.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/6th sem/cc cloud computing/unit 1 to 4 cloud notes.pdf" target="_blank"><span class="file-icon">&#128196;</span> unit 1 to 4 cloud notes.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/6th sem/cc cloud computing/unit 2,5.pdf" target="_blank"><span class="file-icon">&#128196;</span> unit 2,5.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/6th sem/cc cloud computing/unit 5 cloud notes.pdf" target="_blank"><span class="file-icon">&#128196;</span> unit 5 cloud notes.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/6th sem/cc cloud computing/virtualization 2.docx" target="_blank"><span class="file-icon">&#128196;</span> virtualization 2.docx</a></li>
+                <li class="file-item"><a href="../Study Resource/6th sem/cc cloud computing/Vision of Cloud Computing.docx" target="_blank"><span class="file-icon">&#128196;</span> Vision of Cloud Computing.docx</a></li>
+            </ul>
+        </div>
+
+        <!-- Files Section for CD -->
+        <div id="files-cd" class="files-section">
+            <div class="files-header">
+                <div class="files-title">&#128193; / CD (Compiler Design)</div>
+                <button class="close-btn" onclick="closeFiles()">X</button>
+            </div>
+            <ul class="file-list">
+                <li class="file-item"><a href="../Study Resource/6th sem/cd compiler design/All Parsers.pdf" target="_blank"><span class="file-icon">&#128196;</span> All Parsers.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/6th sem/cd compiler design/Bottom Up Parsers.pdf" target="_blank"><span class="file-icon">&#128196;</span> Bottom Up Parsers.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/6th sem/cd compiler design/Cd 2.pdf" target="_blank"><span class="file-icon">&#128196;</span> Cd 2.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/6th sem/cd compiler design/cd.pdf" target="_blank"><span class="file-icon">&#128196;</span> cd.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/6th sem/cd compiler design/CODE GENERATION and issues.pdf" target="_blank"><span class="file-icon">&#128196;</span> CODE GENERATION and issues.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/6th sem/cd compiler design/COMPILER DESIGN NOTES.pdf" target="_blank"><span class="file-icon">&#128196;</span> COMPILER DESIGN NOTES.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/6th sem/cd compiler design/Compiler-Design-file.pdf" target="_blank"><span class="file-icon">&#128196;</span> Compiler-Design-file.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/6th sem/cd compiler design/Unit - 1 PPT.pdf" target="_blank"><span class="file-icon">&#128196;</span> Unit - 1 PPT.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/6th sem/cd compiler design/Unit - 1.pdf" target="_blank"><span class="file-icon">&#128196;</span> Unit - 1.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/6th sem/cd compiler design/Unit - 2.pdf" target="_blank"><span class="file-icon">&#128196;</span> Unit - 2.pdf</a></li>
+            </ul>
+        </div>
+
+        <!-- Files Section for ML -->
+        <div id="files-ml" class="files-section">
+            <div class="files-header">
+                <div class="files-title">&#128193; / ML (Machine Learning)</div>
+                <button class="close-btn" onclick="closeFiles()">X</button>
+            </div>
+            <ul class="file-list">
+                <li class="file-item"><a href="../Study Resource/6th sem/ml machine learning/MACHINE LEARNING(R17A0534).pdf" target="_blank"><span class="file-icon">&#128196;</span> MACHINE LEARNING(R17A0534).pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/6th sem/ml machine learning/machine_learning_tutorial.pdf" target="_blank"><span class="file-icon">&#128196;</span> machine_learning_tutorial.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/6th sem/ml machine learning/Project Synopsis Guidelines.pdf" target="_blank"><span class="file-icon">&#128196;</span> Project Synopsis Guidelines.pdf</a></li>
+            </ul>
+        </div>
+
+        <!-- Files Section for WC -->
+        <div id="files-wc" class="files-section">
+            <div class="files-header">
+                <div class="files-title">&#128193; / WC (Wireless Communication)</div>
+                <button class="close-btn" onclick="closeFiles()">X</button>
+            </div>
+            <ul class="file-list">
+                <li class="file-item"><a href="../Study Resource/6th sem/wc wireless comunication/ASSIGNMENT 1.pdf" target="_blank"><span class="file-icon">&#128196;</span> ASSIGNMENT 1.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/6th sem/wc wireless comunication/Cellular_Communications_Tutorial.pdf" target="_blank"><span class="file-icon">&#128196;</span> Cellular_Communications_Tutorial.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/6th sem/wc wireless comunication/DocScanner 15-Apr-2025 10-31 AM.pdf" target="_blank"><span class="file-icon">&#128196;</span> DocScanner 15-Apr-2025 10-31 AM.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/6th sem/wc wireless comunication/Elements of Cellular Radio System Design .pdf" target="_blank"><span class="file-icon">&#128196;</span> Elements of Cellular Radio System Design .pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/6th sem/wc wireless comunication/Fundamentals of Cellular network.pdf" target="_blank"><span class="file-icon">&#128196;</span> Fundamentals of Cellular network.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/6th sem/wc wireless comunication/Lecture 2 Wireless communication.pdf" target="_blank"><span class="file-icon">&#128196;</span> Lecture 2 Wireless communication.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/6th sem/wc wireless comunication/Multiple Access Techniques For WC.pdf" target="_blank"><span class="file-icon">&#128196;</span> Multiple Access Techniques For WC.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/6th sem/wc wireless comunication/Unit - 4 AMPS.pdf" target="_blank"><span class="file-icon">&#128196;</span> Unit - 4 AMPS.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/6th sem/wc wireless comunication/Unit 1_WMC.pdf" target="_blank"><span class="file-icon">&#128196;</span> Unit 1_WMC.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/6th sem/wc wireless comunication/WC Lecture 4 Unit -1.pdf" target="_blank"><span class="file-icon">&#128196;</span> WC Lecture 4 Unit -1.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/6th sem/wc wireless comunication/WC Lecture 5 Unit1.pdf" target="_blank"><span class="file-icon">&#128196;</span> WC Lecture 5 Unit1.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/6th sem/wc wireless comunication/WC Unit-1 lecture 3.pdf" target="_blank"><span class="file-icon">&#128196;</span> WC Unit-1 lecture 3.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/6th sem/wc wireless comunication/Wireless communication lecture 1.pdf" target="_blank"><span class="file-icon">&#128196;</span> Wireless communication lecture 1.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/6th sem/wc wireless comunication/Wireless Communication.pdf" target="_blank"><span class="file-icon">&#128196;</span> Wireless Communication.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/6th sem/wc wireless comunication/Wireless System Standards and Emerging Tech.pdf" target="_blank"><span class="file-icon">&#128196;</span> Wireless System Standards and Emerging Tech.pdf</a></li>
+            </ul>
+        </div>
+    </main>
+
+    <footer>
+        <p>"Sleep is for the weak... and those who have already failed." &#128128;</p>
+    </footer>
+
+    <script>
+        function showFiles(subject) {
+            closeFiles();
+            const fileSection = document.getElementById('files-' + subject);
+            if (fileSection) {
+                fileSection.classList.add('active');
+                fileSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        function closeFiles() {
+            const allFileSections = document.querySelectorAll('.files-section');
+            allFileSections.forEach(section => {
+                section.classList.remove('active');
+            });
+        }
+    </script>
+
+    <!-- File Viewer Utility - Renders Office files in browser -->
+    <script src="../../file-viewer.js"></script>
+</body>
+
+</html>

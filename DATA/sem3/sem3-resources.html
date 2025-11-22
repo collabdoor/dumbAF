@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>dumbAF - SEM 3 Resources</title>
+    <link rel="icon" type="image/x-icon" href="../../assets/logo.ico">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background-color: #f4f4f4;
+            color: #000;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background-color: #fff;
+            padding: 20px;
+            border-bottom: 3px solid #000;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2em;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+        }
+
+        h1 a {
+            color: #fff;
+            text-decoration: none;
+            background-color: #00475a;
+            padding: 0 5px;
+        }
+
+        .breadcrumb {
+            padding: 10px 20px;
+            background-color: #e0e0e0;
+            border-bottom: 2px solid #000;
+            font-size: 0.9em;
+        }
+
+        .breadcrumb a {
+            color: #0000ee;
+        }
+
+        main {
+            flex: 1;
+            padding: 40px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .page-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 1.5em;
+            border-bottom: 2px dashed #000;
+            padding-bottom: 10px;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .subjects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .subject-card {
+            background: #fff;
+            border: 2px solid #000;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            box-shadow: 5px 5px 0px #000;
+            transition: transform 0.1s, box-shadow 0.1s;
+        }
+
+        .subject-card:hover {
+            transform: translate(2px, 2px);
+            box-shadow: 3px 3px 0px #000;
+            background-color: #e0f7fa;
+        }
+
+        .subject-card:active {
+            transform: translate(5px, 5px);
+            box-shadow: 0px 0px 0px #000;
+        }
+
+        .subject-icon {
+            font-size: 3em;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .subject-name {
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .files-section {
+            display: none;
+            background: #fff;
+            border: 2px solid #000;
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 8px 8px 0px #000;
+        }
+
+        .files-section.active {
+            display: block;
+        }
+
+        .files-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #000;
+            padding-bottom: 10px;
+            background-color: #eee;
+            padding: 10px;
+        }
+
+        .files-title {
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        .close-btn {
+            background: #00475a;
+            color: #fff;
+            border: 2px solid #000;
+            padding: 5px 15px;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: bold;
+            box-shadow: 3px 3px 0px #000;
+        }
+
+        .close-btn:active {
+            transform: translate(2px, 2px);
+            box-shadow: 1px 1px 0px #000;
+        }
+
+        .file-list {
+            list-style: none;
+        }
+
+        .file-item {
+            border-bottom: 1px solid #ccc;
+        }
+
+        .file-item:last-child {
+            border-bottom: none;
+        }
+
+        .file-item a {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            color: #000;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+
+        .file-item a:hover {
+            background-color: #e3f2fd;
+        }
+
+        .file-icon {
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+
+        footer {
+            background-color: #000;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            margin-top: auto;
+            border-top: 5px solid #00475a;
+        }
+
+        footer p {
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1><a href="../../index.html">dumbAF</a> / SEM 3 Resources</h1>
+    </header>
+
+    <nav class="breadcrumb">
+        <a href="../../index.html">Home</a> &gt;
+        <a href="sem3.html">SEM 3</a> &gt;
+        <span>Resources</span>
+    </nav>
+
+    <main>
+        <div class="page-title">Select Subject Folder</div>
+
+        <div class="subjects-grid">
+            <div class="subject-card" onclick="showFiles('it')">
+                <span class="subject-icon">&#128193;</span>
+                <div class="subject-name">IT Workshop</div>
+            </div>
+
+            <div class="subject-card" onclick="showFiles('de')">
+                <span class="subject-icon">&#128193;</span>
+                <div class="subject-name">Digital Electronics</div>
+            </div>
+
+            <div class="subject-card" onclick="showFiles('dsa')">
+                <span class="subject-icon">&#128193;</span>
+                <div class="subject-name">DSA</div>
+            </div>
+
+            <div class="subject-card" onclick="showFiles('fch')">
+                <span class="subject-icon">&#128193;</span>
+                <div class="subject-name">Humanities (FCH)</div>
+            </div>
+
+            <div class="subject-card" onclick="showFiles('m3')">
+                <span class="subject-icon">&#128193;</span>
+                <div class="subject-name">Mathematics - 3</div>
+            </div>
+
+            <div class="subject-card" onclick="showFiles('oops')">
+                <span class="subject-icon">&#128193;</span>
+                <div class="subject-name">OOPS</div>
+            </div>
+        </div>
+
+        <!-- Files Section for IT -->
+        <div id="files-it" class="files-section">
+            <div class="files-header">
+                <div class="files-title">&#128193; / IT Workshop</div>
+                <button class="close-btn" onclick="closeFiles()">X</button>
+            </div>
+            <ul class="file-list">
+                <li class="file-item"><a href="../Study Resource/3rd sem/IT ki File.pdf" target="_blank"><span class="file-icon">&#128196;</span> IT ki File.pdf</a></li>
+            </ul>
+        </div>
+
+        <!-- Files Section for DE -->
+        <div id="files-de" class="files-section">
+            <div class="files-header">
+                <div class="files-title">&#128193; / Digital Electronics</div>
+                <button class="close-btn" onclick="closeFiles()">X</button>
+            </div>
+            <ul class="file-list">
+                <li class="file-item"><a href="../Study Resource/3rd sem/Digital Electronics DE/DE lab file.pdf" target="_blank"><span class="file-icon">&#128196;</span> DE lab file.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/3rd sem/Digital Electronics DE/digielec.pdf" target="_blank"><span class="file-icon">&#128196;</span> digielec.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/3rd sem/Digital Electronics DE/digital-electronics_6.pdf" target="_blank"><span class="file-icon">&#128196;</span> digital-electronics_6.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/3rd sem/Digital Electronics DE/DigitalElectronics.pdf" target="_blank"><span class="file-icon">&#128196;</span> DigitalElectronics.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/3rd sem/Digital Electronics DE/DigitalNotes.pdf" target="_blank"><span class="file-icon">&#128196;</span> DigitalNotes.pdf</a></li>
+            </ul>
+        </div>
+
+        <!-- Files Section for DSA -->
+        <div id="files-dsa" class="files-section">
+            <div class="files-header">
+                <div class="files-title">&#128193; / DSA</div>
+                <button class="close-btn" onclick="closeFiles()">X</button>
+            </div>
+            <ul class="file-list">
+                <li class="file-item"><a href="../Study Resource/3rd sem/DSA/1. Fundamentals of algorithms and data structures.docx" target="_blank"><span class="file-icon">&#128196;</span> 1. Fundamentals of algorithms and data structures.docx</a></li>
+                <li class="file-item"><a href="../Study Resource/3rd sem/DSA/10. Fundamentals of graph.docx" target="_blank"><span class="file-icon">&#128196;</span> 10. Fundamentals of graph.docx</a></li>
+                <li class="file-item"><a href="../Study Resource/3rd sem/DSA/11. Fundamentals of Queue .doc" target="_blank"><span class="file-icon">&#128196;</span> 11. Fundamentals of Queue .doc</a></li>
+                <li class="file-item"><a href="../Study Resource/3rd sem/DSA/12 sorting.doc" target="_blank"><span class="file-icon">&#128196;</span> 12 sorting.doc</a></li>
+                <li class="file-item"><a href="../Study Resource/3rd sem/DSA/2. array.doc" target="_blank"><span class="file-icon">&#128196;</span> 2. array.doc</a></li>
+                <li class="file-item"><a href="../Study Resource/3rd sem/DSA/3. linked list.doc" target="_blank"><span class="file-icon">&#128196;</span> 3. linked list.doc</a></li>
+                <li class="file-item"><a href="../Study Resource/3rd sem/DSA/4 search.doc" target="_blank"><span class="file-icon">&#128196;</span> 4 search.doc</a></li>
+                <li class="file-item"><a href="../Study Resource/3rd sem/DSA/5 sorting.doc" target="_blank"><span class="file-icon">&#128196;</span> 5 sorting.doc</a></li>
+                <li class="file-item"><a href="../Study Resource/3rd sem/DSA/5. introduction to trees.doc" target="_blank"><span class="file-icon">&#128196;</span> 5. introduction to trees.doc</a></li>
+                <li class="file-item"><a href="../Study Resource/3rd sem/DSA/9. fundamentals of stacks.doc" target="_blank"><span class="file-icon">&#128196;</span> 9. fundamentals of stacks.doc</a></li>
+                <li class="file-item"><a href="../Study Resource/3rd sem/DSA/data-structures-by-d-samantha.pdf" target="_blank"><span class="file-icon">&#128196;</span> data-structures-by-d-samantha.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/3rd sem/DSA/DELETION LINKED LIST.txt" target="_blank"><span class="file-icon">&#128196;</span> DELETION LINKED LIST.txt</a></li>
+                <li class="file-item"><a href="../Study Resource/3rd sem/DSA/DELETION QUEUE USING LINKED LIST.txt" target="_blank"><span class="file-icon">&#128196;</span> DELETION QUEUE USING LINKED LIST.txt</a></li>
+                <li class="file-item"><a href="../Study Resource/3rd sem/DSA/DS lords.pdf" target="_blank"><span class="file-icon">&#128196;</span> DS lords.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/3rd sem/DSA/dsa practical questions.txt" target="_blank"><span class="file-icon">&#128196;</span> dsa practical questions.txt</a></li>
+                <li class="file-item"><a href="../Study Resource/3rd sem/DSA/DSA_CompleteNotes.pdf" target="_blank"><span class="file-icon">&#128196;</span> DSA_CompleteNotes.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/3rd sem/DSA/Extra RESOURCE.docx" target="_blank"><span class="file-icon">&#128196;</span> Extra RESOURCE.docx</a></li>
+                <li class="file-item"><a href="../Study Resource/3rd sem/DSA/hashing.pdf" target="_blank"><span class="file-icon">&#128196;</span> hashing.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/3rd sem/DSA/hashing1.pdf" target="_blank"><span class="file-icon">&#128196;</span> hashing1.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/3rd sem/DSA/INSERTION LINKED LIST.txt" target="_blank"><span class="file-icon">&#128196;</span> INSERTION LINKED LIST.txt</a></li>
+                <li class="file-item"><a href="../Study Resource/3rd sem/DSA/INSERTION LINKED _IST CODE.txt" target="_blank"><span class="file-icon">&#128196;</span> INSERTION LINKED _IST CODE.txt</a></li>
+                <li class="file-item"><a href="../Study Resource/3rd sem/DSA/linked list.txt" target="_blank"><span class="file-icon">&#128196;</span> linked list.txt</a></li>
+                <li class="file-item"><a href="../Study Resource/3rd sem/DSA/list binary tree creation.txt" target="_blank"><span class="file-icon">&#128196;</span> list binary tree creation.txt</a></li>
+                <li class="file-item"><a href="../Study Resource/3rd sem/DSA/list data structure programs.txt" target="_blank"><span class="file-icon">&#128196;</span> list data structure programs.txt</a></li>
+                <li class="file-item"><a href="../Study Resource/3rd sem/DSA/trees.pdf" target="_blank"><span class="file-icon">&#128196;</span> trees.pdf</a></li>
+            </ul>
+        </div>
+
+        <!-- Files Section for FCH -->
+        <div id="files-fch" class="files-section">
+            <div class="files-header">
+                <div class="files-title">&#128193; / Humanities (FCH)</div>
+                <button class="close-btn" onclick="closeFiles()">X</button>
+            </div>
+            <ul class="file-list">
+                <li class="file-item"><a href="../Study Resource/3rd sem/FCH - Development of Society/1.Unit -I. Foundation course in Humanities-merged.pdf" target="_blank"><span class="file-icon">&#128196;</span> 1.Unit -I. Foundation course in Humanities-merged.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/3rd sem/FCH - Development of Society/buddhist-economics-5541385.pdf" target="_blank"><span class="file-icon">&#128196;</span> buddhist-economics-5541385.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/3rd sem/FCH - Development of Society/captilism.pdf" target="_blank"><span class="file-icon">&#128196;</span> captilism.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/3rd sem/FCH - Development of Society/Decentralization.pdf" target="_blank"><span class="file-icon">&#128196;</span> Decentralization.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/3rd sem/FCH - Development of Society/marxism.pdf" target="_blank"><span class="file-icon">&#128196;</span> marxism.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/3rd sem/FCH - Development of Society/mixed economic.pdf" target="_blank"><span class="file-icon">&#128196;</span> mixed economic.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/3rd sem/FCH - Development of Society/socialsim.pdf" target="_blank"><span class="file-icon">&#128196;</span> socialsim.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/3rd sem/FCH - Development of Society/Swaraj.pdf" target="_blank"><span class="file-icon">&#128196;</span> Swaraj.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/3rd sem/FCH - Development of Society/Unit -I. Foundation course in Humanities.pdf" target="_blank"><span class="file-icon">&#128196;</span> Unit -I. Foundation course in Humanities.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/3rd sem/FCH - Development of Society/Unit III - E.F Schumacher’s Idea of Development.pdf" target="_blank"><span class="file-icon">&#128196;</span> Unit III - E.F Schumacher’s Idea of Development.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/3rd sem/FCH - Development of Society/Unit III Jajmani System.pdf" target="_blank"><span class="file-icon">&#128196;</span> Unit III Jajmani System.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/3rd sem/FCH - Development of Society/Unit III-Development In India During Pre-British Period.pdf" target="_blank"><span class="file-icon">&#128196;</span> Unit III-Development In India During Pre-British Period.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/3rd sem/FCH - Development of Society/Unit III-Development of India During British Period.pdf" target="_blank"><span class="file-icon">&#128196;</span> Unit III-Development of India During British Period.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/3rd sem/FCH - Development of Society/Unit- III -Development In India After Independance.pdf" target="_blank"><span class="file-icon">&#128196;</span> Unit- III -Development In India After Independance.pdf</a></li>
+            </ul>
+        </div>
+
+        <!-- Files Section for M3 -->
+        <div id="files-m3" class="files-section">
+            <div class="files-header">
+                <div class="files-title">&#128193; / Mathematics - 3</div>
+                <button class="close-btn" onclick="closeFiles()">X</button>
+            </div>
+            <ul class="file-list">
+                <li class="file-item"><a href="../Study Resource/3rd sem/M3/M-3 spectrum.pdf" target="_blank"><span class="file-icon">&#128196;</span> M-3 spectrum.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/3rd sem/M3/Maths3.pdf" target="_blank"><span class="file-icon">&#128196;</span> Maths3.pdf</a></li>
+            </ul>
+        </div>
+
+        <!-- Files Section for OOPS -->
+        <div id="files-oops" class="files-section">
+            <div class="files-header">
+                <div class="files-title">&#128193; / OOPS</div>
+                <button class="close-btn" onclick="closeFiles()">X</button>
+            </div>
+            <ul class="file-list">
+                <li class="file-item"><a href="../Study Resource/3rd sem/OOPS/E Balaguruswamy Balagurusamy - Object Orinted Programming With C++-McGraw-Hill Education - Europe (2011).pdf" target="_blank"><span class="file-icon">&#128196;</span> E Balaguruswamy Balagurusamy - Object Orinted Programming With C++-McGraw-Hill Education - Europe (2011).pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/3rd sem/OOPS/OOPS ASSIGNMENT.docx" target="_blank"><span class="file-icon">&#128196;</span> OOPS ASSIGNMENT.docx</a></li>
+            </ul>
+        </div>
+    </main>
+
+    <footer>
+        <p>"Sleep is for the weak... and those who have already failed." &#128128;</p>
+    </footer>
+
+    <script>
+        function showFiles(subject) {
+            closeFiles();
+            const fileSection = document.getElementById('files-' + subject);
+            if (fileSection) {
+                fileSection.classList.add('active');
+                fileSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        function closeFiles() {
+            const allFileSections = document.querySelectorAll('.files-section');
+            allFileSections.forEach(section => {
+                section.classList.remove('active');
+            });
+        }
+    </script>
+
+    <!-- File Viewer Utility - Renders Office files in browser -->
+    <script src="../../file-viewer.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>dumbAF - SEM 4 Resources</title>
+    <link rel="icon" type="image/x-icon" href="../../assets/logo.ico">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background-color: #f4f4f4;
+            color: #000;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background-color: #fff;
+            padding: 20px;
+            border-bottom: 3px solid #000;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2em;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+        }
+
+        h1 a {
+            color: #fff;
+            text-decoration: none;
+            background-color: #00475a;
+            padding: 0 5px;
+        }
+
+        .breadcrumb {
+            padding: 10px 20px;
+            background-color: #e0e0e0;
+            border-bottom: 2px solid #000;
+            font-size: 0.9em;
+        }
+
+        .breadcrumb a {
+            color: #0000ee;
+        }
+
+        main {
+            flex: 1;
+            padding: 40px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .page-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 1.5em;
+            border-bottom: 2px dashed #000;
+            padding-bottom: 10px;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .subjects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .subject-card {
+            background: #fff;
+            border: 2px solid #000;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            box-shadow: 5px 5px 0px #000;
+            transition: transform 0.1s, box-shadow 0.1s;
+        }
+
+        .subject-card:hover {
+            transform: translate(2px, 2px);
+            box-shadow: 3px 3px 0px #000;
+            background-color: #e0f7fa;
+        }
+
+        .subject-card:active {
+            transform: translate(5px, 5px);
+            box-shadow: 0px 0px 0px #000;
+        }
+
+        .subject-icon {
+            font-size: 3em;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .subject-name {
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .files-section {
+            display: none;
+            background: #fff;
+            border: 2px solid #000;
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 8px 8px 0px #000;
+        }
+
+        .files-section.active {
+            display: block;
+        }
+
+        .files-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #000;
+            padding-bottom: 10px;
+            background-color: #eee;
+            padding: 10px;
+        }
+
+        .files-title {
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        .close-btn {
+            background: #00475a;
+            color: #fff;
+            border: 2px solid #000;
+            padding: 5px 15px;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: bold;
+            box-shadow: 3px 3px 0px #000;
+        }
+
+        .close-btn:active {
+            transform: translate(2px, 2px);
+            box-shadow: 1px 1px 0px #000;
+        }
+
+        .file-list {
+            list-style: none;
+        }
+
+        .file-item {
+            border-bottom: 1px solid #ccc;
+        }
+
+        .file-item:last-child {
+            border-bottom: none;
+        }
+
+        .file-item a {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            color: #000;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+
+        .file-item a:hover {
+            background-color: #e3f2fd;
+        }
+
+        .file-icon {
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+
+        footer {
+            background-color: #000;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            margin-top: auto;
+            border-top: 5px solid #00475a;
+        }
+
+        footer p {
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1><a href="../../index.html">dumbAF</a> / SEM 4 Resources</h1>
+    </header>
+
+    <nav class="breadcrumb">
+        <a href="../../index.html">Home</a> &gt;
+        <a href="sem4.html">SEM 4</a> &gt;
+        <span>Resources</span>
+    </nav>
+
+    <main>
+        <div class="page-title">Select Subject Folder</div>
+
+        <div class="subjects-grid">
+            <div class="subject-card" onclick="showFiles('coa')">
+                <span class="subject-icon">&#128193;</span>
+                <div class="subject-name">COA</div>
+            </div>
+
+            <div class="subject-card" onclick="showFiles('daa')">
+                <span class="subject-icon">&#128193;</span>
+                <div class="subject-name">DAA</div>
+            </div>
+
+            <div class="subject-card" onclick="showFiles('dm')">
+                <span class="subject-icon">&#128193;</span>
+                <div class="subject-name">Discrete Mathematics</div>
+            </div>
+
+            <div class="subject-card" onclick="showFiles('os')">
+                <span class="subject-icon">&#128193;</span>
+                <div class="subject-name">Operating Systems</div>
+            </div>
+
+            <div class="subject-card" onclick="showFiles('uhv')">
+                <span class="subject-icon">&#128193;</span>
+                <div class="subject-name">UHV</div>
+            </div>
+        </div>
+
+        <!-- Files Section for COA -->
+        <div id="files-coa" class="files-section">
+            <div class="files-header">
+                <div class="files-title">&#128193; / COA</div>
+                <button class="close-btn" onclick="closeFiles()">X</button>
+            </div>
+            <ul class="file-list">
+                <li class="file-item"><a href="../Study Resource/4th sem/COA/8085-microprocessor-question-bank.pdf" target="_blank"><span class="file-icon">&#128196;</span> 8085-microprocessor-question-bank.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/4th sem/COA/Addressing modes.pdf" target="_blank"><span class="file-icon">&#128196;</span> Addressing modes.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/4th sem/COA/Binary number .pdf" target="_blank"><span class="file-icon">&#128196;</span> Binary number .pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/4th sem/COA/Carry Look Ahead Adder.docx" target="_blank"><span class="file-icon">&#128196;</span> Carry Look Ahead Adder.docx</a></li>
+                <li class="file-item"><a href="../Study Resource/4th sem/COA/COA NOTES .pdf" target="_blank"><span class="file-icon">&#128196;</span> COA NOTES .pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/4th sem/COA/Coa.pdf" target="_blank"><span class="file-icon">&#128196;</span> Coa.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/4th sem/COA/Computer Organization and Design_ The Hardware___Software Interface, Fifth Edition.pdf" target="_blank"><span class="file-icon">&#128196;</span> Computer Organization and Design_ The Hardware___Software Interface, Fifth Edition.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/4th sem/COA/COMPUTER ORGANIZATION NOTES.pdf" target="_blank"><span class="file-icon">&#128196;</span> COMPUTER ORGANIZATION NOTES.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/4th sem/COA/computer-systems-Architecture.pdf" target="_blank"><span class="file-icon">&#128196;</span> computer-systems-Architecture.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/4th sem/COA/Input-output subsystem .pdf" target="_blank"><span class="file-icon">&#128196;</span> Input-output subsystem .pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/4th sem/COA/Module 1 Functional Blocks of a Computer.pdf" target="_blank"><span class="file-icon">&#128196;</span> Module 1 Functional Blocks of a Computer.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/4th sem/COA/Ripple Carry Adder.docx" target="_blank"><span class="file-icon">&#128196;</span> Ripple Carry Adder.docx</a></li>
+                <li class="file-item"><a href="../Study Resource/4th sem/COA/signed number.docx" target="_blank"><span class="file-icon">&#128196;</span> signed number.docx</a></li>
+                <li class="file-item"><a href="../Study Resource/4th sem/COA/Unit 2 Introduction to X86 Architecture.pdf" target="_blank"><span class="file-icon">&#128196;</span> Unit 2 Introduction to X86 Architecture.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/4th sem/COA/unit-3 Pipelining.docx" target="_blank"><span class="file-icon">&#128196;</span> unit-3 Pipelining.docx</a></li>
+                <li class="file-item"><a href="../Study Resource/4th sem/COA/Unit-4  Memory Organization.docx" target="_blank"><span class="file-icon">&#128196;</span> Unit-4  Memory Organization.docx</a></li>
+                <li class="file-item"><a href="../Study Resource/4th sem/COA/WhatsApp Image 2024-02-15 at 16.47.55_f52a602e.jpg" target="_blank"><span class="file-icon">&#128196;</span> WhatsApp Image 2024-02-15 at 16.47.55_f52a602e.jpg</a></li>
+                <li class="file-item"><a href="../Study Resource/4th sem/COA/WhatsApp Image 2024-02-20 at 15.22.33_f96e593e.jpg" target="_blank"><span class="file-icon">&#128196;</span> WhatsApp Image 2024-02-20 at 15.22.33_f96e593e.jpg</a></li>
+                <li class="file-item"><a href="../Study Resource/4th sem/COA/WhatsApp Image 2024-02-20 at 15.22.41_5d2ff1b0.jpg" target="_blank"><span class="file-icon">&#128196;</span> WhatsApp Image 2024-02-20 at 15.22.41_5d2ff1b0.jpg</a></li>
+            </ul>
+        </div>
+
+        <!-- Files Section for DAA -->
+        <div id="files-daa" class="files-section">
+            <div class="files-header">
+                <div class="files-title">&#128193; / DAA</div>
+                <button class="close-btn" onclick="closeFiles()">X</button>
+            </div>
+            <ul class="file-list">
+                <li class="file-item"><a href="../Study Resource/4th sem/DAA/15-bellmanFord.pptx" target="_blank"><span class="file-icon">&#128196;</span> 15-bellmanFord.pptx</a></li>
+                <li class="file-item"><a href="../Study Resource/4th sem/DAA/algo analysis.pptx" target="_blank"><span class="file-icon">&#128196;</span> algo analysis.pptx</a></li>
+                <li class="file-item"><a href="../Study Resource/4th sem/DAA/Algorithm Design and Applications[A4].pdf" target="_blank"><span class="file-icon">&#128196;</span> Algorithm Design and Applications[A4].pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/4th sem/DAA/Algorithms - Sanjoy Dasgupta, Christos H. Papadimitriou, and Umesh V. Vazirani.pdf" target="_blank"><span class="file-icon">&#128196;</span> Algorithms - Sanjoy Dasgupta, Christos H. Papadimitriou, and Umesh V. Vazirani.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/4th sem/DAA/big-o-cheatsheet.pdf" target="_blank"><span class="file-icon">&#128196;</span> big-o-cheatsheet.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/4th sem/DAA/chap10_slides.ppt" target="_blank"><span class="file-icon">&#128196;</span> chap10_slides.ppt</a></li>
+                <li class="file-item"><a href="../Study Resource/4th sem/DAA/DAA-Approximation-Algorithms.ppt" target="_blank"><span class="file-icon">&#128196;</span> DAA-Approximation-Algorithms.ppt</a></li>
+                <li class="file-item"><a href="../Study Resource/4th sem/DAA/DAA.pdf" target="_blank"><span class="file-icon">&#128196;</span> DAA.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/4th sem/DAA/DAA[1].pdf" target="_blank"><span class="file-icon">&#128196;</span> DAA[1].pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/4th sem/DAA/knapsack using DP.pdf" target="_blank"><span class="file-icon">&#128196;</span> knapsack using DP.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/4th sem/DAA/lecture15-mst-dsuf.pdf" target="_blank"><span class="file-icon">&#128196;</span> lecture15-mst-dsuf.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/4th sem/DAA/Lecture22_23.ppt" target="_blank"><span class="file-icon">&#128196;</span> Lecture22_23.ppt</a></li>
+                <li class="file-item"><a href="../Study Resource/4th sem/DAA/lecture66.ppt" target="_blank"><span class="file-icon">&#128196;</span> lecture66.ppt</a></li>
+                <li class="file-item"><a href="../Study Resource/4th sem/DAA/ShortestPath.ppt" target="_blank"><span class="file-icon">&#128196;</span> ShortestPath.ppt</a></li>
+                <li class="file-item"><a href="../Study Resource/4th sem/DAA/shorting time complexity.jpg" target="_blank"><span class="file-icon">&#128196;</span> shorting time complexity.jpg</a></li>
+                <li class="file-item"><a href="../Study Resource/4th sem/DAA/SLIDES EXTRA.docx" target="_blank"><span class="file-icon">&#128196;</span> SLIDES EXTRA.docx</a></li>
+                <li class="file-item"><a href="../Study Resource/4th sem/DAA/SSSP DAA.pdf" target="_blank"><span class="file-icon">&#128196;</span> SSSP DAA.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/4th sem/DAA/TSP- DP- Neopolitan.pptx" target="_blank"><span class="file-icon">&#128196;</span> TSP- DP- Neopolitan.pptx</a></li>
+            </ul>
+        </div>
+
+        <!-- Files Section for DM -->
+        <div id="files-dm" class="files-section">
+            <div class="files-header">
+                <div class="files-title">&#128193; / Discrete Mathematics</div>
+                <button class="close-btn" onclick="closeFiles()">X</button>
+            </div>
+            <ul class="file-list">
+                <li class="file-item"><a href="../Study Resource/4th sem/DM Discrete Mathematics/Discrete Mathematics_compressed.pdf" target="_blank"><span class="file-icon">&#128196;</span> Discrete Mathematics_compressed.pdf</a></li>
+            </ul>
+        </div>
+
+        <!-- Files Section for OS -->
+        <div id="files-os" class="files-section">
+            <div class="files-header">
+                <div class="files-title">&#128193; / Operating Systems</div>
+                <button class="close-btn" onclick="closeFiles()">X</button>
+            </div>
+            <ul class="file-list">
+                <li class="file-item"><a href="../Study Resource/4th sem/OS/Abraham Silberschatz-Operating System Concepts (9th,2012_12).pdf" target="_blank"><span class="file-icon">&#128196;</span> Abraham Silberschatz-Operating System Concepts (9th,2012_12).pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/4th sem/OS/Abraham-Silberschatz-Operating-System-Concepts-10th-2018.pdf" target="_blank"><span class="file-icon">&#128196;</span> Abraham-Silberschatz-Operating-System-Concepts-10th-2018.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/4th sem/OS/ch10.pptx" target="_blank"><span class="file-icon">&#128196;</span> ch10.pptx</a></li>
+                <li class="file-item"><a href="../Study Resource/4th sem/OS/ch11.ppt" target="_blank"><span class="file-icon">&#128196;</span> ch11.ppt</a></li>
+                <li class="file-item"><a href="../Study Resource/4th sem/OS/ch12.pptx" target="_blank"><span class="file-icon">&#128196;</span> ch12.pptx</a></li>
+                <li class="file-item"><a href="../Study Resource/4th sem/OS/ch13.pptx" target="_blank"><span class="file-icon">&#128196;</span> ch13.pptx</a></li>
+                <li class="file-item"><a href="../Study Resource/4th sem/OS/ch3.pptx" target="_blank"><span class="file-icon">&#128196;</span> ch3.pptx</a></li>
+                <li class="file-item"><a href="../Study Resource/4th sem/OS/ch4.pptx" target="_blank"><span class="file-icon">&#128196;</span> ch4.pptx</a></li>
+                <li class="file-item"><a href="../Study Resource/4th sem/OS/ch5.pptx" target="_blank"><span class="file-icon">&#128196;</span> ch5.pptx</a></li>
+                <li class="file-item"><a href="../Study Resource/4th sem/OS/ch6.pptx" target="_blank"><span class="file-icon">&#128196;</span> ch6.pptx</a></li>
+                <li class="file-item"><a href="../Study Resource/4th sem/OS/ch7.pptx" target="_blank"><span class="file-icon">&#128196;</span> ch7.pptx</a></li>
+                <li class="file-item"><a href="../Study Resource/4th sem/OS/ch8.pptx" target="_blank"><span class="file-icon">&#128196;</span> ch8.pptx</a></li>
+                <li class="file-item"><a href="../Study Resource/4th sem/OS/ch9.pptx" target="_blank"><span class="file-icon">&#128196;</span> ch9.pptx</a></li>
+                <li class="file-item"><a href="../Study Resource/4th sem/OS/Extra Resouce.docx" target="_blank"><span class="file-icon">&#128196;</span> Extra Resouce.docx</a></li>
+                <li class="file-item"><a href="../Study Resource/4th sem/OS/first come first serve.docx" target="_blank"><span class="file-icon">&#128196;</span> first come first serve.docx</a></li>
+                <li class="file-item"><a href="../Study Resource/4th sem/OS/Operating system .pdf" target="_blank"><span class="file-icon">&#128196;</span> Operating system .pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/4th sem/OS/OS.pdf" target="_blank"><span class="file-icon">&#128196;</span> OS.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/4th sem/OS/Paging in OS.docx" target="_blank"><span class="file-icon">&#128196;</span> Paging in OS.docx</a></li>
+            </ul>
+        </div>
+
+        <!-- Files Section for UHV -->
+        <div id="files-uhv" class="files-section">
+            <div class="files-header">
+                <div class="files-title">&#128193; / UHV</div>
+                <button class="close-btn" onclick="closeFiles()">X</button>
+            </div>
+            <ul class="file-list">
+                <li class="file-item"><a href="../Study Resource/4th sem/UHV/unit 1.pdf" target="_blank"><span class="file-icon">&#128196;</span> unit 1.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/4th sem/UHV/unit 2.pdf" target="_blank"><span class="file-icon">&#128196;</span> unit 2.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/4th sem/UHV/unit 3.pdf" target="_blank"><span class="file-icon">&#128196;</span> unit 3.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/4th sem/UHV/unit 4.pdf" target="_blank"><span class="file-icon">&#128196;</span> unit 4.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/4th sem/UHV/unit 5.pdf" target="_blank"><span class="file-icon">&#128196;</span> unit 5.pdf</a></li>
+            </ul>
+        </div>
+    </main>
+
+    <footer>
+        <p>"Sleep is for the weak... and those who have already failed." &#128128;</p>
+    </footer>
+
+    <script>
+        function showFiles(subject) {
+            closeFiles();
+            const fileSection = document.getElementById('files-' + subject);
+            if (fileSection) {
+                fileSection.classList.add('active');
+                fileSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        function closeFiles() {
+            const allFileSections = document.querySelectorAll('.files-section');
+            allFileSections.forEach(section => {
+                section.classList.remove('active');
+            });
+        }
+    </script>
+
+    <!-- File Viewer Utility - Renders Office files in browser -->
+    <script src="../../file-viewer.js"></script>
+</body>
+
+</html>

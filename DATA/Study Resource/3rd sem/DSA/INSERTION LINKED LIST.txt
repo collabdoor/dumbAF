@@ -1,0 +1,21 @@
+LOC
+1. if AVAIL = NULL then, Display: OVERFLOW and exit. 
+2. [Assign node from free pool list to NEW]
+Set NEW = AVAIL 
+3. [Assign second node in the free pool list to AVAIL]
+AVAIL = LINK[AVAIL]. 
+4. Set INFO[NEW] = ITEM.
+5. IF START = NULL
+	START = NEW
+	LINK[NEW] = NULL
+6. ELSE IF LOC = NULL
+	LINK[NEW] = START
+	START = NEW
+7. ELSE
+	LINK[NEW] = LINK[LOC]
+	LINK[LOC] = NEW
+8. END OF IF
+
+
+
+

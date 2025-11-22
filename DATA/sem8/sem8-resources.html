@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>dumbAF - SEM 8 Resources</title>
+    <link rel="icon" type="image/x-icon" href="../../assets/logo.ico">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background-color: #f4f4f4;
+            color: #000;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background-color: #fff;
+            padding: 20px;
+            border-bottom: 3px solid #000;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2em;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+        }
+
+        h1 a {
+            color: #fff;
+            text-decoration: none;
+            background-color: #00475a;
+            padding: 0 5px;
+        }
+
+        .breadcrumb {
+            padding: 10px 20px;
+            background-color: #e0e0e0;
+            border-bottom: 2px solid #000;
+            font-size: 0.9em;
+        }
+
+        .breadcrumb a {
+            color: #0000ee;
+        }
+
+        main {
+            flex: 1;
+            padding: 40px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .secret-card {
+            background: #fff;
+            border: 4px solid #00475a;
+            padding: 50px;
+            margin: 40px 0;
+            box-shadow: 12px 12px 0px #000;
+            text-align: center;
+            position: relative;
+        }
+
+        .secret-icon {
+            font-size: 6em;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .secret-title {
+            font-size: 2.5em;
+            color: #00475a;
+            margin-bottom: 30px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .secret-text {
+            font-size: 1.3em;
+            line-height: 2;
+            margin-bottom: 20px;
+        }
+
+        .confidential-link {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 20px 40px;
+            background-color: #00475a;
+            color: #fff;
+            text-decoration: none;
+            border: 3px solid #000;
+            box-shadow: 6px 6px 0px #000;
+            font-size: 1.5em;
+            font-weight: bold;
+            transition: all 0.2s;
+        }
+
+        .confidential-link:hover {
+            background-color: #003845;
+            transform: translate(3px, 3px);
+            box-shadow: 3px 3px 0px #000;
+        }
+
+        .warning {
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #fff3cd;
+            border: 3px dashed #ff6b6b;
+            font-size: 1em;
+            color: #856404;
+        }
+
+        footer {
+            background-color: #000;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            margin-top: auto;
+            border-top: 5px solid #00475a;
+        }
+
+        footer p {
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1><a href="../../index.html">dumbAF</a> / SEM 8 Resources</h1>
+    </header>
+
+    <nav class="breadcrumb">
+        <a href="../../index.html">Home</a> &gt;
+        <span>SEM 8</span> &gt;
+        <span>Resources</span>
+    </nav>
+
+    <main>
+        <div class="secret-card">
+            <div class="secret-icon">🔒</div>
+            <div class="secret-title">Confidential</div>
+            <p class="secret-text">
+                You've reached the final semester.<br>
+                There's only one resource you need now...
+            </p>
+            
+            <a href="../Study Resource/8th sem/confidential.txt" class="confidential-link" target="_blank">
+                📄 OPEN CONFIDENTIAL FILE
+            </a>
+
+            <div class="warning">
+                ⚠️ Warning: This file contains the ultimate truth about Semester 8
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>"The truth shall set you free..." &#128640;</p>
+    </footer>
+
+    <!-- File Viewer Utility - Renders Office files in browser -->
+    <script src="../../file-viewer.js"></script>
+</body>
+
+</html>

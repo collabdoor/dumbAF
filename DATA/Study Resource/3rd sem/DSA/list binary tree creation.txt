@@ -1,0 +1,11 @@
+1. Write a program to create binary tree using array. Ask the user to enter the number of nodes and then insert each node at its correct position.
+
+
+2. Write a program to create binary tree using linked list. Ask the user to enter the number of nodes and then dynamically 
+Display the nodes at each level.
+
+3. Write a program to implement in-order traversal of a binary tree. You can create the binary tree using either array or linked list.
+
+4. Write a program to implement pre-order traversal of a binary tree. You can create the binary tree using either array or linked list.
+
+5. Write a program to implement post-order traversal of a binary tree. You can create the binary tree using either array or linked list.
