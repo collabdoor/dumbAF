@@ -1,6 +1,6 @@
 /**
- * LFS File Handler - Converts relative file paths to GitHub LFS download URLs
- * For files stored in Git LFS (pdf, doc, docx, ppt, pptx, xls, xlsx, zip, txt, etc.)
+ * LFS File Handler - Renders LFS files in browser using online viewers
+ * For files stored in Git LFS (pdf, doc, docx, ppt, pptx, xls, xlsx, zip, etc.)
  */
 
 (function() {
@@ -17,12 +17,52 @@
         '.xlsx', '.xls', '.zip'
     ];
 
+    // Viewer services configuration
+    const VIEWERS = {
+        // Google Docs Viewer - supports: PDF, DOC, DOCX, XLS, XLSX, PPT, PPTX
+        GOOGLE: 'https://docs.google.com/viewer?url=',
+        // Microsoft Office Online Viewer - supports: DOC, DOCX, XLS, XLSX, PPT, PPTX
+        OFFICE: 'https://view.officeapps.live.com/op/embed.aspx?src=',
+    };
+
+    // File types that work best with each viewer
+    const VIEWER_MAP = {
+        '.pdf': 'GOOGLE',      // Google Docs Viewer works great for PDFs
+        '.doc': 'OFFICE',      // Office Viewer for Word docs
+        '.docx': 'OFFICE',
+        '.ppt': 'OFFICE',      // Office Viewer for PowerPoint
+        '.pptx': 'OFFICE',
+        '.xls': 'OFFICE',      // Office Viewer for Excel
+        '.xlsx': 'OFFICE',
+        '.zip': 'DOWNLOAD'     // ZIP files must be downloaded
+    };
+
     /**
      * Check if a file path has an LFS extension
      */
     function isLFSFile(filePath) {
         const lowerPath = filePath.toLowerCase();
         return LFS_EXTENSIONS.some(ext => lowerPath.endsWith(ext));
+    }
+
+    /**
+     * Get file extension from path
+     */
+    function getFileExtension(filePath) {
+        const lowerPath = filePath.toLowerCase();
+        for (const ext of LFS_EXTENSIONS) {
+            if (lowerPath.endsWith(ext)) {
+                return ext;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Get appropriate viewer for file type
+     */
+    function getViewerForFile(extension) {
+        return VIEWER_MAP[extension] || 'GOOGLE';
     }
 
     /**
@@ -78,6 +118,30 @@
     }
 
     /**
+     * Create viewer URL for file
+     */
+    function createViewerUrl(lfsUrl, extension) {
+        const viewer = getViewerForFile(extension);
+        
+        if (viewer === 'DOWNLOAD') {
+            // For files that can't be viewed, return direct download URL
+            return lfsUrl;
+        }
+        
+        // Encode the LFS URL for the viewer
+        const encodedUrl = encodeURIComponent(lfsUrl);
+        
+        if (viewer === 'GOOGLE') {
+            return VIEWERS.GOOGLE + encodedUrl + '&embedded=true';
+        } else if (viewer === 'OFFICE') {
+            return VIEWERS.OFFICE + encodedUrl;
+        }
+        
+        // Fallback to direct URL
+        return lfsUrl;
+    }
+
+    /**
      * Initialize link interception for LFS files
      */
     function initLFSHandler() {
@@ -96,20 +160,21 @@
             if (href && !href.startsWith('http') && !href.startsWith('//') && isLFSFile(href)) {
                 e.preventDefault();
                 
+                // Get file extension
+                const extension = getFileExtension(href);
+                
                 // Convert to LFS URL
                 const lfsUrl = convertToLFSUrl(href, currentPagePath);
                 
-                // Open in new tab or download
-                if (link.hasAttribute('target') && link.getAttribute('target') === '_blank') {
-                    window.open(lfsUrl, '_blank', 'noopener,noreferrer');
-                } else {
-                    // Force download by opening in new window
-                    window.open(lfsUrl, '_blank', 'noopener,noreferrer');
-                }
+                // Create viewer URL
+                const viewerUrl = createViewerUrl(lfsUrl, extension);
+                
+                // Open in new tab
+                window.open(viewerUrl, '_blank', 'noopener,noreferrer');
             }
         });
 
-        console.log('✓ LFS File Handler initialized - All document links will download from GitHub LFS');
+        console.log('✓ LFS File Handler initialized - Documents will open in browser viewer');
     }
 
     // Initialize when DOM is ready
