@@ -142,6 +142,63 @@
     }
 
     /**
+     * Create floating download button
+     */
+    function createDownloadButton(lfsUrl, fileName) {
+        const button = document.createElement('a');
+        button.href = lfsUrl;
+        button.download = fileName;
+        button.textContent = 'DOWNLOAD';
+        button.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 999999;
+            padding: 10px 20px;
+            background: #00ff00;
+            color: #000;
+            border: 3px solid #000;
+            box-shadow: 5px 5px 0px #000;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            font-size: 14px;
+            text-decoration: none;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: transform 0.1s, box-shadow 0.1s;
+        `;
+        
+        button.onmouseover = function() {
+            this.style.transform = 'translate(2px, 2px)';
+            this.style.boxShadow = '3px 3px 0px #000';
+        };
+        
+        button.onmouseout = function() {
+            this.style.transform = '';
+            this.style.boxShadow = '5px 5px 0px #000';
+        };
+        
+        button.onmousedown = function() {
+            this.style.transform = 'translate(5px, 5px)';
+            this.style.boxShadow = '0px 0px 0px #000';
+        };
+        
+        button.onmouseup = function() {
+            this.style.transform = 'translate(2px, 2px)';
+            this.style.boxShadow = '3px 3px 0px #000';
+        };
+        
+        return button;
+    }
+
+    /**
+     * Get filename from path
+     */
+    function getFileName(filePath) {
+        return filePath.split('/').pop() || 'document';
+    }
+
+    /**
      * Initialize link interception for LFS files
      */
     function initLFSHandler() {
@@ -166,15 +223,30 @@
                 // Convert to LFS URL
                 const lfsUrl = convertToLFSUrl(href, currentPagePath);
                 
-                // Create viewer URL
-                const viewerUrl = createViewerUrl(lfsUrl, extension);
+                // Get file name
+                const fileName = getFileName(href);
+                
+                // For ZIP files, download directly
+                if (extension === '.zip') {
+                    window.open(lfsUrl, '_blank', 'noopener,noreferrer');
+                    return;
+                }
+                
+                // Determine file type for viewer
+                const fileType = extension === '.pdf' ? 'pdf' : 'office';
+                
+                // Build viewer URL with parameters
+                const baseUrl = window.location.origin + window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/'));
+                const viewerUrl = baseUrl + '/../../viewer.html?url=' + encodeURIComponent(lfsUrl) + 
+                                 '&name=' + encodeURIComponent(fileName) + 
+                                 '&type=' + fileType;
                 
                 // Open in new tab
                 window.open(viewerUrl, '_blank', 'noopener,noreferrer');
             }
         });
 
-        console.log('✓ LFS File Handler initialized - Documents will open in browser viewer');
+        console.log('✓ LFS File Handler initialized - Files will open in custom viewer with download button');
     }
 
     // Initialize when DOM is ready

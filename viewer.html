@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Viewer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Courier New', monospace;
+            background: #1e1e1e;
+            overflow: hidden;
+        }
+        .toolbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: #2d2d2d;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10000;
+            box-shadow: 0 4px 0 #000;
+            border-bottom: 3px solid #000;
+        }
+        .file-name {
+            color: #fff;
+            font-size: 14px;
+            font-weight: bold;
+            max-width: 60%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            text-transform: uppercase;
+        }
+        .btn {
+            padding: 10px 20px;
+            border: 3px solid #000;
+            background: #00ff00;
+            color: #000;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            text-transform: uppercase;
+            box-shadow: 5px 5px 0px #000;
+            transition: transform 0.1s, box-shadow 0.1s;
+        }
+        .btn:hover {
+            transform: translate(2px, 2px);
+            box-shadow: 3px 3px 0px #000;
+            background: #00dd00;
+        }
+        .btn:active {
+            transform: translate(5px, 5px);
+            box-shadow: 0px 0px 0px #000;
+        }
+        iframe {
+            position: fixed;
+            top: 62px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            height: calc(100vh - 62px);
+            border: none;
+        }
+        .loading {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #fff;
+            font-size: 16px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .error {
+            position: fixed;
+            top: 75px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #fff;
+            color: #000;
+            padding: 15px 25px;
+            border: 3px solid #000;
+            box-shadow: 5px 5px 0 #000;
+            display: none;
+            max-width: 90%;
+            text-align: center;
+            font-weight: bold;
+        }
+        .error.show {
+            display: block;
+        }
+        @media (max-width: 768px) {
+            .file-name {
+                max-width: 50%;
+                font-size: 11px;
+            }
+            .btn {
+                padding: 8px 14px;
+                font-size: 11px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="toolbar">
+        <div class="file-name" id="fileName">Loading...</div>
+        <a href="#" class="btn" id="downloadBtn" download>DOWNLOAD</a>
+    </div>
+    <div class="error" id="errorMsg">FILE TOO LARGE TO PREVIEW - USE DOWNLOAD BUTTON</div>
+    <div class="loading" id="loading">Loading document...</div>
+    <iframe id="viewer" src=""></iframe>
+
+    <script>
+        // Get URL parameters
+        const params = new URLSearchParams(window.location.search);
+        const fileUrl = params.get('url');
+        const fileName = params.get('name') || 'document';
+        const fileType = params.get('type') || 'pdf';
+
+        // Set file name
+        document.getElementById('fileName').textContent = fileName;
+
+        // Set download link
+        const downloadBtn = document.getElementById('downloadBtn');
+        downloadBtn.href = fileUrl;
+        downloadBtn.download = fileName;
+
+        // Determine viewer URL
+        let viewerUrl = '';
+        if (fileType === 'pdf') {
+            viewerUrl = 'https://docs.google.com/viewer?url=' + encodeURIComponent(fileUrl) + '&embedded=true';
+        } else {
+            // Office files
+            viewerUrl = 'https://view.officeapps.live.com/op/embed.aspx?src=' + encodeURIComponent(fileUrl);
+        }
+
+        // Set iframe src
+        const iframe = document.getElementById('viewer');
+        const loading = document.getElementById('loading');
+        const errorMsg = document.getElementById('errorMsg');
+
+        iframe.src = viewerUrl;
+
+        iframe.onload = function() {
+            loading.style.display = 'none';
+        };
+
+        iframe.onerror = function() {
+            loading.style.display = 'none';
+            errorMsg.classList.add('show');
+        };
+
+        // Show error after 10 seconds if still loading
+        setTimeout(() => {
+            if (loading.style.display !== 'none') {
+                errorMsg.classList.add('show');
+            }
+        }, 10000);
+    </script>
+</body>
+</html>
