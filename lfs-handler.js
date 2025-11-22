@@ -11,10 +11,10 @@
     const GITHUB_REPO = 'dumbAF';
     const GITHUB_BRANCH = 'main';
     
-    // LFS file extensions (from .gitattributes)
+    // LFS file extensions (from .gitattributes) - excluding .txt as it can be opened directly
     const LFS_EXTENSIONS = [
         '.pdf', '.docx', '.doc', '.ppt', '.pptx', 
-        '.xlsx', '.xls', '.zip', '.txt'
+        '.xlsx', '.xls', '.zip'
     ];
 
     /**
