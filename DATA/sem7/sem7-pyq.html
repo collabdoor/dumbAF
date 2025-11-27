@@ -240,10 +240,9 @@
         <div class="page-title">Select Subject Folder</div>
 
         <div class="subjects-grid">
-            <div class="subject-card empty" title="No PYQs available">
+            <div class="subject-card" onclick="showFiles('asd')">
                 <span class="subject-icon">&#128193;</span>
                 <div class="subject-name">ASD</div>
-                <div class="empty-note">(Empty)</div>
             </div>
 
             <div class="subject-card" onclick="showFiles('awsn')">
@@ -262,11 +261,27 @@
                 <div class="empty-note">(Empty)</div>
             </div>
 
-            <div class="subject-card empty" title="No PYQs available">
+            <div class="subject-card" onclick="showFiles('oee')">
                 <span class="subject-icon">&#128193;</span>
                 <div class="subject-name">OEE</div>
-                <div class="empty-note">(Empty)</div>
             </div>
+        </div>
+
+        <!-- Files Section for ASD -->
+        <div id="files-asd" class="files-section">
+            <div class="files-header">
+                <div class="files-title">&#128193; / ASD (Agile Software Development)</div>
+                <button class="close-btn" onclick="closeFiles()">X</button>
+            </div>
+            <ul class="file-list">
+                <li class="file-item"><a href="../Study Resource/7th sem/pyq/ASD/ASD-April-24.pdf" target="_blank"><span class="file-icon">&#128196;</span> ASD-April-24.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/7th sem/pyq/ASD/ASD-Dec-22.pdf" target="_blank"><span class="file-icon">&#128196;</span> ASD-Dec-22.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/7th sem/pyq/ASD/ASD-Dec-23.pdf" target="_blank"><span class="file-icon">&#128196;</span> ASD-Dec-23.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/7th sem/pyq/ASD/ASD-Dec-24.pdf" target="_blank"><span class="file-icon">&#128196;</span> ASD-Dec-24.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/7th sem/pyq/ASD/ASD-July-22.pdf" target="_blank"><span class="file-icon">&#128196;</span> ASD-July-22.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/7th sem/pyq/ASD/ASD-May-23.pdf" target="_blank"><span class="file-icon">&#128196;</span> ASD-May-23.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/7th sem/pyq/ASD/ASD-Nov-24.pdf" target="_blank"><span class="file-icon">&#128196;</span> ASD-Nov-24.pdf</a></li>
+            </ul>
         </div>
 
         <!-- Files Section for AWSN -->
@@ -298,6 +313,19 @@
                 <li class="file-item"><a href="../Study Resource/7th sem/pyq/DMDW/DMDW-June-2024.pdf" target="_blank"><span class="file-icon">&#128196;</span> DMDW-June-2024.pdf</a></li>
                 <li class="file-item"><a href="../Study Resource/7th sem/pyq/DMDW/DMDW-May-2025.pdf" target="_blank"><span class="file-icon">&#128196;</span> DMDW-May-2025.pdf</a></li>
                 <li class="file-item"><a href="../Study Resource/7th sem/pyq/DMDW/DMDW-Nov-2024.pdf" target="_blank"><span class="file-icon">&#128196;</span> DMDW-Nov-2024.pdf</a></li>
+            </ul>
+        </div>
+
+        <!-- Files Section for OEE -->
+        <div id="files-oee" class="files-section">
+            <div class="files-header">
+                <div class="files-title">&#128193; / OEE (Open Elective - Renewable Energy)</div>
+                <button class="close-btn" onclick="closeFiles()">X</button>
+            </div>
+            <ul class="file-list">
+                <li class="file-item"><a href="../Study Resource/7th sem/pyq/OEE/OEE-jan-23.pdf" target="_blank"><span class="file-icon">&#128196;</span> OEE-jan-23.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/7th sem/pyq/OEE/OEE-Jan-24.pdf" target="_blank"><span class="file-icon">&#128196;</span> OEE-Jan-24.pdf</a></li>
+                <li class="file-item"><a href="../Study Resource/7th sem/pyq/OEE/OEE-June-22.pdf" target="_blank"><span class="file-icon">&#128196;</span> OEE-June-22.pdf</a></li>
             </ul>
         </div>
     </main>
