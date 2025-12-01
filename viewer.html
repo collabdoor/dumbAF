@@ -131,9 +131,27 @@
         // Set file name
         document.getElementById('fileName').textContent = fileName;
 
+        // Convert LFS URL to raw download URL
+        function convertToDownloadUrl(lfsUrl) {
+            // Convert media.githubusercontent.com URL to raw GitHub URL
+            // From: https://media.githubusercontent.com/media/collabdoor/dumbAF/main/path/to/file.pdf
+            // To: https://github.com/collabdoor/dumbAF/raw/refs/heads/main/path/to/file.pdf?download=
+            
+            const mediaPattern = /https:\/\/media\.githubusercontent\.com\/media\/([^\/]+)\/([^\/]+)\/([^\/]+)\/(.+)/;
+            const match = lfsUrl.match(mediaPattern);
+            
+            if (match) {
+                const [, user, repo, branch, path] = match;
+                return `https://github.com/${user}/${repo}/raw/refs/heads/${branch}/${path}?download=`;
+            }
+            
+            // If not an LFS URL, return as-is
+            return lfsUrl;
+        }
+
         // Set download link
         const downloadBtn = document.getElementById('downloadBtn');
-        downloadBtn.href = fileUrl;
+        downloadBtn.href = convertToDownloadUrl(fileUrl);
         downloadBtn.download = fileName;
 
         // Determine viewer URL
