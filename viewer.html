@@ -131,27 +131,24 @@
         // Set file name
         document.getElementById('fileName').textContent = fileName;
 
-        // Convert LFS URL to raw download URL
-        function convertToDownloadUrl(lfsUrl) {
-            // Convert media.githubusercontent.com URL to raw GitHub URL
-            // From: https://media.githubusercontent.com/media/collabdoor/dumbAF/main/path/to/file.pdf
-            // To: https://github.com/collabdoor/dumbAF/raw/refs/heads/main/path/to/file.pdf?download=
-            
-            const mediaPattern = /https:\/\/media\.githubusercontent\.com\/media\/([^\/]+)\/([^\/]+)\/([^\/]+)\/(.+)/;
-            const match = lfsUrl.match(mediaPattern);
-            
-            if (match) {
-                const [, user, repo, branch, path] = match;
-                return `https://github.com/${user}/${repo}/raw/refs/heads/${branch}/${path}?download=`;
-            }
-            
-            // If not an LFS URL, return as-is
-            return lfsUrl;
-        }
-
-        // Set download link
+        // Set download link with proper GitHub LFS format
         const downloadBtn = document.getElementById('downloadBtn');
-        downloadBtn.href = convertToDownloadUrl(fileUrl);
+        let downloadUrl = fileUrl;
+        
+        // Fix GitHub media URL format for LFS files
+        if (fileUrl && fileUrl.includes('media.githubusercontent.com/media/collabdoor/dumbAF')) {
+            // Replace incorrect format with correct one
+            downloadUrl = fileUrl.replace(
+                /media\.githubusercontent\.com\/media\/collabdoor\/dumbAF\/main\//,
+                'media.githubusercontent.com/media/collabdoor/dumbAF/refs/heads/main/DATA/'
+            );
+            // Add download parameter if not present
+            if (!downloadUrl.includes('?download=true')) {
+                downloadUrl += '?download=true';
+            }
+        }
+        
+        downloadBtn.href = downloadUrl;
         downloadBtn.download = fileName;
 
         // Determine viewer URL
