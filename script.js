@@ -169,15 +169,133 @@ let filteredNotices = [];
 let currentPage = 1;
 let noticesPerPage = 25;
 
+// CORS proxy configuration with reliability scoring
 const CORS_PROXIES = [
-    'https://cors.eu.org/',
-    'https://api.codetabs.com/v1/proxy?quest=',
-    'https://thingproxy.freeboard.io/fetch/',
-    'https://proxy.cors.sh/',
-    'https://api.allorigins.win/get?url='
+    // Primary: Most reliable and actively maintained proxies
+    { 
+        url: 'https://corsproxy.io/?url=', 
+        encode: true, 
+        type: 'prefix',
+        name: 'corsproxy.io'
+    },
+    { 
+        url: 'https://api.allorigins.win/get?url=', 
+        encode: true, 
+        type: 'json',
+        name: 'allorigins.win'
+    },
+    { 
+        url: 'https://api.codetabs.com/v1/proxy?quest=', 
+        encode: true, 
+        type: 'prefix',
+        name: 'codetabs'
+    },
+    // Secondary fallbacks
+    { 
+        url: 'https://thingproxy.freeboard.io/fetch/', 
+        encode: false, 
+        type: 'prefix',
+        name: 'thingproxy'
+    },
+    { 
+        url: 'https://cors.eu.org/', 
+        encode: false, 
+        type: 'prefix',
+        name: 'cors.eu.org'
+    },
+    { 
+        url: 'https://api.cors.lol/?url=', 
+        encode: true, 
+        type: 'prefix',
+        name: 'cors.lol'
+    },
+    // Tertiary fallbacks with alternate format
+    { 
+        url: 'https://corsproxy.org/?', 
+        encode: true, 
+        type: 'prefix',
+        name: 'corsproxy.org'
+    },
+    { 
+        url: 'https://proxy.cors.sh/', 
+        encode: false, 
+        type: 'prefix',
+        name: 'cors.sh'
+    }
 ];
 
+// Track proxy performance for intelligent selection
+let proxyStats = {};
 let lastWorkingProxy = null;
+
+// Initialize proxy stats from localStorage if available
+function initProxyStats() {
+    try {
+        const saved = localStorage.getItem('proxyStats');
+        if (saved) {
+            const parsed = JSON.parse(saved);
+            // Only use saved stats if they're less than 24 hours old
+            if (parsed.timestamp && Date.now() - parsed.timestamp < 86400000) {
+                proxyStats = parsed.stats || {};
+                lastWorkingProxy = parsed.lastWorkingProxy || null;
+            }
+        }
+    } catch (e) {
+        // Silent fail - stats will be reinitialized
+    }
+    
+    // Initialize missing stats for any new proxies
+    CORS_PROXIES.forEach(proxy => {
+        if (!proxyStats[proxy.name]) {
+            proxyStats[proxy.name] = { successes: 0, failures: 0, lastAttempt: null, avgResponseTime: null };
+        }
+    });
+}
+
+// Save proxy stats to localStorage
+function saveProxyStats() {
+    try {
+        localStorage.setItem('proxyStats', JSON.stringify({
+            stats: proxyStats,
+            lastWorkingProxy: lastWorkingProxy,
+            timestamp: Date.now()
+        }));
+    } catch (e) {
+        // Silent fail - localStorage might be unavailable
+    }
+}
+
+// Reset proxy stats (useful for debugging)
+function resetProxyStats() {
+    CORS_PROXIES.forEach(proxy => {
+        proxyStats[proxy.name] = { successes: 0, failures: 0, lastAttempt: null, avgResponseTime: null };
+    });
+    lastWorkingProxy = null;
+    saveProxyStats();
+}
+
+// Get proxy health summary for debugging
+function getProxyHealthSummary() {
+    const summary = CORS_PROXIES.map(proxy => {
+        const stats = proxyStats[proxy.name];
+        const total = stats.successes + stats.failures;
+        const rate = total > 0 ? Math.round((stats.successes / total) * 100) : 'N/A';
+        return {
+            name: proxy.name,
+            successRate: rate + '%',
+            successes: stats.successes,
+            failures: stats.failures,
+            avgResponseTime: stats.avgResponseTime ? Math.round(stats.avgResponseTime) + 'ms' : 'N/A',
+            isLastWorking: lastWorkingProxy === proxy.name
+        };
+    });
+    console.table(summary);
+    return summary;
+}
+
+// Initialize proxy stats on script load
+initProxyStats();
+
 
 const PTU_URLS = [
     { url: 'https://ptu.ac.in/noticeboard-main/', source: 'Main Board', defaultMax: 500 },
@@ -258,74 +376,157 @@ function extractNotices(doc, source, defaultMaxNotices) {
 
 async function fetchWithFallback(url) {
     let lastError;
-    let proxiesToTry = [...CORS_PROXIES];
-    if (lastWorkingProxy && proxiesToTry.includes(lastWorkingProxy)) {
-        proxiesToTry = [lastWorkingProxy, ...proxiesToTry.filter(p => p !== lastWorkingProxy)];
-    }
-    for (let i = 0; i < proxiesToTry.length; i++) {
-        const proxy = proxiesToTry[i];
+    
+    // Sort proxies by reliability (successful requests and response time)
+    const sortedProxies = [...CORS_PROXIES].sort((a, b) => {
+        const statsA = proxyStats[a.name];
+        const statsB = proxyStats[b.name];
+        
+        // Prioritize last working proxy
+        if (lastWorkingProxy === a.name) return -1;
+        if (lastWorkingProxy === b.name) return 1;
+        
+        // Calculate success rate
+        const totalA = statsA.successes + statsA.failures;
+        const totalB = statsB.successes + statsB.failures;
+        const rateA = totalA > 0 ? statsA.successes / totalA : 0.5;
+        const rateB = totalB > 0 ? statsB.successes / totalB : 0.5;
+        
+        return rateB - rateA;
+    });
+
+    for (const proxy of sortedProxies) {
+        const startTime = performance.now();
+        
         try {
-            let proxyUrl;
-            let fetchOptions = {
+            // Build the proxy URL based on proxy configuration
+            const proxyUrl = proxy.encode 
+                ? proxy.url + encodeURIComponent(url)
+                : proxy.url + url;
+            
+            const fetchOptions = {
                 method: 'GET',
                 headers: {
-                    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+                    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
                 },
-                signal: AbortSignal.timeout(10000)
+                signal: AbortSignal.timeout(12000) // 12 second timeout
             };
-            if (proxy.includes('allorigins.win') || proxy.includes('codetabs')) {
-                proxyUrl = proxy + encodeURIComponent(url);
-            } else {
-                proxyUrl = proxy + url;
-            }
+
             const response = await fetch(proxyUrl, fetchOptions);
-            if (response.ok) {
-                lastWorkingProxy = proxy;
-                if (proxy.includes('allorigins.win')) {
-                    const data = await response.json();
-                    if (data.contents && data.contents.length > 100) {
-                        return new Response(data.contents, {
-                            status: 200,
-                            statusText: 'OK',
-                            headers: { 'Content-Type': 'text/html' }
-                        });
-                    } else {
-                        throw new Error('Empty or invalid response from allorigins');
-                    }
-                }
-                return response;
-            } else {
+            
+            if (!response.ok) {
                 throw new Error(`HTTP ${response.status}: ${response.statusText}`);
             }
+
+            // Handle different response types
+            let htmlContent;
+            
+            if (proxy.type === 'json') {
+                // allorigins.win returns JSON with contents property
+                const data = await response.json();
+                if (!data.contents || data.contents.length < 100) {
+                    throw new Error('Empty or invalid JSON response');
+                }
+                htmlContent = data.contents;
+            } else {
+                htmlContent = await response.text();
+            }
+
+            // Validate response content
+            if (!htmlContent || htmlContent.length < 100) {
+                throw new Error('Response too short or empty');
+            }
+            
+            // Check if it's actually HTML content (not an error page)
+            if (!htmlContent.includes('<') || htmlContent.includes('"error"')) {
+                throw new Error('Invalid HTML response');
+            }
+
+            // Update success stats
+            const responseTime = performance.now() - startTime;
+            proxyStats[proxy.name].successes++;
+            proxyStats[proxy.name].lastAttempt = Date.now();
+            proxyStats[proxy.name].avgResponseTime = proxyStats[proxy.name].avgResponseTime 
+                ? (proxyStats[proxy.name].avgResponseTime + responseTime) / 2 
+                : responseTime;
+            
+            lastWorkingProxy = proxy.name;
+            saveProxyStats();
+            
+            return new Response(htmlContent, {
+                status: 200,
+                statusText: 'OK',
+                headers: { 'Content-Type': 'text/html' }
+            });
+
         } catch (error) {
+            // Update failure stats
+            proxyStats[proxy.name].failures++;
+            proxyStats[proxy.name].lastAttempt = Date.now();
+            saveProxyStats();
             lastError = error;
         }
     }
-    throw lastError || new Error('All proxy attempts failed');
+
+    // All proxies failed - try direct fetch as last resort (might work in some environments)
+    try {
+        const directResponse = await fetch(url, {
+            method: 'GET',
+            signal: AbortSignal.timeout(10000)
+        });
+        
+        if (directResponse.ok) {
+            const htmlContent = await directResponse.text();
+            if (htmlContent && htmlContent.length > 100) {
+                return directResponse;
+            }
+        }
+    } catch (directError) {
+        // Direct fetch failed, will throw the last proxy error
+    }
+
+    throw lastError || new Error('All proxy attempts failed. Please check your internet connection.');
 }
 
 async function fetchAllNotices() {
-    const fetchPromises = PTU_URLS.map(async (sourceInfo) => {
+    const MAX_RETRIES = 2;
+    const RETRY_DELAY = 1500; // 1.5 seconds between retries
+    
+    // Helper function to fetch with retry
+    async function fetchWithRetry(sourceInfo, attempt = 1) {
         try {
             const response = await fetchWithFallback(sourceInfo.url);
             const htmlText = await response.text();
+            
             if (htmlText.length < 100) {
                 return [];
             }
+            
             const parser = new DOMParser();
             const doc = parser.parseFromString(htmlText, 'text/html');
             const notices = extractNotices(doc, sourceInfo.source, sourceInfo.defaultMax);
+            
             return notices;
         } catch (error) {
+            if (attempt < MAX_RETRIES) {
+                await new Promise(resolve => setTimeout(resolve, RETRY_DELAY));
+                return fetchWithRetry(sourceInfo, attempt + 1);
+            }
+            
             return [];
         }
-    });
+    }
+    
+    // Fetch from all sources with retry support
+    const fetchPromises = PTU_URLS.map(sourceInfo => fetchWithRetry(sourceInfo));
     const allResults = await Promise.all(fetchPromises);
     const results = allResults.flat();
+    
     if (results.length === 0) {
         return [];
     }
+    
+    // Remove duplicates based on title
     const uniqueNotices = results.filter((notice, index, self) => 
         index === self.findIndex(n => n.title === notice.title)
     );
@@ -572,144 +773,3 @@ function setupNoticeboard() {
         });
     }
 })();
-
-function setupAutoRefresh() {
-    setInterval(async () => {
-        try {
-            const newNotices = await fetchAllNotices();
-            if (newNotices.length !== allNotices.length) {
-                allNotices = newNotices;
-                filteredNotices = [...allNotices];
-                renderNoticesTable();
-                
-                const statsDisplay = document.getElementById('statsDisplay');
-                if (statsDisplay) {
-                    const originalColor = statsDisplay.style.color;
-                    statsDisplay.style.color = 'blue';
-                    statsDisplay.textContent = `📢 Updated! Found ${newNotices.length} notices`;
-                    setTimeout(() => {
-                        statsDisplay.style.color = originalColor;
-                        updateStatsDisplay();
-                    }, 5000);
-                }
-            }
-        } catch (error) {
-        }
-    }, 600000);
-}
-
-async function initializeNoticeboard() {
-    const loadingIndicator = document.getElementById('loadingIndicator');
-    const tableContainer = document.getElementById('tableContainer');
-    const paginationContainer = document.getElementById('paginationContainer');
-    const errorContainer = document.getElementById('errorContainer');
-    
-    try {
-        if (errorContainer) errorContainer.innerHTML = '';
-
-        if (loadingIndicator) {
-            loadingIndicator.style.display = 'block';
-            loadingIndicator.classList.remove('hidden');
-        }
-        if (tableContainer) {
-            tableContainer.style.display = 'none';
-            tableContainer.classList.add('hidden');
-        }
-        if (paginationContainer) {
-            paginationContainer.style.display = 'none';
-            paginationContainer.classList.add('hidden');
-        }
-
-        const loadingText = loadingIndicator?.querySelector('p');
-        if (loadingText) {
-            loadingText.textContent = 'Connecting to PTU servers... This may take a moment...';
-        }
-
-        const timeoutPromise = new Promise((_, reject) => 
-            setTimeout(() => reject(new Error('Request timeout - PTU servers are taking too long to respond')), 20000)
-        );
-
-        allNotices = await Promise.race([fetchAllNotices(), timeoutPromise]);
-        filteredNotices = [...allNotices];
-
-        if (loadingIndicator) {
-            loadingIndicator.style.display = 'none';
-            loadingIndicator.classList.add('hidden');
-        }
-        if (tableContainer) {
-            if (allNotices.length > 0) {
-                tableContainer.style.display = 'block';
-                tableContainer.classList.remove('hidden');
-            } else {
-                showError("Could not find any notices. The university website might be down or has changed its structure.");
-            }
-        }
-        if (paginationContainer) {
-            paginationContainer.style.display = 'flex';
-            paginationContainer.classList.remove('hidden');
-        }
-
-        renderNoticesTable();
-        
-        const statsDisplay = document.getElementById('statsDisplay');
-        if (statsDisplay) {
-            const originalColor = statsDisplay.style.color;
-            statsDisplay.classList.add('status-success');
-            setTimeout(() => {
-                statsDisplay.classList.remove('status-success');
-                statsDisplay.style.color = originalColor;
-            }, 3000);
-        }
-
-    } catch (error) {
-        showError(error.message);
-        if (loadingIndicator) {
-            loadingIndicator.style.display = 'none';
-            loadingIndicator.classList.add('hidden');
-        }
-    }
-}
-
-function setupNoticeboard() {
-    const searchInput = document.getElementById('searchInput');
-    const refreshBtn = document.getElementById('refreshBtn');
-    const loadAllToggle = document.getElementById('loadAllToggle');
-    const pageSizeSelect = document.getElementById('pageSizeSelect');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-
-    if (searchInput) {
-        searchInput.addEventListener('input', () => filterNotices(searchInput.value));
-    }
-    if (refreshBtn) {
-        refreshBtn.addEventListener('click', refreshNotices);
-    }
-    if (loadAllToggle) {
-        loadAllToggle.addEventListener('change', refreshNotices);
-    }
-    if (pageSizeSelect) {
-        pageSizeSelect.addEventListener('change', () => {
-            noticesPerPage = parseInt(pageSizeSelect.value, 10);
-            currentPage = 1;
-            renderNoticesTable();
-        });
-    }
-    if (prevBtn) {
-        prevBtn.addEventListener('click', () => changePage(-1));
-    }
-    if (nextBtn) {
-        nextBtn.addEventListener('click', () => changePage(1));
-    }
-
-    initializeNoticeboard();
-    setupAutoRefresh();
-}
-
-(function() {
-    if (document.body.classList.contains('noticeboard-page')) {
-        document.addEventListener('DOMContentLoaded', setupNoticeboard);
-    } else {
-        console.log("On main page, noticeboard script not initialized.");
-    }
-})();
-
